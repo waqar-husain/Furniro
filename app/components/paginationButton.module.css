@@ -1,0 +1,28 @@
+.paginationContainer {
+  margin-top: 7rem;
+  font-size: 2rem;
+  display: flex;
+  gap: max(3.8rem);
+}
+
+.paginationButton {
+  padding: 1.5rem 2.7rem 1.5rem 2.7rem;
+  text-decoration: none;
+  color: black;
+  border-radius: 7px;
+}
+
+.prevButton {
+  padding: 1.5rem 2.7rem 1.5rem 2.7rem;
+  border-radius: 7px;
+  text-decoration: none;
+  color: black;
+  background-color: #f9f1e7;
+}
+.nextButton {
+  border-radius: 7px;
+  color: black;
+  text-decoration: none;
+  padding: 1.5rem 2.7rem 1.5rem 2.7rem;
+  background-color: #f9f1e7;
+}

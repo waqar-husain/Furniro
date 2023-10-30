@@ -1,0 +1,42 @@
+.nav {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 1280px;
+  margin: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  justify-content: space-between;
+}
+
+.linkContainer {
+  display: flex;
+  width: 43rem;
+  justify-content: space-between;
+
+  .navLink {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  .navLink:hover {
+    text-decoration: underline;
+  }
+}
+
+.uiContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.uiContainer > * {
+  padding-left: 4.5rem;
+}

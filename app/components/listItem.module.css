@@ -1,0 +1,94 @@
+.listItemMain {
+  position: relative;
+  width: 28.5rem;
+  height: 44.6rem;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.1);
+}
+.listItem {
+  display: inline-block;
+  position: relative;
+  width: 28.5rem;
+  height: 44.6rem;
+  border-radius: 5px;
+  background-color: #f4f5f7;
+  text-decoration: none;
+  transition: all 0.8s;
+}
+
+.listItemMain:hover .onHover {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+}
+
+.listItemImg {
+  transition: all 0.5s;
+}
+
+.listItemMain:hover .listItemImg {
+  transform: scale(1.1);
+}
+
+.onHover {
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  background-color: #3a3a3ac3;
+  border-radius: 5px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.5s;
+}
+
+.onHoverBottom {
+  margin-top: 2.4rem;
+  position: relative;
+  font-weight: 600;
+  display: flex;
+}
+
+.onHoverShare {
+  border: none;
+  font-size: 1.6rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.listItemImage {
+  width: 28.5rem;
+  height: 30.1rem;
+  overflow: hidden;
+}
+.aboutListItem {
+  padding-top: 1.6rem;
+  padding-left: 1.6rem;
+  padding-bottom: 3rem;
+  color: var(--color-grey1);
+  font-weight: 500;
+}
+.listItemName {
+  font-size: 2.4rem;
+}
+.listitemDesc {
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  font-size: 1.6rem;
+  color: var(--color-grey3);
+}
+.listItemPrice {
+  line-height: 1.6;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  font-size: 2rem;
+}
