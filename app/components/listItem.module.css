@@ -3,7 +3,7 @@
   width: 28.5rem;
   height: 44.6rem;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.1);
 }
 .listItem {
@@ -11,7 +11,7 @@
   position: relative;
   width: 28.5rem;
   height: 44.6rem;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #f4f5f7;
   text-decoration: none;
   transition: all 0.8s;
@@ -50,7 +50,6 @@
 
 .onHoverBottom {
   margin-top: 2.4rem;
-  position: relative;
   font-weight: 600;
   display: flex;
 }

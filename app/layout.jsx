@@ -5,6 +5,7 @@ import Head from "next/head";
 //COMPONENTS
 import Navbar from "./components/navbar";
 import FooterComp from "./components/homepage/footer";
+import StoreProvider from "./store/storeProvider";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -25,9 +26,11 @@ export default function RootLayout({ children }) {
         />
       </Head>
       <body className={rubik.className}>
-        <Navbar />
-        {children}
-        <FooterComp />
+        <StoreProvider>
+          <Navbar />
+          {children}
+          <FooterComp />
+        </StoreProvider>
       </body>
     </html>
   );

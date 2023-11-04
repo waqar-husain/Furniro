@@ -7,7 +7,8 @@ import Heart from "./icon/heart";
 
 export default function LikeNewButton(props) {
   const [clicked, setClicked] = useState(false);
-  const clickHandler = () => {
+  const clickHandler = (e) => {
+    e.preventDefault();
     setClicked((oldState) => !oldState);
     props.func && props.func();
   };

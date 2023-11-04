@@ -6,10 +6,11 @@ import Link from "next/link";
 import ShareButton from "./shareButton";
 import ButtonPrimary from "./buttonPrimary";
 import LikeNewButton from "./likeNewButton";
+import CompareButton from "./compareButton";
 
 export default function ListItem(props) {
   return (
-    <div className={style.listItemMain}>
+    <Link href="/" className={style.listItemMain}>
       <div className={style.listItem}>
         <div className={style.listItemImage}>
           <Image
@@ -33,7 +34,7 @@ export default function ListItem(props) {
       <div className={style.onHover}>
         <ButtonPrimary
           style="primary"
-          title="View product"
+          title="Add to cart"
           styleData={{
             fontSize: "1.6rem",
             lineHeight: "1.6",
@@ -41,13 +42,13 @@ export default function ListItem(props) {
             backgroundColor: "white",
             color: "var(--color-primary)",
           }}
-          url="/about"
         />
         <div className={style.onHoverBottom}>
           <ShareButton />
+          <CompareButton title="Compare" />
           <LikeNewButton title="Like" />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
