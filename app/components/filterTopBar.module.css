@@ -32,3 +32,25 @@
   border-left: 2px solid var(--color-grey5);
   padding-left: 3.4rem;
 }
+
+.barRight {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #000;
+}
+
+.show {
+  display: flex;
+  align-items: center;
+}
+
+.showText {
+  margin-right: 1.7rem;
+}
+
+.showItem {
+  background-color: #fff;
+  padding: 1.2rem 1.8rem;
+  color: var(--color-grey5);
+}

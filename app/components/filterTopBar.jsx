@@ -8,6 +8,7 @@ import ChangeViewButton from "./changeViewButton";
 import Image from "next/image";
 import BigRound from "./icon/bigRound";
 import List from "./icon/list";
+import SortItem from "./sortItem";
 
 export default function FilterTopBar() {
   const totalNoOfResults = useSelector((state) => state.shop.data).length;
@@ -34,7 +35,13 @@ export default function FilterTopBar() {
             of {totalNoOfResults} results
           </span>
         </div>
-        <div className={style.barRight}>Right</div>
+        <div className={style.barRight}>
+          <span className={style.show}>
+            <p className={style.showText}>Show</p>
+            <p className={style.showItem}>{noOfItem}</p>
+          </span>
+          <SortItem />
+        </div>
       </div>
     </div>
   );
