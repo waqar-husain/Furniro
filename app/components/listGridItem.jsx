@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import style from "./listItem.module.css";
+import style from "./listGridItem.module.css";
 import image from "./icon/image 8.jpg";
 import Link from "next/link";
 import ShareButton from "./shareButton";
@@ -8,7 +8,7 @@ import ButtonPrimary from "./buttonPrimary";
 import LikeNewButton from "./likeNewButton";
 import CompareButton from "./compareButton";
 
-export default function ListItem(props) {
+export default function ListGridItem(props) {
   return (
     <Link href="/" className={style.listItemMain}>
       <div className={style.listItem}>

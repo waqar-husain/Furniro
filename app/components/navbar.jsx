@@ -6,7 +6,6 @@ import style from "./navbar.module.css";
 import SearchBar from "./searchBar";
 import user from "./icon/userNotLogin.svg";
 import Wishlist from "./wishlist";
-import cart from "./icon/cart.svg";
 
 export default function Navbar() {
   return (
@@ -37,7 +36,7 @@ export default function Navbar() {
           <SearchBar />
           <Wishlist />
           <Link href="/cart" style={{ height: "25px" }}>
-            <Image src={cart} height="25" width="25" alt="Cart" />
+            <cart />
           </Link>
         </div>
       </div>

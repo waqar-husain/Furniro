@@ -1,0 +1,92 @@
+.topBanner {
+  display: flex;
+  justify-content: center;
+  padding: 3.1rem 0rem;
+  background-color: #f9f1e7;
+  font-size: 1.6rem;
+}
+
+.innerTop {
+  max-width: 1280px;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.headerLinkTo {
+  text-decoration: none;
+  color: var(--color-grey5);
+  margin-right: 2.1rem;
+}
+
+.topItemName {
+  line-height: 1.6;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 3.4rem;
+  border-left: 2px solid var(--color-grey5);
+}
+
+.productMain {
+  display: flex;
+  justify-content: center;
+  padding-top: 3.5rem;
+  padding-bottom: 6.6rem;
+}
+.innerMain {
+  max-width: 1280px;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.productAbout {
+  display: flex;
+  font-size: 1.6rem;
+  color: var(--color-grey5);
+  padding-top: 4.1rem;
+  border-top: 1px solid #d9d9d9;
+}
+
+.productDesc {
+  padding-top: 4.8rem;
+  padding-bottom: 6.8rem;
+}
+
+.descInner {
+  max-width: 1280px;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.relatedProducts {
+  padding-top: 5.5rem;
+  padding-bottom: 9.2rem;
+  border-top: 1px solid #d9d9d9;
+}
+
+.relatedInner {
+  max-width: 1280px;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.showMore {
+  margin-top: 3.2rem;
+}
+.relatedHeading {
+  line-height: 1.6;
+  color: black;
+  font-size: 3.6rem;
+  font-weight: 500;
+}

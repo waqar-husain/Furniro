@@ -18,7 +18,8 @@
 
 .linkContainer {
   display: flex;
-  width: 43rem;
+  width: 100%;
+  max-width: 43rem;
   justify-content: space-between;
 
   .navLink {

@@ -2,7 +2,7 @@
 import React from "react";
 import { RWebShare } from "react-web-share";
 import Image from "next/image";
-import style from "./listItem.module.css";
+import style from "./listGridItem.module.css";
 import share from "./icon/share.svg";
 export default function ShareButton(props) {
   return (

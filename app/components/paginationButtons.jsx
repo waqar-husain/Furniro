@@ -21,12 +21,11 @@ export default function PaginationButtons() {
   };
 
   const prevButtonHandler = () => {
-    if (pageNo < 1) return;
+    if (pageNo <= 1) return;
     setPageNo((prev) => prev - 1);
   };
   const nextButtonHandler = () => {
-    if (pageNo > button) return;
-
+    if (pageNo >= button) return;
     setPageNo((prev) => prev + 1);
   };
 
@@ -37,9 +36,10 @@ export default function PaginationButtons() {
         <div className={style.paginationContainer}>
           {page > "1" && (
             <Link
-              href={`/shop?page=${pageNo < 1 ? "1" : pageNo - 1}`}
+              href={`/shop?page=${pageNo <= 1 ? "1" : pageNo - 1}`}
               onClick={prevButtonHandler}
               className={style.prevButton}
+              // style={{ visibility: pageNo <= 1 ? "hidden" : "visible" }}
             >
               Prev
             </Link>
@@ -60,9 +60,14 @@ export default function PaginationButtons() {
           ))}
           {page < String(button) && (
             <Link
-              href={`/shop?page=${pageNo + 1}`}
+              href={`/shop?page=${page < String(button) ? pageNo + 1 : button}`}
               onClick={nextButtonHandler}
               className={style.nextButton}
+              style={
+                {
+                  // visibility: pageNo < String(button) ? "visible" : "hidden",
+                }
+              }
             >
               Next
             </Link>

@@ -15,7 +15,7 @@ export default function Section2() {
           <h1 className={style.sectionHeading}>Products</h1>
         </div>
         <div className={style.sectionMain}>
-          <ProductList />
+          <ProductList data={[1, 1, 1, 1, 1, 1, 1, 1]} />
           <div className={style.sectionShowMore}>
             <ButtonPrimary
               title="Show more"

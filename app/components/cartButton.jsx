@@ -1,23 +1,22 @@
 "use client";
 import React, { useState } from "react";
-import style from "./compareButton.module.css";
-import CompareIcon from "./icon/compare";
+import style from "./cartButton.module.css";
+import CartIcon from "./icon/cart";
 
-export default function CompareButton(props) {
+export default function CartButton(props) {
+  const [clicked, setClicked] = useState(false);
   const clickHandler = (e) => {
     e.preventDefault();
+    setClicked((prev) => !prev);
   };
   return (
-    <abbr
-      title="Compare"
-      style={{ display: "flex", textDecoration: "none", marginLeft: "2rem" }}
-    >
+    <abbr title="Cart">
       <button
-        className={style.buttonCompare}
+        className={style.buttonCart}
         style={props?.styleData}
         onClick={clickHandler}
       >
-        <CompareIcon type={props.type} />
+        <CartIcon fill={clicked ? "#3a3a3a" : "none"} type={props.type} />
         {props?.title && (
           <span className={style.buttonName}>{props?.title}</span>
         )}

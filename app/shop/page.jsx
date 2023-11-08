@@ -18,11 +18,10 @@ export default function Shop() {
         <FilterTopBar />
         <div className={style.shopMainInner}>
           <ProductList />
-          <ProductList />
           <PaginationButtons />
         </div>
-        <BottomBanner />
       </main>
+      <BottomBanner />
     </PageAuth>
   );
 }
