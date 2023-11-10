@@ -5,8 +5,11 @@ import ButtonPrimary from "@/app/components/buttonPrimary";
 import Link from "next/link";
 import rightArr from "../../components/icon/arrow-right.svg";
 import Image from "next/image";
+import ProductPageButtons from "@/app/components/productPageButton";
+import starFull from "../../components/icon/starFull.svg";
+import starHalf from "../../components/icon/starHalf.svg";
 
-export default function Product() {
+export default function Product(props) {
   return (
     <main>
       <div className={style.topBanner}>
@@ -35,13 +38,26 @@ export default function Product() {
         <div className={style.innerMain}>
           <div className={style.innerMainImages}>Image</div>
           <div className={style.innerMainData} style={{ width: "50%" }}>
-            <h1 style={{ fontSize: "4.2rem", fontWeight: "400" }}>
-              Asgaard sofa
-            </h1>
-            <p>Rs. 250,000</p>
-            <div>Rating</div>
-            <p>PRODUCT DESC</p>
-            <div>BUTTONS</div>
+            <div style={{ paddingBottom: "6rem" }}>
+              <h1 className={style.productName}>Asgaard sofa</h1>
+              <p className={style.productPrice}>Rs. 250,000</p>
+              <div className={style.productReview}>
+                <div className={style.stars}>
+                  {Array.from(Array(Math.floor(Number("4.5")))).map((el, i) => (
+                    <Image src={starFull} key={i} alt={`star${i}`} />
+                  ))}
+                  {"4.5"[2] !== "0" && <Image src={starHalf} alt="starthalf" />}
+                </div>
+                <p className={style.noCustomer}>5 Customer Review</p>
+              </div>
+              <p className={style.productText}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+                consequuntur, odit dolores sit neque ullam delectus? Officia
+                molestias delectus libero dicta soluta quaerat vero assumenda
+                culpa nostrum! Perferendis, velit ipsam.
+              </p>
+              <ProductPageButtons />
+            </div>
             <div className={style.productAbout}>
               <div style={{ marginRight: "1.6rem" }}>
                 <p>SKU</p>
