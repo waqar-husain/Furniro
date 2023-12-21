@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import style from "./cartButton.module.css";
-import CartIcon from "./icon/cart";
+import CartIcon from "../icon/cart";
 
 export default function CartButton(props) {
   const [clicked, setClicked] = useState(false);

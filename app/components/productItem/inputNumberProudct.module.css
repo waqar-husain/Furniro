@@ -1,0 +1,33 @@
+.inputItem {
+  display: flex;
+  align-items: center;
+  margin-right: 1.8rem;
+  border: 1px solid var(--color-grey5);
+  border-radius: 1rem;
+}
+
+.inputBar,
+.inputBar:focus-visible {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+  border: none;
+  height: max-content;
+  width: 1.3rem;
+}
+
+.inputBar::-webkit-outer-spin-button,
+.inputBar::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputButtons {
+  font-size: 1.6rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1.7rem 0rem;
+}

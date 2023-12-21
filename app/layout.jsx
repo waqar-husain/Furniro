@@ -1,13 +1,16 @@
 import "./globals.css";
-import { Rubik } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Head from "next/head";
 
 //COMPONENTS
-import Navbar from "./components/navbar";
-import FooterComp from "./components/homepage/footer";
+import Navbar from "./components/navbar/navbar";
+import FooterComp from "./components/footer/footer";
 import StoreProvider from "./store/storeProvider";
 
-const rubik = Rubik({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
   title: "Furniro",
@@ -25,7 +28,7 @@ export default function RootLayout({ children }) {
           sizes="<generated>"
         />
       </Head>
-      <body className={rubik.className}>
+      <body className={poppins.className}>
         <StoreProvider>
           <Navbar />
           {children}

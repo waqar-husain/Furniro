@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import heart from "./icon/heart.svg";
+import heart from "./heart.svg";
 
 export default function Wishlist() {
   return (

@@ -3,10 +3,10 @@ import React from "react";
 import style from "./listListItem.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import image from "./icon/image 8.jpg";
-import LikeNewButton from "./likeNewButton";
-import CompareButton from "./compareButton";
-import CartButton from "./cartButton";
+import image from "../icon/image 8.jpg";
+import LikeNewButton from "../buttons/likeNewButton";
+import CompareButton from "../buttons/compareButton";
+import CartButton from "../buttons/cartButton";
 
 export default function ListItem(props) {
   return (
@@ -30,7 +30,10 @@ export default function ListItem(props) {
           corporis repudiandae!
         </p>
         <span className={style.itemButtons}>
-          <CartButton type="shop" styleData={{ marginLeft: "0.2rem" }} />
+          <CartButton
+            type="shop"
+            styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
+          />
           <LikeNewButton type="shop" />
           <CompareButton type="shop" />
         </span>

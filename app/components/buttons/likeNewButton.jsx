@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import style from "./likeButton.module.css";
-import Heart from "./icon/heart";
+import Heart from "../icon/heart";
 
 export default function LikeNewButton(props) {
   const [clicked, setClicked] = useState(false);

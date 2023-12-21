@@ -5,6 +5,7 @@
   background-image: url(../public/Rectangle\ 1.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 .innerContainer {
   height: 300px;
@@ -23,7 +24,7 @@
 }
 .heading {
   font-size: 4.8rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.4;
 }
 

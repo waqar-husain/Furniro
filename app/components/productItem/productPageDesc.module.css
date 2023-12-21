@@ -1,0 +1,23 @@
+.descCont {
+  max-width: 1280px;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.6rem;
+  color: #9f9f9f;
+  border-top: 1px solid #d9d9d9;
+}
+
+.descNav {
+  display: flex;
+  padding: 3.7rem 0rem;
+  font-size: 2.4rem;
+  gap: 5.2rem;
+}
+
+.featurePoints > p {
+  margin-top: 1rem;
+}

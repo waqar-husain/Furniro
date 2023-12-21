@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import style from "./compareButton.module.css";
-import CompareIcon from "./icon/compare";
+import CompareIcon from "../icon/compare";
 
 export default function CompareButton(props) {
   const clickHandler = (e) => {

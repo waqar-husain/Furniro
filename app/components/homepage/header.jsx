@@ -4,7 +4,7 @@ import React from "react";
 import style from "./header.module.css";
 
 //Component
-import ButtonPrimary from "../buttonPrimary";
+import ButtonPrimary from "../buttons/buttonPrimary";
 
 export default function HeaderComp() {
   return (

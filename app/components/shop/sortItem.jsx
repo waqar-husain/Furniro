@@ -3,7 +3,7 @@ import React from "react";
 
 import style from "./sortItem.module.css";
 import { useDispatch } from "react-redux";
-import { shopAction } from "../store/slices/filterProductSlice";
+import { shopAction } from "../../store/slices/filterProductSlice";
 
 export default function SortItem() {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { shopAction } from "../store/slices/filterProductSlice";
+import { shopAction } from "../../store/slices/filterProductSlice";
 
 export default function ChangeViewButton({ buttonHeight, children }) {
   const dispatch = useDispatch();

@@ -4,8 +4,8 @@ import React from "react";
 import style from "./section2.module.css";
 
 //Components
-import ButtonPrimary from "../buttonPrimary";
-import ProductList from "../productList";
+import ButtonPrimary from "../buttons/buttonPrimary";
+import ProductList from "../products/productList";
 
 export default function Section2() {
   return (

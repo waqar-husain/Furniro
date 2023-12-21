@@ -1,13 +1,18 @@
 import React from "react";
 import style from "./shopItem.module.css";
-import ProductList from "@/app/components/productList";
-import ButtonPrimary from "@/app/components/buttonPrimary";
 import Link from "next/link";
-import rightArr from "../../components/icon/arrow-right.svg";
 import Image from "next/image";
-import ProductPageButtons from "@/app/components/productPageButton";
+
+import ProductList from "@/app/components/products/productList";
+import ButtonPrimary from "@/app/components/buttons/buttonPrimary";
+import rightArr from "../../components/icon/arrow-right.svg";
+import ProductPageButtons from "@/app/components/productItem/productPageButton";
+import ButtonSecondary from "@/app/components/buttons/buttonSecondary";
+
 import starFull from "../../components/icon/starFull.svg";
 import starHalf from "../../components/icon/starHalf.svg";
+import sofa from "../../public/Asgaard sofa 3.png";
+import ProductPageDesc from "@/app/components/productItem/productPageDesc";
 
 export default function Product(props) {
   return (
@@ -36,17 +41,31 @@ export default function Product(props) {
       </div>
       <section className={style.productMain}>
         <div className={style.innerMain}>
-          <div className={style.innerMainImages}>Image</div>
+          <div className={style.innerMainImages}>
+            <div
+              style={{
+                maxWidth: "500px",
+                width: "100%",
+                backgroundColor: "#F9F1E7",
+                display: "flex",
+                justifyContent: "center",
+                borderRadius: "1rem",
+                padding: "5rem 0rem",
+              }}
+            >
+              <Image src={sofa} alt="sofa" />
+            </div>
+          </div>
           <div className={style.innerMainData} style={{ width: "50%" }}>
             <div style={{ paddingBottom: "6rem" }}>
               <h1 className={style.productName}>Asgaard sofa</h1>
               <p className={style.productPrice}>Rs. 250,000</p>
               <div className={style.productReview}>
                 <div className={style.stars}>
-                  {Array.from(Array(Math.floor(Number("4.5")))).map((el, i) => (
+                  {Array.from(Array(Math.floor(Number("3.0")))).map((el, i) => (
                     <Image src={starFull} key={i} alt={`star${i}`} />
                   ))}
-                  {"4.5"[2] !== "0" && <Image src={starHalf} alt="starthalf" />}
+                  {"3.0"[2] !== "0" && <Image src={starHalf} alt="starthalf" />}
                 </div>
                 <p className={style.noCustomer}>5 Customer Review</p>
               </div>
@@ -56,7 +75,10 @@ export default function Product(props) {
                 molestias delectus libero dicta soluta quaerat vero assumenda
                 culpa nostrum! Perferendis, velit ipsam.
               </p>
-              <ProductPageButtons />
+              <div className={style.productDetail}>
+                <ProductPageButtons />
+                <ButtonSecondary title="+ Compare" />
+              </div>
             </div>
             <div className={style.productAbout}>
               <div style={{ marginRight: "1.6rem" }}>
@@ -82,7 +104,7 @@ export default function Product(props) {
         </div>
       </section>
       <section className={style.productDesc}>
-        <div className={style.descInner}>DESC</div>
+        <ProductPageDesc />
       </section>
       <section className={style.relatedProducts}>
         <div className={style.relatedInner}>

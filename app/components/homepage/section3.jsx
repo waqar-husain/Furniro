@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./section3.module.css";
-import ButtonPrimary from "../buttonPrimary";
+import ButtonPrimary from "../buttons/buttonPrimary";
 import Slider from "../slider";
 import SliderSec from "../slider";
 

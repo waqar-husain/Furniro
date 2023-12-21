@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 import style from "./filterTopBar.module.css";
+
 import { useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 import ChangeViewButton from "./changeViewButton";
-import Image from "next/image";
-import BigRound from "./icon/bigRound";
-import List from "./icon/list";
+import BigRound from "../icon/bigRound";
+import List from "../icon/list";
 import SortItem from "./sortItem";
 
 export default function FilterTopBar() {

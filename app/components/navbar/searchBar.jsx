@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import search from "./icon/search.svg";
+import search from "../icon/search.svg";
 
 export default function SearchBar() {
   return (

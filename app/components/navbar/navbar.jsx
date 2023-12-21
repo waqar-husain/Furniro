@@ -1,11 +1,16 @@
 import React from "react";
 import Image from "next/image";
-import Logo from "./icon/Frame 168.svg";
+import Logo from "../icon/Frame 168.svg";
 import Link from "next/link";
 import style from "./navbar.module.css";
+// import SearchBar from "../icon/searchBar.jsx";
+// import user from "../icon/userNotLogin.svg";
+// import Wishlist from "../icon/wishlist.jsx";
+// import CartIcon from "../icon/cart.jsx";
 import SearchBar from "./searchBar";
-import user from "./icon/userNotLogin.svg";
-import Wishlist from "./wishlist";
+import user from "../icon/userNotLogin.svg";
+import Wishlist from "../icon/wishlist";
+import CartIcon from "../icon/cart";
 
 export default function Navbar() {
   return (
@@ -35,8 +40,8 @@ export default function Navbar() {
           </Link>
           <SearchBar />
           <Wishlist />
-          <Link href="/cart" style={{ height: "25px" }}>
-            <cart />
+          <Link href="/cart" style={{ height: "25px", marginTop: "-0.3rem" }}>
+            <CartIcon fill="none" nav="true" />
           </Link>
         </div>
       </div>
