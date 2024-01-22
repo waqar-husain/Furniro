@@ -64,7 +64,9 @@ export default function FooterComp() {
             <h4 className={style.footerHead}>Newsletter</h4>
             <div className={style.footerNewsletter}>
               <input
-                type="email"
+                name="emailSub"
+                id="emailSub"
+                type="emailSub"
                 placeholder="Enter Your Email Address"
                 className={style.emailInput}
               />

@@ -9,6 +9,11 @@ import LikeNewButton from "../buttons/likeNewButton";
 import CompareButton from "../buttons/compareButton";
 
 export default function ListGridItem(props) {
+  {
+    /*To liked already on load we use wishlist array
+  and use i of to check weather that id is present
+in array or not and pass that through props*/
+  }
   return (
     <Link href="/shop/e" className={style.listItemMain}>
       <div className={style.listItem}>

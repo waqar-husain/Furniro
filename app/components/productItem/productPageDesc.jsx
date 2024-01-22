@@ -78,8 +78,8 @@ export default function ProductPageDesc() {
               </p>
             </div>
             <div style={{ marginTop: "3.6rem", display: "flex", gap: "3rem" }}>
-              <Image src={sofa} />
-              <Image src={sofa} />
+              <Image src={sofa} alt="product image" />
+              <Image src={sofa} alt="product image" />
             </div>
           </div>
         )}

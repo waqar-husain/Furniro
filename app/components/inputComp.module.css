@@ -1,0 +1,10 @@
+.input {
+  border-radius: 1rem;
+  padding-left: 1rem;
+  font-size: 2rem;
+  height: 7rem;
+}
+.input:focus-visible {
+  border: 2px solid var(--color-grey1) !important;
+  outline: none;
+}

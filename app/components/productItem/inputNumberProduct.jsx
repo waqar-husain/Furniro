@@ -26,7 +26,23 @@ export default function InputNumberProduct(props) {
         min="1"
         max="5"
         value={noOfItem}
-        onChange={(e) => setNoOfItem(e.target.value)}
+        onChange={(e) => {
+          if (e.target.value !== "") {
+            if (
+              e.target.value < 1 ||
+              e.target.value > 5 ||
+              isNaN(e.target.value)
+            )
+              return;
+          }
+          e.target.value === ""
+            ? setNoOfItem(e.target.value)
+            : setNoOfItem(Number(e.target.value));
+        }}
+        onBlur={(e) => {
+          e.preventDefault();
+          if (e.target.value === "" || e.target.value < 1) setNoOfItem(1);
+        }}
         className={style.inputBar}
         style={props.styleData?.input && props.styleData.input}
       />

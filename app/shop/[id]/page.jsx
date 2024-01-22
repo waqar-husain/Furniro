@@ -77,7 +77,10 @@ export default function Product(props) {
               </p>
               <div className={style.productDetail}>
                 <ProductPageButtons />
-                <ButtonSecondary title="+ Compare" />
+                <ButtonSecondary
+                  title="+ Compare"
+                  styleObj={{ alignSelf: "flex-end" }}
+                />
               </div>
             </div>
             <div className={style.productAbout}>

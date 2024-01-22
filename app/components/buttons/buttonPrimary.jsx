@@ -2,23 +2,26 @@
 import React from "react";
 import style from "./button.module.css";
 import { useRouter } from "next/navigation";
-export default function ButtonPrimary(prop) {
+
+export default function ButtonPrimary(props) {
   const router = useRouter();
 
   const clickHandler = (e) => {
     e.preventDefault();
-    prop.url && router.push(prop.url);
-    prop.func && prop.func();
+    props.url && router.push(props.url);
+    props.func && props.func();
   };
   return (
     <button
       className={
-        prop.style === "primary" ? style.buttonPrimary : style.buttonSecondary
+        props.style === "primary" ? style.buttonPrimary : style.buttonSecondary
       }
-      style={prop?.styleData}
-      onClick={clickHandler}
+      style={props?.styleData}
+      onClick={(props.url || props.func) && clickHandler}
+      type={props?.typeOf}
+      disabled={props?.isDisabled}
     >
-      {prop?.title}
+      {props?.title}
     </button>
   );
 }

@@ -348,6 +348,7 @@ export default function Cart() {
               <ButtonSecondary
                 title="Check Out"
                 styleObj={{ padding: "1.4rem 5.9rem" }}
+                url="/checkout"
               />
             </div>
           </div>
