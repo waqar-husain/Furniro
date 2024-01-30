@@ -1,0 +1,17 @@
+.loginMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.mainSection {
+  max-width: 1280px;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}

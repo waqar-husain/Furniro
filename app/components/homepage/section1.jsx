@@ -29,6 +29,7 @@ export default function Section1() {
                   alt="Dining Image"
                   className={style.linkImage}
                   placeholder="blur"
+                  loading="lazy"
                 />
               </div>
               <h4 className={style.linkBoxHeading}>Dining</h4>
@@ -42,6 +43,7 @@ export default function Section1() {
                   alt="Living Image"
                   className={style.linkImage}
                   placeholder="blur"
+                  loading="lazy"
                 />
               </div>
               <h4 className={style.linkBoxHeading}>Living</h4>
@@ -55,6 +57,7 @@ export default function Section1() {
                   alt="Bedroom Image"
                   className={style.linkImage}
                   placeholder="blur"
+                  loading="lazy"
                 />
               </div>
               <h4 className={style.linkBoxHeading}>Bedroom</h4>

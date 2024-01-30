@@ -8,18 +8,20 @@ export default function Checkout() {
   return (
     <>
       <PageHeader heading="Checkout" logo="true" />
-      <main
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "6.3rem",
-          marginBottom: "12.3rem",
-          fontSize: "1.6rem",
-        }}
-      >
-        <div className={style.mainCont}>
-          <CheckOutForm />
-        </div>
+      <main>
+        <section
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "6.3rem",
+            marginBottom: "12.3rem",
+            fontSize: "1.6rem",
+          }}
+        >
+          <div className={style.mainCont}>
+            <CheckOutForm />
+          </div>
+        </section>
       </main>
     </>
   );

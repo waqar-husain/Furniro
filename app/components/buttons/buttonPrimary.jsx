@@ -18,7 +18,7 @@ export default function ButtonPrimary(props) {
       }
       style={props?.styleData}
       onClick={(props.url || props.func) && clickHandler}
-      type={props?.typeOf}
+      type={props.typeOf}
       disabled={props?.isDisabled}
     >
       {props?.title}

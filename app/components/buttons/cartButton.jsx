@@ -2,12 +2,20 @@
 import React, { useState } from "react";
 import style from "./cartButton.module.css";
 import CartIcon from "../icon/cart";
+import { useDispatch } from "react-redux";
+import { cartAction } from "@/app/store/slices/cartSlice";
 
 export default function CartButton(props) {
   const [clicked, setClicked] = useState(false);
+  const dispatch = useDispatch();
   const clickHandler = (e) => {
     e.preventDefault();
     setClicked((prev) => !prev);
+    if (!clicked) {
+      dispatch(cartAction.incrementCart(props.item));
+    } else {
+      dispatch(cartAction.decrementCart(props.item));
+    }
   };
   return (
     <abbr title="Cart">

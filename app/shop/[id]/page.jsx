@@ -53,7 +53,7 @@ export default function Product(props) {
                 padding: "5rem 0rem",
               }}
             >
-              <Image src={sofa} alt="sofa" />
+              <Image src={sofa} alt="sofa" loading="lazy" />
             </div>
           </div>
           <div className={style.innerMainData} style={{ width: "50%" }}>
@@ -63,7 +63,12 @@ export default function Product(props) {
               <div className={style.productReview}>
                 <div className={style.stars}>
                   {Array.from(Array(Math.floor(Number("3.0")))).map((el, i) => (
-                    <Image src={starFull} key={i} alt={`star${i}`} />
+                    <Image
+                      src={starFull}
+                      key={i}
+                      alt={`star${i}`}
+                      loading="lazy"
+                    />
                   ))}
                   {"3.0"[2] !== "0" && <Image src={starHalf} alt="starthalf" />}
                 </div>
@@ -77,10 +82,6 @@ export default function Product(props) {
               </p>
               <div className={style.productDetail}>
                 <ProductPageButtons />
-                <ButtonSecondary
-                  title="+ Compare"
-                  styleObj={{ alignSelf: "flex-end" }}
-                />
               </div>
             </div>
             <div className={style.productAbout}>

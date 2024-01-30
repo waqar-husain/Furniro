@@ -33,12 +33,31 @@
   color: var(--color-grey1);
 }
 
+@media screen and (max-width: 1000px) {
+  .sectionMain {
+    grid-template-rows: repeat(14, 15px) !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .sectionMain {
+    grid-template-rows: repeat(14, 6px) !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sectionMain {
+    grid-template-rows: repeat(14, 2px) !important;
+  }
+}
+
 .sectionMain {
   display: grid;
   max-width: 1920px;
   width: 100%;
   justify-content: center;
+
   grid-template-rows: repeat(14, 31px);
+
   grid-template-columns: repeat(13, 1fr);
   grid-gap: 16px;
   margin-bottom: 5rem;

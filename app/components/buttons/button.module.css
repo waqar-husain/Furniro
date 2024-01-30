@@ -1,7 +1,7 @@
 .buttonPrimary {
   background-color: var(--color-primary);
   border: none;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
   transition: all 0.6s;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);

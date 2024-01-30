@@ -29,7 +29,7 @@ export default function FooterComp() {
                 </Link>
               </li>
               <li>
-                <Link className={style.footerLink} href="./about">
+                <Link className={style.footerLink} href="./about-us">
                   About
                 </Link>
               </li>

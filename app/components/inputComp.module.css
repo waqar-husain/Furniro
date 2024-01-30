@@ -1,4 +1,17 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.label {
+  margin-bottom: 2rem;
+  font-weight: 500;
+  color: black;
+}
+
 .input {
+  width: 100%;
   border-radius: 1rem;
   padding-left: 1rem;
   font-size: 2rem;
@@ -7,4 +20,8 @@
 .input:focus-visible {
   border: 2px solid var(--color-grey1) !important;
   outline: none;
+}
+
+.messageHasError::placeholder {
+  color: red;
 }

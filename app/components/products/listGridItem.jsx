@@ -6,7 +6,8 @@ import Link from "next/link";
 import ShareButton from "./shareButton";
 import ButtonPrimary from "../buttons/buttonPrimary";
 import LikeNewButton from "../buttons/likeNewButton";
-import CompareButton from "../buttons/compareButton";
+import { useDispatch } from "react-redux";
+import { cartAction } from "@/app/store/slices/cartSlice";
 
 export default function ListGridItem(props) {
   {
@@ -14,6 +15,7 @@ export default function ListGridItem(props) {
   and use i of to check weather that id is present
 in array or not and pass that through props*/
   }
+  const dispatch = useDispatch();
   return (
     <Link href="/shop/e" className={style.listItemMain}>
       <div className={style.listItem}>
@@ -22,6 +24,7 @@ in array or not and pass that through props*/
             src={props.image ? props.image : image}
             alt="Product Image"
             className={style.listItemImg}
+            loading="lazy"
           />
         </div>
         <div className={style.aboutListItem}>
@@ -40,6 +43,18 @@ in array or not and pass that through props*/
         <ButtonPrimary
           style="primary"
           title="Add to cart"
+          func={() => {
+            dispatch(
+              cartAction.incrementCart({
+                id: 1,
+                price: 1200,
+                subTotal: 1200,
+                quantity: 1,
+                productName: "Asgaard sofa",
+                productImage: "text",
+              })
+            );
+          }}
           styleData={{
             fontSize: "1.6rem",
             lineHeight: "1.6",
@@ -50,8 +65,16 @@ in array or not and pass that through props*/
         />
         <div className={style.onHoverBottom}>
           <ShareButton />
-          <CompareButton title="Compare" />
-          <LikeNewButton title="Like" />
+          <LikeNewButton
+            title="Like"
+            item={{
+              id: 1,
+              price: 1200,
+              productName: "Asgaard sofa",
+              productImage: "text",
+              productDesc: "abcd",
+            }}
+          />
         </div>
       </div>
     </Link>

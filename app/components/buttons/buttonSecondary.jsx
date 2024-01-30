@@ -14,12 +14,12 @@ export default function ButtonSecondary(props) {
   return (
     <button
       className={style.button}
-      onClick={(props.url || props.func) && clickHandler}
       style={props?.styleObj}
+      onClick={(props.url || props.func) && clickHandler}
       type={props?.typeOf}
       disabled={props?.isDisabled}
     >
-      {props.title}
+      {props?.title}
     </button>
   );
 }

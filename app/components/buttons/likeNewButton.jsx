@@ -2,13 +2,20 @@
 import React, { useState } from "react";
 import style from "./likeButton.module.css";
 import Heart from "../icon/heart";
+import { useDispatch } from "react-redux";
+import { wishlistAction } from "@/app/store/slices/wishlistSlice";
 
 export default function LikeNewButton(props) {
   const [clicked, setClicked] = useState(false);
+  const dispatch = useDispatch();
   const clickHandler = (e) => {
     e.preventDefault();
     setClicked((oldState) => !oldState);
-    props.func && props.func();
+    if (!clicked) {
+      dispatch(wishlistAction.addItem(props.item));
+    } else {
+      dispatch(wishlistAction.removeItem(props.item));
+    }
   };
   return (
     <abbr

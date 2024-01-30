@@ -21,15 +21,6 @@
   width: 100%;
   max-width: 43rem;
   justify-content: space-between;
-
-  .navLink {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-  }
-  .navLink:hover {
-    text-decoration: underline;
-  }
 }
 
 .uiContainer {

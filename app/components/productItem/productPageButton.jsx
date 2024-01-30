@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import ButtonSecondary from "../buttons/buttonSecondary";
 import style from "./productPagebutton.module.css";
 import InputNumberProduct from "./inputNumberProduct";
+import { useDispatch } from "react-redux";
+import { cartAction } from "@/app/store/slices/cartSlice";
 
 export default function ProductPageButtons(data) {
+  const dispatch = useDispatch();
   const [noOfItem, setNoOfItem] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -119,13 +122,17 @@ export default function ProductPageButtons(data) {
         </div>
       </div>
       <div style={{ display: "flex", marginTop: "3.2rem" }}>
-        <InputNumberProduct />
-
         <ButtonSecondary
           title="Add To Cart"
-          func={(e) => {
-            e.preventDefault();
-            console.log(color, size);
+          func={() => {
+            dispatch(
+              cartAction.incrementCart({
+                id: 65,
+                quantity: 3,
+                price: 2500,
+                subTotal: 2500,
+              })
+            );
           }}
         />
       </div>

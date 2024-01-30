@@ -13,7 +13,7 @@ export default function PageHeader(props) {
           {props.logo && <Image src={logo} alt="Logo" />}
           <h1 className={style.heading}>{props.heading}</h1>
           <p className={style.pages}>
-            <Link className={style.headerLink} href="./">
+            <Link className={style.headerLink} href="/">
               Home
             </Link>
             <Image src={rightArr} alt="RightArr" />

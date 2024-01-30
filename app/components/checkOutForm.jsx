@@ -9,8 +9,12 @@ import ButtonSecondary from "../components/buttons/buttonSecondary";
 import style from "../checkout/checkout.module.css";
 
 import { Country, State } from "country-state-city";
+import { useSelector } from "react-redux";
+import { redirect } from "next/navigation";
 
 export default function CheckOutForm() {
+  const cart = useSelector((state) => state.cart.cartList);
+  if (cart.length === 0) redirect("/shop");
   const [countryId, setCountryId] = useState("AF");
   const [province, setProvince] = useState(
     State.getStatesOfCountry(countryId)[0]

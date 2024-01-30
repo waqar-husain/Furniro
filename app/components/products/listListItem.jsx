@@ -5,12 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import image from "../icon/image 8.jpg";
 import LikeNewButton from "../buttons/likeNewButton";
-import CompareButton from "../buttons/compareButton";
 import CartButton from "../buttons/cartButton";
 
 export default function ListItem(props) {
   return (
-    <Link href="/" className={style.listItemMain}>
+    <Link href="/shop/e" className={style.listItemMain}>
       <div className={style.listItemImage}>
         <Image
           src={props.image ? props.image : image}
@@ -18,6 +17,7 @@ export default function ListItem(props) {
           className={style.listItemImg}
           width="100%"
           height="100%"
+          loading="lazy"
         />
       </div>
       <div className={style.listItemData}>
@@ -29,14 +29,32 @@ export default function ListItem(props) {
           quam, tempora ad nemo odio cumque, eveniet, repellendus molestiae est
           corporis repudiandae!
         </p>
-        <span className={style.itemButtons}>
-          <CartButton
-            type="shop"
-            styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
-          />
-          <LikeNewButton type="shop" />
-          <CompareButton type="shop" />
-        </span>
+        {!props.utilButton && (
+          <span className={style.itemButtons}>
+            <CartButton
+              type="shop"
+              styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
+              item={{
+                id: 1,
+                price: 1200,
+                subTotal: 1200,
+                quantity: 1,
+                productName: "Asgaard sofa",
+                productImage: "text",
+              }}
+            />
+            <LikeNewButton
+              type="shop"
+              item={{
+                id: 1,
+                price: 1200,
+                productName: "Asgaard sofa",
+                productImage: "text",
+                productDesc: "abcd",
+              }}
+            />
+          </span>
+        )}
       </div>
     </Link>
   );
