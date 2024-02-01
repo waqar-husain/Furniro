@@ -7,14 +7,26 @@ import Link from "next/link";
 
 import style from "./searchBar.module.css";
 
-import search from "../icon/search.svg";
 import Logo from "../icon/Frame 168.svg";
 import NavContainer from "./navContainer";
 
 import crossIco from "../icon/cross.svg";
-import searchIco from "../icon/search.svg";
+import SearchIco from "../icon/search.jsx";
+import ListItem from "../products/listListItem";
+
+import ResultCont from "./resultCont";
 
 const SearchBarOpened = (props) => {
+  const [searchedVal, setSearchedVal] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log(searchedVal);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchedVal]);
+
   return (
     <div className={style.searchBackdrop}>
       <div className={style.searchbarTop}>
@@ -33,16 +45,29 @@ const SearchBarOpened = (props) => {
             <div className={style.searchCont}>
               <form style={{ width: "100%" }}>
                 <div style={{ position: "relative" }}>
-                  <input type="text" className={style.searchInput} />
-                  <button type="button" className={style.searchClearBtn}>
+                  <input
+                    type="text"
+                    className={style.searchInput}
+                    placeholder="What are you looking for?"
+                    onChange={(e) => setSearchedVal(e.target.value)}
+                    value={searchedVal}
+                  />
+                  <button
+                    type="button"
+                    className={style.searchClearBtn}
+                    onClick={() => setSearchedVal("")}
+                  >
                     Clear
                   </button>
                   <button className={style.searchButton}>
-                    <Image src={searchIco} alt="search" />
+                    <SearchIco color="white" />
                   </button>
                 </div>
+                {/* only visible when data is there below*/}
+
+                <ResultCont results={[]} />
+                {/* ///////////////////////////////////////////// */}
               </form>
-              <div className={style.searchedResult}>SEARCHED RESULTS</div>
             </div>
             <button
               className={style.searchbarCloseBtn}
@@ -89,7 +114,7 @@ export default function SearchBar() {
         style={{ height: "25px", cursor: "pointer" }}
         onClick={searchBarHandler}
       >
-        <Image src={search} width="25" height="25" alt="Search" />
+        <SearchIco />
       </div>
       {openSearchBar &&
         createPortal(

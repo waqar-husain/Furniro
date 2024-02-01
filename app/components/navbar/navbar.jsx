@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Logo from "../icon/Frame 168.svg";
@@ -9,8 +10,10 @@ import Wishlist from "../icon/wishlist";
 import CartIcon from "../icon/cart";
 import NavLink from "../navLink";
 import NavContainer from "./navContainer";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const { length: cartLength } = useSelector((state) => state.cart.cartList);
   const tempUserLoggedIn = false;
 
   const navLinks = [
@@ -47,7 +50,12 @@ export default function Navbar() {
               <Wishlist />
             </Link>
           </abbr>
-          <abbr title="Cart" style={{ height: "25px", marginTop: "-0.3rem" }}>
+          <abbr
+            title="Cart"
+            style={{ height: "25px", marginTop: "-0.3rem" }}
+            className={`${cartLength === 0 ? "" : style.cartIco}`}
+            data-item={cartLength}
+          >
             <Link href="/cart">
               <CartIcon fill="none" nav="true" />
             </Link>

@@ -16,7 +16,7 @@ export default function CartIcon(props) {
         stroke={props.nav ? "black" : "#3a3a3a"}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={props.nav ? "32" : "42"}
+        strokeWidth={props.nav ? "30" : "42"}
       />
       <circle
         cx="400"
@@ -26,14 +26,14 @@ export default function CartIcon(props) {
         stroke={props.nav ? "black" : "#3a3a3a"}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={props.nav ? "32" : "42"}
+        strokeWidth={props.nav ? "30" : "42"}
       />
       <path
         fill="none"
         stroke={props.nav ? "black" : "#3a3a3a"}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={props.nav ? "32" : "42"}
+        strokeWidth={props.nav ? "30" : "42"}
         d="M48 80h64l48 272h256"
       />
       <path
@@ -41,7 +41,7 @@ export default function CartIcon(props) {
         stroke={props.nav ? "black" : "#3a3a3a"}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={props.nav ? "32" : "42"}
+        strokeWidth={props.nav ? "30" : "42"}
         d="M160 288h249.44a8 8 0 0 0 7.85-6.43l28.8-144a8 8 0 0 0-7.85-9.57H128"
       />
     </svg>
