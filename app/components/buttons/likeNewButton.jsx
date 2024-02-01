@@ -18,10 +18,7 @@ export default function LikeNewButton(props) {
     }
   };
   return (
-    <abbr
-      title="Like"
-      style={{ display: "flex", textDecoration: "none", marginLeft: "2rem" }}
-    >
+    <abbr title="Like" style={{ display: "flex", textDecoration: "none" }}>
       <button
         className={style.likeButton}
         style={props?.styleData}

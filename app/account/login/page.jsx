@@ -109,16 +109,18 @@ export default function UserLogin() {
                 }}
                 getVal={getEmailVal}
                 isLogin={isLogin}
+                invalidText="Provide a valid email address!"
               />
               <InputComp
                 label="Password"
                 type="password"
                 isRequired={true}
                 checkValidity={(val) => {
-                  return val.trim() !== "" && /([a-z])\w+/gi.test(val);
+                  return val.trim() !== "" && /^.{15,}/gm.test(val);
                 }}
                 getVal={getPasswordVal}
                 isLogin={isLogin}
+                invalidText="Password must have 8 character!"
               />
               {isLogin && (
                 <Link
@@ -139,7 +141,7 @@ export default function UserLogin() {
                   fontWeight: "600",
                   borderRadius: "0.5rem",
                   marginTop: `${!isLogin ? "1.5rem" : "0rem"}`,
-                  cursor: `${formIsValid ? "default" : "not-allowed"}`,
+                  cursor: `${formIsValid ? "pointer" : "not-allowed"}`,
                 }}
                 title={`${isLogin ? "Sign In" : "Sign Up"}`}
                 typeOf="submit"

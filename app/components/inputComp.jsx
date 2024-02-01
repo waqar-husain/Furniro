@@ -81,9 +81,11 @@ export default function InputComp(props) {
         )}
       </div>
       {hasError && (
-        <p
-          style={{ color: "red", marginTop: "0.5rem" }}
-        >{`Invalid ${props.label.toLowerCase()}`}</p>
+        <p style={{ color: "red", marginTop: "0.5rem" }}>
+          {props.invalidText
+            ? props.invalidText
+            : `Provide a valid ${props.label.toLowerCase()}!`}
+        </p>
       )}
     </div>
   );

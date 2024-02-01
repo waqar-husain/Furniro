@@ -7,12 +7,10 @@ import ProductList from "@/app/components/products/productList";
 import ButtonPrimary from "@/app/components/buttons/buttonPrimary";
 import rightArr from "../../components/icon/arrow-right.svg";
 import ProductPageButtons from "@/app/components/productItem/productPageButton";
-import ButtonSecondary from "@/app/components/buttons/buttonSecondary";
 
-import starFull from "../../components/icon/starFull.svg";
-import starHalf from "../../components/icon/starHalf.svg";
 import sofa from "../../public/Asgaard sofa 3.png";
 import ProductPageDesc from "@/app/components/productItem/productPageDesc";
+import StarContainer from "@/app/components/starContainer";
 
 export default function Product(props) {
   return (
@@ -61,18 +59,8 @@ export default function Product(props) {
               <h1 className={style.productName}>Asgaard sofa</h1>
               <p className={style.productPrice}>Rs. 250,000</p>
               <div className={style.productReview}>
-                <div className={style.stars}>
-                  {Array.from(Array(Math.floor(Number("3.0")))).map((el, i) => (
-                    <Image
-                      src={starFull}
-                      key={i}
-                      alt={`star${i}`}
-                      loading="lazy"
-                    />
-                  ))}
-                  {"3.0"[2] !== "0" && <Image src={starHalf} alt="starthalf" />}
-                </div>
-                <p className={style.noCustomer}>5 Customer Review</p>
+                {/* //Handling Product Rating */}
+                <StarContainer starsRating="4.5" />
               </div>
               <p className={style.productText}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde

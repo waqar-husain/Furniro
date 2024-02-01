@@ -5,6 +5,7 @@ import style from "./productPagebutton.module.css";
 import InputNumberProduct from "./inputNumberProduct";
 import { useDispatch } from "react-redux";
 import { cartAction } from "@/app/store/slices/cartSlice";
+import LikeNewButton from "../buttons/likeNewButton";
 
 export default function ProductPageButtons(data) {
   const dispatch = useDispatch();
@@ -121,7 +122,14 @@ export default function ProductPageButtons(data) {
           })}
         </div>
       </div>
-      <div style={{ display: "flex", marginTop: "3.2rem" }}>
+      <div
+        style={{
+          display: "flex",
+          marginTop: "3.2rem",
+          columnGap: "2rem",
+          alignItems: "center",
+        }}
+      >
         <ButtonSecondary
           title="Add To Cart"
           func={() => {
@@ -135,6 +143,30 @@ export default function ProductPageButtons(data) {
             );
           }}
         />
+        <div
+          style={{
+            height: "5rem",
+            width: "5rem",
+            padding: "1rem",
+            borderRadius: "50%",
+            backgroundColor: "#d7d7d7",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <LikeNewButton
+            styleData={{ marginTop: "0.4rem", marginLeft: "0.1111rem" }}
+            type="shop"
+            item={{
+              id: 1,
+              price: 1200,
+              productName: "Asgaard sofa",
+              productImage: "text",
+              productDesc: "abcd",
+            }}
+          />
+        </div>
       </div>
     </form>
   );

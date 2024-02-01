@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={poppins.className}>
         <StoreProvider>
+          <div id="searchbar"></div>
           <Navbar />
           {children}
           <FooterComp />

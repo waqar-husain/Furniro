@@ -8,6 +8,7 @@ import user from "../icon/userNotLogin.svg";
 import Wishlist from "../icon/wishlist";
 import CartIcon from "../icon/cart";
 import NavLink from "../navLink";
+import NavContainer from "./navContainer";
 
 export default function Navbar() {
   const tempUserLoggedIn = false;
@@ -21,7 +22,7 @@ export default function Navbar() {
 
   return (
     <nav className={style.nav}>
-      <div className={style.navContainer}>
+      <NavContainer>
         <Link href="/">
           <Image src={Logo} width="185" height="41" alt="Logo" priority />
         </Link>
@@ -31,21 +32,28 @@ export default function Navbar() {
           ))}
         </div>
         <div className={style.uiContainer}>
-          <Link //isUserLoggedIn
-            href={tempUserLoggedIn ? "/account" : "/account/login?mode=login"}
-            style={{ height: "25px" }}
-          >
-            <Image src={user} height="25" width="25" alt="User" />
-          </Link>
-          <SearchBar />
-          <Link href="/wishlist">
-            <Wishlist />
-          </Link>
-          <Link href="/cart" style={{ height: "25px", marginTop: "-0.3rem" }}>
-            <CartIcon fill="none" nav="true" />
-          </Link>
+          <abbr title="Account" style={{ height: "25px" }}>
+            <Link //isUserLoggedIn
+              href={tempUserLoggedIn ? "/account" : "/account/login?mode=login"}
+            >
+              <Image src={user} height="25" width="25" alt="User" />
+            </Link>
+          </abbr>
+          <abbr title="Search">
+            <SearchBar />
+          </abbr>
+          <abbr title="Wishlist">
+            <Link href="/wishlist">
+              <Wishlist />
+            </Link>
+          </abbr>
+          <abbr title="Cart" style={{ height: "25px", marginTop: "-0.3rem" }}>
+            <Link href="/cart">
+              <CartIcon fill="none" nav="true" />
+            </Link>
+          </abbr>
         </div>
-      </div>
+      </NavContainer>
     </nav>
   );
 }

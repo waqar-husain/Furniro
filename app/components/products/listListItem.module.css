@@ -47,6 +47,7 @@
   font-weight: 600;
   margin-top: 1.4rem;
   font-size: 2rem;
+  margin-bottom: 1rem;
   color: var(--color-grey1);
 }
 .itemDesc {
@@ -64,4 +65,5 @@
 .itemButtons {
   display: flex;
   margin-top: 2rem;
+  column-gap: 2rem;
 }

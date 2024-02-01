@@ -6,6 +6,7 @@ import Image from "next/image";
 import image from "../icon/image 8.jpg";
 import LikeNewButton from "../buttons/likeNewButton";
 import CartButton from "../buttons/cartButton";
+import StarContainer from "../starContainer";
 
 export default function ListItem(props) {
   return (
@@ -23,6 +24,7 @@ export default function ListItem(props) {
       <div className={style.listItemData}>
         <h2 className={style.itemHeading}>Syltherine</h2>
         <p className={style.itemPrice}>Rp 2500.0</p>
+        <StarContainer starsRating="2.5" />
         <p className={style.itemDesc}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia rem
           necessitatibus autem delectus. Ullam quis voluptates provident vitae

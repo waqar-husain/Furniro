@@ -67,6 +67,7 @@ export default function ContactForm() {
         checkValidity={(val) => {
           return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(val);
         }}
+        invalidText="Provide a valid email address!"
         getVal={getEmailVal}
       />
       <InputComp id="subject" label="Subject" getVal={getSubjectVal} />
