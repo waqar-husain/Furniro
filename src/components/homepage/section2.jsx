@@ -20,7 +20,7 @@ export default async function Section2(props) {
           <h1 className={style.sectionHeading}>{props.heading}</h1>
         </div>
         <div className={style.sectionMain}>
-          <ProductList data={data.slice(0, 8)} />
+          <ProductList data={data.slice(0, 8)} type="grid" />
           <div className={style.sectionShowMore}>
             <ButtonPrimary
               title="Show more"

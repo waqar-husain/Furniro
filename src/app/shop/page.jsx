@@ -29,7 +29,7 @@ export default function Shop({ searchParams }) {
 
   return (
     <>
-      {searched && searched !== "" && <SearchPage />}
+      {searched && searched !== "" && <SearchPage filterBar={true} />}
       {searchParamNotAvailable && <MainShop />}
     </>
   );

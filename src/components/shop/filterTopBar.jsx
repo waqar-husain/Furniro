@@ -1,30 +1,36 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+import React, { useEffect } from "react";
 
 import style from "./filterTopBar.module.css";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 import ChangeViewButton from "./changeViewButton";
 import BigRound from "../icon/bigRound";
 import List from "../icon/list";
 import SortItem from "./sortItem";
+import { shopAction } from "@/src/store/slices/filterProductSlice";
 
 export default function FilterTopBar() {
+  const dispath = useDispatch();
   const totalNoOfResults = useSelector((state) => state.shop.data).length;
   const noOfItem = useSelector((state) => state.shop.noOfItems);
   const noOfPage = Number(useSearchParams().get("page"));
   const layoutActive = useSelector((state) => state.shop.itemToShow);
 
+  useEffect(() => {
+    return () => {
+      dispath(shopAction.showItems({ type: true }));
+    };
+  }, []);
   return (
     <div className={style.topBar}>
       <div className={style.innerTopBar}>
         <div className={style.barLeft}>
-          <ChangeViewButton buttonHeight="2.8rem">
+          <ChangeViewButton type={true} buttonHeight="2.8rem">
             <BigRound active={layoutActive} />
           </ChangeViewButton>
-          <ChangeViewButton buttonHeight="2.4rem">
+          <ChangeViewButton type={false} buttonHeight="2.4rem">
             <List active={layoutActive} />
           </ChangeViewButton>
 

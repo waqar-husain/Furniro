@@ -77,13 +77,19 @@
 .aboutListItem {
   padding-top: 1.6rem;
   padding-left: 1.6rem;
+  padding-right: 1.6rem;
   padding-bottom: 3rem;
   color: var(--color-grey1);
   font-weight: 500;
 }
 .listItemName {
-  font-size: 2.4rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .listitemDesc {
   font-weight: 500;

@@ -40,15 +40,15 @@ export default function ListItem(props) {
               styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
               item={{
                 id: 1,
-                price: 1200,
-                subTotal: 1200,
                 quantity: 1,
+                productTotal: 450000,
+                price: 450000,
                 productName: "Asgaard sofa",
                 productImage: "text",
               }}
             />
             <LikeNewButton
-              type="shop"
+              type="list"
               item={{
                 id: 1,
                 price: 1200,

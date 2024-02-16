@@ -116,7 +116,7 @@ export default function Product({ params }) {
           <div style={{ marginBottom: "2.6rem" }}>
             <h2 className={style.relatedHeading}>Related products</h2>
           </div>
-          <ProductList data={[1, 1, 1, 1]} />
+          <ProductList data={[1, 1, 1, 1]} type="grid" />
           <div className={style.showMore}>
             <ButtonPrimary
               title="Show more"

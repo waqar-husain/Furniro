@@ -9,7 +9,7 @@ const initialState = {
   ],
   sortedData: [2, 2, 2, 2, 2, 2, 2, 2, 2, , 2, 2],
   noOfItems: 16,
-  sortBy: "default",
+  sortBy: "RELEVANCE",
   itemToShow: true, //True = "Tiles" and False = "List"
 };
 
@@ -21,24 +21,12 @@ export const shopSlice = createSlice({
       state.data = action.payload;
     },
 
-    showItems(state) {
-      state.itemToShow = !state.itemToShow;
+    showItems(state, action) {
+      state.itemToShow = action.payload.type;
     },
 
-    setDefault(state) {
-      state.sortBy = "default";
-    },
-
-    ascendData(state) {
-      console.log("hi");
-      // state.sortedData = state.data.sort(a-b)
-      state.sortBy = "ascend";
-    },
-
-    descendData(state) {
-      console.log("by");
-      // state.sortedData = state.data.sort(b-a)
-      state.sortBy = "descend";
+    setFilter(state, action) {
+      state.sortBy = action.payload.filter;
     },
   },
 });

@@ -24,7 +24,10 @@ export default function LikeNewButton(props) {
         style={props?.styleData}
         onClick={clickHandler}
       >
-        <Heart fill={clicked ? "red" : "none"} type={props?.type} />
+        <Heart
+          fill={clicked ? "red" : props.type === "list" ? "none" : "white"}
+          type={props?.type}
+        />
         {props?.title && (
           <span className={style.buttonName}>{props?.title}</span>
         )}

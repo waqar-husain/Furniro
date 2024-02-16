@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const cartInitialState = {
-  cartList: [{ id: 2, quantity: 1, subTotal: 2400, price: 2400 }],
-  deliveryCharges: 0,
+  cartList: [],
   subTotal: 0,
   totalPrice: 0,
 };
@@ -23,15 +22,19 @@ export const cartSlice = createSlice({
         state.cartList[existingItemId].quantity++;
 
         //Calculating product Subtotal according to the quantity
-        existingItem.subTotal = existingItem.quantity * existingItem.price;
+        existingItem.productTotal = existingItem.quantity * existingItem.price;
 
         //Adding the amount in subtotal of the Cart
-        state.subTotal = state.subTotal + existingItem.subTotal;
+        state.subTotal = state.subTotal + existingItem.price;
+
+        state.totalPrice = state.subTotal;
       } else {
         //Adding item to Cart List
         state.cartList = [...state.cartList, action.payload];
         //Adding amount in Cart Subtotal
-        state.subTotal = state.subTotal + action.payload.subTotal;
+        state.subTotal = state.subTotal + action.payload.price;
+
+        state.totalPrice = state.subTotal;
       }
     },
 
@@ -40,21 +43,19 @@ export const cartSlice = createSlice({
         (el) => el.id === action.payload.id
       );
 
-      if (existingItemId === 0 || existingItemId > 0) {
-        const existingItem = state.cartList[existingItemId];
-        existingItem.quantity--;
-        existingItem.subTotal = existingItem.quantity * existingItem.price;
-      } else {
-        state.cartList = [...state.cartList].filter(
-          (el) => el.id !== action.payload.id
-        );
-      }
+      const existingItem = state.cartList[existingItemId];
+      existingItem.quantity--;
+      existingItem.productTotal = existingItem.quantity * existingItem.price;
+      state.subTotal = state.subTotal - existingItem.price;
+      state.totalPrice = state.subTotal;
     },
 
     removeItem(state, action) {
       state.cartList = [...state.cartList].filter(
         (el) => el.id !== action.payload.id
       );
+      state.subTotal = state.subTotal - action.payload.price;
+      state.totalPrice = state.subTotal;
     },
   },
 });

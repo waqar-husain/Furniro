@@ -3,10 +3,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { shopAction } from "../../store/slices/filterProductSlice";
 
-export default function ChangeViewButton({ buttonHeight, children }) {
+export default function ChangeViewButton({ type, buttonHeight, children }) {
   const dispatch = useDispatch();
   const viewChangeHandler = () => {
-    dispatch(shopAction.showItems());
+    dispatch(shopAction.showItems({ type }));
   };
 
   return (

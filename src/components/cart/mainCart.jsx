@@ -7,6 +7,7 @@ import NoItem from "../noItem";
 import CartTotal from "./cartTotal";
 import CartItem from "./cartItem";
 import { useSelector } from "react-redux";
+import { formatNum } from "@/src/util/numerFormat";
 
 export default function MainCart() {
   const cart = useSelector((state) => state.cart.cartList);

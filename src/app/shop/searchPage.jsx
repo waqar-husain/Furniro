@@ -8,14 +8,14 @@ import ProductList from "@/src/components/products/productList";
 import FilterTopBar from "@/src/components/shop/filterTopBar";
 import PaginationButtons from "@/src/components/shop/paginationButtons";
 
-export default function SearchPage() {
+export default function SearchPage(props) {
   return (
     <>
       <PageHeader heading="Shop" to="shop" logo="true" />
       <main className={style.shopMain}>
-        <FilterTopBar />
+        {props.filterBar && <FilterTopBar />}
         <div className={style.shopMainInner}>
-          <ProductList />
+          <ProductList data={props.data ? props.data : Array(32).fill(null)} />
           <PaginationButtons />
         </div>
       </main>

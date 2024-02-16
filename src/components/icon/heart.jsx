@@ -12,7 +12,11 @@ export default function Heart(prop) {
       <path
         d="M7.99973 13.0361C-5.33333 5.66669 3.99999 -2.33331 7.99973 2.72539C12 -2.33331 21.3333 5.66669 7.99973 13.0361Z"
         stroke={
-          prop.fill === "none" ? (prop.type ? "#3a3a3a" : "white") : "red"
+          prop.fill === "white" || prop.fill === "none"
+            ? prop.type === "list"
+              ? "var(--color-grey1)"
+              : "inherit"
+            : "red"
         }
         strokeWidth="1.7"
       />

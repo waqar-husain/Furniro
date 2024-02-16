@@ -10,8 +10,8 @@ import deleteIco from "../icon/delete.svg";
 import InputNumberProduct from "../productItem/inputNumberProduct";
 import { useDispatch } from "react-redux";
 import { cartAction } from "@/src/store/slices/cartSlice";
-
 import furniture from "@/src/public/furniture.jpg";
+import { formatNum } from "@/src/util/numerFormat";
 
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -71,7 +71,7 @@ export default function CartItem({ item }) {
           justifyContent: "center",
         }}
       >
-        Rs. 250,000.00 {/*DATA THROUGH REDUX */}
+        {formatNum(item.price)} {/*DATA THROUGH REDUX */}
       </div>
       <div
         style={{
@@ -94,7 +94,7 @@ export default function CartItem({ item }) {
           color: "#000",
         }}
       >
-        {item.subTotal} {/*DATA THROUGH REDUX */}
+        {formatNum(item.productTotal)} {/*DATA THROUGH REDUX */}
       </div>
       <div
         style={{

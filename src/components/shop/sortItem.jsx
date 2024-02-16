@@ -10,9 +10,7 @@ export default function SortItem() {
   const changeHandler = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    if (selectedValue === "default") dispatch(shopAction.setDefault());
-    if (selectedValue === "ascend") dispatch(shopAction.ascendData());
-    if (selectedValue === "descend") dispatch(shopAction.descendData());
+    dispatch(shopAction.setFilter({ filter: selectedValue }));
   };
   return (
     <span
@@ -27,9 +25,10 @@ export default function SortItem() {
         className={style.selectList}
         onChange={changeHandler}
       >
-        <option value="default">Default</option>
-        <option value="ascend">Price-Low to High</option>
-        <option value="descend">Price-High to Low</option>
+        <option value="RELEVANCE">Relevance</option>
+        <option value="LOWEST_PRICE">Price: Low to High</option>
+        <option value="HIGHEST_PRICE">Price: High to Low</option>
+        <option value="BEST_SELLERS">Best Sellers</option>
       </select>
     </span>
   );

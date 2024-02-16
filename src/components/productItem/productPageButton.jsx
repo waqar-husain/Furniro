@@ -1,16 +1,44 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ButtonSecondary from "../buttons/buttonSecondary";
 import style from "./productPagebutton.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartAction } from "@/src/store/slices/cartSlice";
 import LikeNewButton from "../buttons/likeNewButton";
+import { useRouter } from "next/navigation";
 
 export default function ProductPageButtons(data) {
-  const dispatch = useDispatch();
-  const [noOfItem, setNoOfItem] = useState(1);
+  const [changeBtn, setChangeBtn] = useState(false);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const cart = useSelector((state) => state.cart.cartList);
+
+  useEffect(() => {
+    const itemExist = cart.find((el) => el.id === 65); //id will get from props
+    if (itemExist) {
+      setChangeBtn(true);
+    }
+  }, []);
+
+  const productAddToCartHandler = (e) => {
+    e.preventDefault();
+    if (changeBtn) {
+      router.push("/cart");
+      return;
+    }
+    setChangeBtn(true);
+    dispatch(
+      cartAction.incrementCart({
+        id: 65,
+        quantity: 1,
+        price: 150000,
+        productTotal: 150000,
+      })
+    );
+  };
+
   return (
     <form
       style={{
@@ -21,6 +49,7 @@ export default function ProductPageButtons(data) {
         flexDirection: "column",
         // height: "100%",
       }}
+      onSubmit={productAddToCartHandler}
     >
       <div>
         {/* {data && //SHOW SIZE BOX} */}
@@ -130,32 +159,22 @@ export default function ProductPageButtons(data) {
         }}
       >
         <ButtonSecondary
-          title="Add To Cart"
-          func={() => {
-            dispatch(
-              cartAction.incrementCart({
-                id: 65,
-                quantity: 3,
-                price: 2500,
-                subTotal: 2500,
-              })
-            );
-          }}
+          title={changeBtn ? "Go To Cart" : "Add To Cart"}
+          type="submit"
         />
-        <div
-          style={{
-            height: "5rem",
-            width: "5rem",
-            padding: "1rem",
-            borderRadius: "50%",
-            backgroundColor: "#d7d7d7",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div>
           <LikeNewButton
-            styleData={{ marginTop: "0.4rem", marginLeft: "0.1111rem" }}
+            styleData={{
+              marginLeft: "0.1111rem",
+              height: "5rem",
+              width: "5rem",
+              paddingTop: "0.3rem",
+              borderRadius: "50%",
+              backgroundColor: "#d7d7d7",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             type="shop"
             item={{
               id: 1,

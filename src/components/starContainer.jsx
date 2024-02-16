@@ -7,13 +7,13 @@ import starHalf from "./icon/starHalf.svg";
 
 export default function StarContainer(props) {
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", alignItems: "center" }}>
       <div
         style={{
           gap: "0.6rem",
           display: "flex",
-          marginRight: "1.8rem",
           alignItems: "center",
+          paddingBottom: "0.4rem",
         }}
       >
         {Array(5)
@@ -40,15 +40,12 @@ export default function StarContainer(props) {
       </div>
       <p
         style={{
-          borderLeft: "1px solid var(--color-grey5)",
-          paddingLeft: "2.2rem",
-          paddingTop: "0.5rem",
-          paddingBottom: "0.5rem",
-          fontSize: "1.3rem",
+          paddingLeft: "1rem",
+          fontSize: "1.6rem",
           color: "var(--color-grey5)",
         }}
       >
-        {props.starsRating} Customer Review
+        (2,454 Reviews)
       </p>
     </div>
   );

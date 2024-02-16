@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -88,6 +88,7 @@ const SearchBarOpened = (props) => {
                 style={{ width: "100%" }}
                 onSubmit={(e) => {
                   e.preventDefault();
+                  if (query === "") return;
                   props.closeSearchBar();
                   router.push(`/shop?search=${query}&page=1`);
                 }}
@@ -109,7 +110,7 @@ const SearchBarOpened = (props) => {
                   >
                     Clear
                   </button>
-                  <button className={style.searchButton}>
+                  <button type="submit" className={style.searchButton}>
                     <SearchIco color="white" />
                   </button>
                 </div>
@@ -153,12 +154,12 @@ export default function SearchBar() {
       if (e.key === "Escape") setOpenSearchBar(false);
     };
     if (openSearchBar) {
-      window.addEventListener("scroll", closeOnScroll, true);
+      window.addEventListener("wheel", closeOnScroll, true);
 
       window.addEventListener("keydown", closeOnKey);
     }
     return () => {
-      window.removeEventListener("scroll", closeOnScroll, true);
+      window.removeEventListener("wheel", closeOnScroll, true);
       window.removeEventListener("keydown", closeOnKey);
     };
   }, [openSearchBar]);
