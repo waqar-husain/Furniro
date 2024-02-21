@@ -19,10 +19,19 @@ export default async function fetchReq(url, pOption) {
       },
     };
     let option = pOption ? pOption : defaultOption;
+
     const fetchReq = await fetch(`${url}`, option);
+
     const res = await Promise.race([fetchReq, timeout(10)]);
+
     const data = await res.json();
-    if (!res.ok) throw new Error(data.message);
+    console.log(data);
+
+    const error = new Error(res.statusText);
+    error.stausCode = res.status;
+
+    if (!res.ok) throw error;
+
     return data;
   } catch (err) {
     throw err;

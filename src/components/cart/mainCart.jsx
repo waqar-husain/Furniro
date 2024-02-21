@@ -20,7 +20,7 @@ export default function MainCart() {
             <div className={style.cartItemsTop}>
               <div
                 style={{
-                  maxWidth: "280px",
+                  maxWidth: "399px",
                   width: "100%",
                   textAlign: "center",
                 }}
@@ -29,7 +29,7 @@ export default function MainCart() {
               </div>
               <div
                 style={{
-                  maxWidth: "185px",
+                  maxWidth: "140px",
                   width: "100%",
                   textAlign: "center",
                 }}
@@ -38,7 +38,7 @@ export default function MainCart() {
               </div>
               <div
                 style={{
-                  maxWidth: "105px",
+                  maxWidth: "100px",
                   width: "100%",
                   textAlign: "center",
                 }}
@@ -47,7 +47,7 @@ export default function MainCart() {
               </div>
               <div
                 style={{
-                  maxWidth: "150px",
+                  maxWidth: "145px",
                   width: "100%",
                   textAlign: "center",
                 }}

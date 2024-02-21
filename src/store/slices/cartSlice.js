@@ -11,6 +11,7 @@ export const cartSlice = createSlice({
   initialState: cartInitialState,
   reducers: {
     incrementCart(state, action) {
+      if (!action.payload.price) return;
       const existingItemId = [...state.cartList].findIndex(
         (el) => el.id === action.payload.id
       );
@@ -54,7 +55,7 @@ export const cartSlice = createSlice({
       state.cartList = [...state.cartList].filter(
         (el) => el.id !== action.payload.id
       );
-      state.subTotal = state.subTotal - action.payload.price;
+      state.subTotal = state.subTotal - action.payload.productTotal;
       state.totalPrice = state.subTotal;
     },
   },

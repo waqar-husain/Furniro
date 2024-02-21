@@ -3,61 +3,112 @@ import React from "react";
 import style from "./listListItem.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import image from "../icon/image 8.jpg";
 import LikeNewButton from "../buttons/likeNewButton";
 import CartButton from "../buttons/cartButton";
 import StarContainer from "../starContainer";
 
-import furniture from "@/src/public/furniture.jpg";
+import notFound from "@/src/public/notFound.png";
+import { CartModel, WishlistModel } from "@/src/util/model";
 
-export default function ListItem(props) {
+export default function ListItem({
+  product,
+  styleData,
+  utilButton,
+  inCart,
+  inWishlist,
+}) {
+  console.log(product);
   return (
-    <Link href="/shop/product/pid=09889" className={style.listItemMain}>
+    <Link
+      href="/shop/product/pid=09889"
+      className={style.listItemMain}
+      style={{
+        ...styleData,
+      }}
+    >
       <div className={style.listItemImage}>
         <Image
-          src={props.image ? props.image : furniture}
+          unoptimized
+          src={product.product_photo || notFound}
+          width={3840}
+          height={2160}
           alt="Product Image"
           className={style.listItemImg}
-          width="100%"
-          height="100%"
           loading="lazy"
+          style={{
+            objectFit: "contain",
+            mixBlendMode: "multiply",
+          }}
         />
       </div>
       <div className={style.listItemData}>
-        <h2 className={style.itemHeading}>Syltherine</h2>
-        <p className={style.itemPrice}>Rp 2500.0</p>
-        <StarContainer starsRating="2.5" />
-        <p className={style.itemDesc}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia rem
-          necessitatibus autem delectus. Ullam quis voluptates provident vitae
-          quam, tempora ad nemo odio cumque, eveniet, repellendus molestiae est
-          corporis repudiandae!
-        </p>
-        {!props.utilButton && (
-          <span className={style.itemButtons}>
-            <CartButton
-              type="shop"
-              styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
-              item={{
-                id: 1,
-                quantity: 1,
-                productTotal: 450000,
-                price: 450000,
-                productName: "Asgaard sofa",
-                productImage: "text",
+        <h2 className={style.itemHeading} style={{ marginBottom: "1rem" }}>
+          {product?.product_title || "Not available!"}
+        </h2>
+        {product.product_num_ratings && (
+          <StarContainer
+            starsRating={product?.product_star_rating}
+            numReviews={product?.product_num_ratings}
+          />
+        )}
+
+        <p className={style.itemPrice}>
+          {product?.product_price || "Currnetly not available!"}
+          {product.product_original_price && (
+            <span
+              style={{
+                fontSize: "1.6rem",
+                color: "var(--color-grey3)",
+                fontWeight: "500",
+                marginLeft: "1rem",
+                textDecoration: "line-through",
               }}
-            />
+            >
+              {product.product_original_price}
+            </span>
+          )}
+        </p>
+
+        {!utilButton && (
+          <span className={style.itemButtons}>
+            {product.product_price && (
+              <CartButton
+                type="shop"
+                styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
+                item={{
+                  ...new CartModel(
+                    product.id,
+                    product.product_title,
+                    product.product_photo,
+                    1,
+                    +product.product_price.slice(1).replace(",", ""),
+                    +product.product_price.slice(1).replace(",", "")
+                  ),
+                }}
+              />
+            )}
+
             <LikeNewButton
               type="list"
+              liked={inWishlist}
               item={{
-                id: 1,
-                price: 1200,
-                productName: "Asgaard sofa",
-                productImage: "text",
-                productDesc: "abcd",
+                ...new WishlistModel(
+                  product.asin,
+                  product.product_title,
+                  product.product_photo,
+                  product.product_price,
+                  product.product_star_rating,
+                  product.product_num_rating
+                ),
               }}
             />
           </span>
+        )}
+        {product.delivery && !utilButton && (
+          <p className={style.itemDesc}>
+            {product?.delivery ||
+              "FREE delivery Sun, Feb 4 on $35 of items shipped by AmazonOr fastest delivery Wed, Jan 31"}
+          </p>
         )}
       </div>
     </Link>

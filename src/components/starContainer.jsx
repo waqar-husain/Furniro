@@ -14,6 +14,8 @@ export default function StarContainer(props) {
           display: "flex",
           alignItems: "center",
           paddingBottom: "0.4rem",
+          paddingRight: "1rem",
+          borderRight: "1px solid var(--color-grey5)",
         }}
       >
         {Array(5)
@@ -45,7 +47,7 @@ export default function StarContainer(props) {
           color: "var(--color-grey5)",
         }}
       >
-        (2,454 Reviews)
+        {props.numReviews} Curstomer Review
       </p>
     </div>
   );

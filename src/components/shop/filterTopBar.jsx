@@ -11,10 +11,12 @@ import List from "../icon/list";
 import SortItem from "./sortItem";
 import { shopAction } from "@/src/store/slices/filterProductSlice";
 
-export default function FilterTopBar() {
+export default function FilterTopBar(props) {
   const dispath = useDispatch();
-  const totalNoOfResults = useSelector((state) => state.shop.data).length;
-  const noOfItem = useSelector((state) => state.shop.noOfItems);
+  const totalNoOfResults =
+    props.totalProducts &&
+    Number(props.totalProducts.toString().replaceAll(",", ""));
+  const noOfItem = 14;
   const noOfPage = Number(useSearchParams().get("page"));
   const layoutActive = useSelector((state) => state.shop.itemToShow);
 
@@ -39,7 +41,7 @@ export default function FilterTopBar() {
             {noOfItem * noOfPage > totalNoOfResults
               ? totalNoOfResults
               : noOfItem * noOfPage}{" "}
-            of {totalNoOfResults} results
+            of {props.totalProducts} results
           </span>
         </div>
         <div className={style.barRight}>

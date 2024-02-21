@@ -22,7 +22,9 @@ export default function ResultCont({ dataResult, closeSearchBar }) {
       >
         <span>PRODUCTS</span>
         <button
-          onClick={() => redirect(`/shop?search=${dataResult.query}&page=1`)}
+          onClick={() =>
+            redirect(`search=${dataResult.query}&sort_by=RELEVANCE&page=1`)
+          }
           style={{
             backgroundColor: "transparent",
             border: "none",

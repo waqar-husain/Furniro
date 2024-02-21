@@ -19,7 +19,7 @@ export default function CartItem({ item }) {
 
   return (
     <Link
-      href="shop/product/pid=98788"
+      href={`shop/product/pid=${item.id}`}
       style={{
         display: "flex",
         paddingTop: "2rem",
@@ -30,52 +30,67 @@ export default function CartItem({ item }) {
         borderBottom: "1px solid rgb(230,230,230)",
       }}
     >
-      <div
-        style={{
-          maxWidth: "280px",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <abbr title={item.productName} style={{ textDecoration: "none" }}>
         <div
-          className={style.productImageCont}
           style={{
-            cursor: "pointer",
+            maxWidth: "399px",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          <Image
-            alt="product image"
-            src={furniture}
-            style={{ width: "100%", height: "100%" }}
-          />
+          <div
+            className={style.productImageCont}
+            style={{
+              width: "38%",
+              cursor: "pointer",
+            }}
+          >
+            <Image
+              alt="product image"
+              width={50}
+              height={50}
+              src={item.productImage}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              unoptimized
+            />
+            {/*DATA THROUGH REDUX */}
+          </div>
+          <span
+            style={{
+              width: "62%",
+              marginLeft: "3.4rem",
+              whiteSpace: "nowrap",
+              cursor: "pointer",
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              color: "var(--color-grey1)",
+              fontSize: "1.7rem",
+              fontWeight: "500",
+            }}
+          >
+            {item.productName}
+          </span>{" "}
           {/*DATA THROUGH REDUX */}
         </div>
-        <span
-          style={{
-            marginLeft: "3.4rem",
-            whiteSpace: "nowrap",
-            cursor: "pointer",
-          }}
-        >
-          Asgaard sofa
-        </span>{" "}
-        {/*DATA THROUGH REDUX */}
-      </div>
+      </abbr>
       <div
         style={{
-          maxWidth: "185px",
+          maxWidth: "140px",
           width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          color: "var(--color-grey3)",
+          fontWeight: "500",
         }}
       >
         {formatNum(item.price)} {/*DATA THROUGH REDUX */}
       </div>
       <div
         style={{
-          maxWidth: "105px",
+          maxWidth: "120px",
           width: "100%",
           display: "flex",
           alignItems: "center",
@@ -86,7 +101,7 @@ export default function CartItem({ item }) {
       </div>
       <div //Subtotal
         style={{
-          maxWidth: "150px",
+          maxWidth: "110px",
           width: "100%",
           justifyContent: "center",
           display: "flex",
@@ -101,6 +116,7 @@ export default function CartItem({ item }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          paddingRight: "1rem",
           flex: "1",
         }}
       >

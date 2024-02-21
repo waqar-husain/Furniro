@@ -14,6 +14,7 @@ export default function CartButton(props) {
     if (!clicked) {
       dispatch(cartAction.incrementCart(props.item));
     } else {
+      console.log("hiITem");
       dispatch(cartAction.decrementCart(props.item));
     }
   };

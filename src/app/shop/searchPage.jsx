@@ -8,15 +8,24 @@ import ProductList from "@/src/components/products/productList";
 import FilterTopBar from "@/src/components/shop/filterTopBar";
 import PaginationButtons from "@/src/components/shop/paginationButtons";
 
-export default function SearchPage(props) {
+export default async function SearchPage({
+  filterBar,
+  data,
+  totalProducts,
+  dataLength,
+}) {
+  console.log(data);
   return (
     <>
       <PageHeader heading="Shop" to="shop" logo="true" />
       <main className={style.shopMain}>
-        {props.filterBar && <FilterTopBar />}
+        {filterBar && <FilterTopBar totalProducts={totalProducts} />}
         <div className={style.shopMainInner}>
-          <ProductList data={props.data ? props.data : Array(32).fill(null)} />
-          <PaginationButtons />
+          <ProductList data={data} />
+          <PaginationButtons
+            dataLength={dataLength}
+            totalProducts={totalProducts}
+          />
         </div>
       </main>
       <BottomBanner />;

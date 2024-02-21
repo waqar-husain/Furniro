@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./likeButton.module.css";
 import Heart from "../icon/heart";
 import { useDispatch } from "react-redux";
@@ -17,6 +17,10 @@ export default function LikeNewButton(props) {
       dispatch(wishlistAction.removeItem(props.item));
     }
   };
+
+  useEffect(() => {
+    if (props.liked) setClicked(true);
+  }, []);
   return (
     <abbr title="Like" style={{ display: "flex", textDecoration: "none" }}>
       <button

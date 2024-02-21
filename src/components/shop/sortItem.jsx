@@ -2,15 +2,19 @@
 import React from "react";
 
 import style from "./sortItem.module.css";
-import { useDispatch } from "react-redux";
-import { shopAction } from "../../store/slices/filterProductSlice";
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function SortItem() {
-  const dispatch = useDispatch();
+  const params = useSearchParams();
+  const router = useRouter();
   const changeHandler = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    dispatch(shopAction.setFilter({ filter: selectedValue }));
+    const page = params.get("page");
+    const search = params.get("search");
+
+    router.push(`shop?search=${search}&sort_by=${selectedValue}&page=${page}`);
   };
   return (
     <span

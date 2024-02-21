@@ -9,10 +9,24 @@ import ProductList from "../products/productList";
 import fetchReq from "@/src/util/fetchFunction";
 
 export default async function Section2(props) {
-  const data = [1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-  // const data = await fetchReq(
-  //   `${NEXT_PUBLIC_RAPIDAPI_URL}${props.category}?category=furniture&page=1&country=US`
+  const data = {
+    best_sellers: [
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
+    ],
+  };
+  // const category = String(props.category).toUpperCase().replaceAll("-", "_");
+
+  // const { data } = await fetchReq(
+  //   `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}best-sellers?category=kitchen/1380441031&type=${category}&page=1&country=IN`
   // );
+
   return (
     <section className={style.section}>
       <div className={style.sectionInnerContainer}>
@@ -20,7 +34,7 @@ export default async function Section2(props) {
           <h1 className={style.sectionHeading}>{props.heading}</h1>
         </div>
         <div className={style.sectionMain}>
-          <ProductList data={data.slice(0, 8)} type="grid" />
+          <ProductList data={data.best_sellers.slice(0, 8)} type="grid" />
           <div className={style.sectionShowMore}>
             <ButtonPrimary
               title="Show more"

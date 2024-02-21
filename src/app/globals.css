@@ -26,8 +26,9 @@ body {
   color: black;
   line-height: 2.4rem;
   font-weight: 400;
-  scroll-behavior: smooth;
+
   font-size: 1.6rem;
+  position: relative;
 }
 section {
   display: flex;

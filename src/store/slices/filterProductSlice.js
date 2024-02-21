@@ -3,13 +3,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  ],
-  sortedData: [2, 2, 2, 2, 2, 2, 2, 2, 2, , 2, 2],
-  noOfItems: 16,
-  sortBy: "RELEVANCE",
   itemToShow: true, //True = "Tiles" and False = "List"
 };
 

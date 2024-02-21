@@ -6,6 +6,7 @@ import NoItem from "./noItem";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { wishlistAction } from "../store/slices/wishlistSlice";
+import ListGridItem from "./products/listGridItem";
 
 export default function WishlistItems() {
   const wishlist = useSelector((state) => state.wishlist.wishlist);
@@ -16,7 +17,7 @@ export default function WishlistItems() {
       {wishlist.length !== 0 && (
         <div
           style={{
-            maxWidth: "1280px",
+            maxWidth: "1000px",
             width: "100%",
             display: "flex",
             flexDirection: "column",
@@ -24,7 +25,7 @@ export default function WishlistItems() {
           }}
         >
           {wishlist.map((el) => (
-            <div key={el.id} style={{ position: "relative" }}>
+            <div key={el.asin} style={{ position: "relative" }}>
               <button
                 style={{
                   borderRadius: "50%",
@@ -39,12 +40,16 @@ export default function WishlistItems() {
                 }}
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(wishlistAction.removeItem({ id: el.id }));
+                  dispatch(wishlistAction.removeItem({ asin: el.asin }));
                 }}
               >
                 <Image alt="delete" src={deleteIco} />
               </button>
-              <ListItem utilButton="false" />
+              <ListItem
+                product={el}
+                utilButton="false"
+                styleData={{ height: "25rem" }}
+              />
             </div>
           ))}
         </div>

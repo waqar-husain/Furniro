@@ -4,8 +4,7 @@ import React from "react";
 
 import style from "./searchBar.module.css";
 
-import furniture from "@/src/public/furniture.jpg";
-import productImage from "@/src/public/asgaard.png";
+import notFound from "@/src/public/notFound.png";
 
 export default function SearchedItem({ data, closeSearchBar }) {
   return (
@@ -29,7 +28,9 @@ export default function SearchedItem({ data, closeSearchBar }) {
         >
           <Image
             alt="ProductImage"
-            src={furniture}
+            src={data.product_photo || notFound}
+            width={50}
+            height={50}
             style={{
               width: "100%",
               objectFit: "cover",
@@ -47,8 +48,18 @@ export default function SearchedItem({ data, closeSearchBar }) {
             rowGap: "0.5rem",
           }}
         >
-          <h5 style={{ fontSize: "1.8rem", fontWeight: "400" }}>
-            {data.product_title ? data.product_title : "Asgaard Sofa"}
+          <h5
+            style={{
+              fontSize: "1.8rem",
+              fontWeight: "400",
+              display: "-webkit-box",
+              WebkitLineClamp: "1",
+              WebkitBoxOrient: "vertical",
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+            }}
+          >
+            {data.product_title || "Not available!"}
           </h5>
           <p
             style={{
@@ -57,8 +68,8 @@ export default function SearchedItem({ data, closeSearchBar }) {
               color: "var(--color-grey1)",
             }}
           >
-            {data.product_price ? data.product_price : "Rs.250,000.00"}
-            {data.product_price && (
+            {data.product_price || "Not available!"}
+            {data.product_original_price && (
               <span
                 style={{
                   fontSize: "1.3rem",
@@ -67,9 +78,7 @@ export default function SearchedItem({ data, closeSearchBar }) {
                   textDecoration: "line-through",
                 }}
               >
-                {data.product_orignal_price
-                  ? data.product_orignal_price
-                  : "Rs.300,000.00"}
+                {data.product_original_price}
               </span>
             )}
           </p>

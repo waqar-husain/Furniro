@@ -1,7 +1,7 @@
 export const formatNum = (num) => {
-  const formatToUs = new Intl.NumberFormat("en-US", {
+  const formatToINR = new Intl.NumberFormat("en-IN", {
     style: "currency",
-    currency: "USD",
+    currency: "INR",
   });
-  return formatToUs.format(num);
+  return formatToINR.format(num);
 };

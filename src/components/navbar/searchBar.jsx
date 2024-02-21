@@ -30,26 +30,32 @@ const SearchBarOpened = (props) => {
     }
     try {
       timer = setTimeout(async () => {
-        // const data = await fetchReq(
-        //   `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}search?query=${query}&page=1&country=US&category_id=furniture'`
-        // );
-        // setData({products:data.data.products.slice(0, 4),totalProducts:data.data.total_products});
-        const options = {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDlhYzNjZjE2MTgyMWUwZDcwZmI0MmEwNGFjOTA2MSIsInN1YiI6IjY0ODBkMDI5ZTM3NWMwMDBmZjQ2YTg1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrwZiUwscCFf_t4PxsPHBpJrrl4x5C4FUKFj_agZnQU`,
-          },
-        };
-        const data = await fetchReq(
-          `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
-          options
+        const { data } = await fetchReq(
+          `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}search?query=${query}&page=1&country=IN&category_id=furniture'`
         );
-        console.log(data);
+
         setData({
-          products: data.results.slice(0, 4),
-          totalProducts: data.total_results,
+          products: data.products.slice(0, 4),
+          totalProducts: data.total_products,
         });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        // const options = {
+        //   method: "GET",
+        //   headers: {
+        //     accept: "application/json",
+        //     Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDlhYzNjZjE2MTgyMWUwZDcwZmI0MmEwNGFjOTA2MSIsInN1YiI6IjY0ODBkMDI5ZTM3NWMwMDBmZjQ2YTg1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrwZiUwscCFf_t4PxsPHBpJrrl4x5C4FUKFj_agZnQU`,
+        //   },
+        // };
+        // const data = await fetchReq(
+        //   `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
+        //   options
+        // );
+        // console.log(data);
+        // setData({
+        //   products: data.results.slice(0, 4),
+        //   totalProducts: data.total_results,
+        // });
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
       }, 500);
     } catch (err) {
       console.log(err);
@@ -90,7 +96,7 @@ const SearchBarOpened = (props) => {
                   e.preventDefault();
                   if (query === "") return;
                   props.closeSearchBar();
-                  router.push(`/shop?search=${query}&page=1`);
+                  router.push(`/shop?search=${query}&sort_by=RELEVANCE&page=1`);
                 }}
               >
                 <div style={{ position: "relative" }}>
