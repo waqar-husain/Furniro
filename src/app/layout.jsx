@@ -6,6 +6,7 @@ import Head from "next/head";
 import Navbar from "../components/navbar/navbar";
 import FooterComp from "../components/footer/footer";
 import StoreProvider from "../store/storeProvider";
+import LoaderTop from "../components/loaderTop";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={poppins.className}>
         <StoreProvider>
+          <LoaderTop />
           <div id="searchbar"></div>
           <Navbar />
           {children}

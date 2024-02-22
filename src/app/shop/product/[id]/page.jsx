@@ -3,12 +3,9 @@ import style from "./shopItem.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-import ProductList from "@/src/components/products/productList";
-import ButtonPrimary from "@/src/components/buttons/buttonPrimary";
 import rightArr from "@/src/components/icon/arrow-right.svg";
 import ProductPageButtons from "@/src/components/productItem/productPageButton";
 
-import furniture from "@/src/public/furniture.jpg";
 import ProductPageDesc from "@/src/components/productItem/productPageDesc";
 import StarContainer from "@/src/components/starContainer";
 import { notFound } from "next/navigation";

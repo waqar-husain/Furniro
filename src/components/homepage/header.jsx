@@ -1,10 +1,8 @@
 import React from "react";
+import Link from "next/link";
 
 //Css
 import style from "./header.module.css";
-
-//Component
-import ButtonPrimary from "../buttons/buttonPrimary";
 
 export default function HeaderComp() {
   return (
@@ -17,15 +15,19 @@ export default function HeaderComp() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
             eligendi. Non recusandae provident sunt minus dolorem iste
           </p>
-          <ButtonPrimary
-            style="primary"
-            title="Buy Now"
-            styleData={{
-              padding: "25px 72px",
-              fontSize: "1.6rem ",
+
+          <Link
+            className="buttonPrimary"
+            style={{
+              padding: "2.5rem 7.2rem",
+              fontSize: "1.8rem ",
               marginTop: "3.7rem",
+              display: "inline-block",
             }}
-          />
+            href="/shop"
+          >
+            Buy Now
+          </Link>
         </div>
       </div>
     </header>

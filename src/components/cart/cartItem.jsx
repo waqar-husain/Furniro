@@ -18,8 +18,7 @@ export default function CartItem({ item }) {
   //Data will be passed through props
 
   return (
-    <Link
-      href={`shop/product/pid=${item.id}`}
+    <div
       style={{
         display: "flex",
         paddingTop: "2rem",
@@ -31,12 +30,14 @@ export default function CartItem({ item }) {
       }}
     >
       <abbr title={item.productName} style={{ textDecoration: "none" }}>
-        <div
+        <Link
+          href={`shop/product/pid=${item.id}`}
           style={{
             maxWidth: "399px",
             width: "100%",
             display: "flex",
             alignItems: "center",
+            textDecoration: "none",
           }}
         >
           <div
@@ -73,7 +74,7 @@ export default function CartItem({ item }) {
             {item.productName}
           </span>{" "}
           {/*DATA THROUGH REDUX */}
-        </div>
+        </Link>
       </abbr>
       <div
         style={{
@@ -131,9 +132,12 @@ export default function CartItem({ item }) {
             dispatch(cartAction.removeItem(item));
           }}
         >
-          <Image alt="delete" src={deleteIco} />
+          {" "}
+          <abbr title="Remove item">
+            <Image alt="delete" src={deleteIco} />
+          </abbr>
         </button>
       </div>
-    </Link>
+    </div>
   );
 }

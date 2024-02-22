@@ -69,41 +69,6 @@ export default function ListItem({
           )}
         </p>
 
-        {!utilButton && (
-          <span className={style.itemButtons}>
-            {product.product_price && (
-              <CartButton
-                type="shop"
-                styleData={{ marginLeft: "0.2rem", marginTop: "-0.3rem" }}
-                item={{
-                  ...new CartModel(
-                    product.id,
-                    product.product_title,
-                    product.product_photo,
-                    1,
-                    +product.product_price.slice(1).replace(",", ""),
-                    +product.product_price.slice(1).replace(",", "")
-                  ),
-                }}
-              />
-            )}
-
-            <LikeNewButton
-              type="list"
-              liked={inWishlist}
-              item={{
-                ...new WishlistModel(
-                  product.asin,
-                  product.product_title,
-                  product.product_photo,
-                  product.product_price,
-                  product.product_star_rating,
-                  product.product_num_rating
-                ),
-              }}
-            />
-          </span>
-        )}
         {product.delivery && !utilButton && (
           <p className={style.itemDesc}>
             {product?.delivery ||

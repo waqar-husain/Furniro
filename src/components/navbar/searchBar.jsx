@@ -15,49 +15,65 @@ import SearchIco from "../icon/search.jsx";
 
 import ResultCont from "./resultCont";
 import fetchReq from "@/src/util/fetchFunction";
-import { useRouter } from "next/navigation";
+import { useRouter, ContainerLink } from "nextjs-progressloader";
+
+export const links = [
+  {
+    href: "/shop",
+    nickname: "search",
+  },
+  {
+    href: "/shop/best-sellers",
+    nickname: "categories",
+  },
+];
 
 const SearchBarOpened = (props) => {
   const [query, setQuery] = useState("");
-  const [data, setData] = useState({ products: [], totalProducts: 0 });
+  const [data, setData] = useState({ products: [], totalProducts: null });
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     let timer;
     if (query === "") {
-      setData({ products: [], totalProducts: 0 });
+      setData({ products: [], totalProducts: null });
       return;
     }
     try {
+      setIsLoading(true);
       timer = setTimeout(async () => {
-        const { data } = await fetchReq(
-          `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}search?query=${query}&page=1&country=IN&category_id=furniture'`
+        // const { data } = await fetchReq(
+        //   `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}search?query=${query}&page=1&country=IN&category_id=furniture'`
+        // );
+
+        // setData({
+        //   products: data.products.slice(0, 4),
+        //   totalProducts: data.total_products,
+        // });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        const options = {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDlhYzNjZjE2MTgyMWUwZDcwZmI0MmEwNGFjOTA2MSIsInN1YiI6IjY0ODBkMDI5ZTM3NWMwMDBmZjQ2YTg1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrwZiUwscCFf_t4PxsPHBpJrrl4x5C4FUKFj_agZnQU`,
+          },
+        };
+        const data = await fetchReq(
+          `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
+          options
         );
+        console.log(data);
+        setIsLoading(false);
 
         setData({
-          products: data.products.slice(0, 4),
-          totalProducts: data.total_products,
+          products: data.results.slice(0, 4),
+          totalProducts: data.total_results,
         });
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
-        // const options = {
-        //   method: "GET",
-        //   headers: {
-        //     accept: "application/json",
-        //     Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDlhYzNjZjE2MTgyMWUwZDcwZmI0MmEwNGFjOTA2MSIsInN1YiI6IjY0ODBkMDI5ZTM3NWMwMDBmZjQ2YTg1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrwZiUwscCFf_t4PxsPHBpJrrl4x5C4FUKFj_agZnQU`,
-        //   },
-        // };
-        // const data = await fetchReq(
-        //   `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
-        //   options
-        // );
-        // console.log(data);
-        // setData({
-        //   products: data.results.slice(0, 4),
-        //   totalProducts: data.total_results,
-        // });
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
       }, 500);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
     return () => {
@@ -96,7 +112,14 @@ const SearchBarOpened = (props) => {
                   e.preventDefault();
                   if (query === "") return;
                   props.closeSearchBar();
-                  router.push(`/shop?search=${query}&sort_by=RELEVANCE&page=1`);
+                  router.push("search", {
+                    queryStrings: [
+                      { key: "search", value: query },
+                      { key: "sort_by", value: "RELEVANCE" },
+                      { key: "page", value: "1" },
+                    ],
+                  });
+                  // router.push(`/shop?search=${query}&sort_by=RELEVANCE&page=1`);
                 }}
               >
                 <div style={{ position: "relative" }}>
@@ -106,7 +129,7 @@ const SearchBarOpened = (props) => {
                     type="text"
                     className={style.searchInput}
                     placeholder="What are you looking for?"
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={(e) => setQuery(e.target.value.trim())}
                     value={query}
                   />
                   <button
@@ -121,12 +144,15 @@ const SearchBarOpened = (props) => {
                   </button>
                 </div>
                 {/* only visible when data is there below*/}
-                {data.products.length !== 0 && (
+                {/* {data.products.length !== 0 && ( */}
+
+                {query && (
                   <ResultCont
-                    dataResult={{ data, query }}
+                    dataResult={{ data, query, isLoading }}
                     closeSearchBar={() => props.closeSearchBar()}
                   />
                 )}
+                {/* )} */}
 
                 {/* ///////////////////////////////////////////// */}
               </form>
@@ -172,6 +198,7 @@ export default function SearchBar() {
 
   return (
     <>
+      <ContainerLink links={links} />
       <div
         style={{ height: "25px", cursor: "pointer" }}
         onClick={searchBarHandler}

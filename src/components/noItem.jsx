@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import noItem from "@/src/public/noItem.jpg";
-import ButtonPrimary from "./buttons/buttonPrimary";
 
 export default function NoItem(props) {
   return (
@@ -47,17 +47,19 @@ export default function NoItem(props) {
         </p>
       </div>
       {props.button && (
-        <ButtonPrimary
-          style="primary"
-          title="Shop Now!"
-          styleData={{
+        <Link
+          className="buttonPrimary"
+          style={{
             padding: "1.4rem 3rem 1.4rem 3rem",
             fontSize: "1.8rem",
             fontWeight: "400",
             lineHeight: "1.6",
+            display: "inline-block",
           }}
-          url="/shop"
-        />
+          href="/shop"
+        >
+          Shop Now!
+        </Link>
       )}
     </div>
   );

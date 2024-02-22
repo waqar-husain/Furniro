@@ -1,10 +1,9 @@
 import React from "react";
-
+import Link from "next/link";
 //Css
 import style from "./section2.module.css";
 
 //Components
-import ButtonPrimary from "../buttons/buttonPrimary";
 import ProductList from "../products/productList";
 import fetchReq from "@/src/util/fetchFunction";
 
@@ -36,15 +35,17 @@ export default async function Section2(props) {
         <div className={style.sectionMain}>
           <ProductList data={data.best_sellers.slice(0, 8)} type="grid" />
           <div className={style.sectionShowMore}>
-            <ButtonPrimary
-              title="Show more"
-              url={`/shop/${props.category}?page=1`}
-              styleData={{
-                padding: "12px 78px",
+            <Link
+              className="buttonPrimary"
+              style={{
+                padding: "1.2rem 7.8rem",
                 fontSize: "1.6rem ",
                 fontWeight: "600",
               }}
-            />
+              href={`/shop/${props.category}?page=1`}
+            >
+              Show more
+            </Link>
           </div>
         </div>
       </div>

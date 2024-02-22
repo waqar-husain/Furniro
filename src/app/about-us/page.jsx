@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import aboutUsImg from "@/src/public/about.jpg";
 
 import PageHeader from "../../components/pageHeader";
 import BottomBanner from "../../components/bottomBanner";
-import ButtonPrimary from "../../components/buttons/buttonPrimary";
 
 export default function About() {
   return (
@@ -62,17 +62,19 @@ export default function About() {
                   doloribus dolore optio adipisci laboriosam suscipit omnis
                   eligendi.
                 </p>
-                <ButtonPrimary
-                  style="primary"
-                  title="Contact Us"
-                  styleData={{
+                <Link
+                  className="buttonPrimary"
+                  style={{
                     padding: "1.4rem 3rem 1.4rem 3rem",
                     fontSize: "1.8rem",
                     fontWeight: "400",
                     lineHeight: "1.6",
+                    display: "inline-block",
                   }}
-                  url="/contact"
-                />
+                  href="/contact"
+                >
+                  Contact Us
+                </Link>
               </div>
             </div>
           </div>

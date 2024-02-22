@@ -13,20 +13,35 @@ export default async function SearchPage({
   data,
   totalProducts,
   dataLength,
+  query,
 }) {
   console.log(data);
   return (
     <>
       <PageHeader heading="Shop" to="shop" logo="true" />
       <main className={style.shopMain}>
-        {filterBar && <FilterTopBar totalProducts={totalProducts} />}
-        <div className={style.shopMainInner}>
-          <ProductList data={data} />
-          <PaginationButtons
-            dataLength={dataLength}
-            totalProducts={totalProducts}
-          />
-        </div>
+        {/* {dataLength === 0 && (
+          <div style={{ marginTop: "8.5rem" }}>
+            <h5 style={{ fontSize: "3rem", fontWeight: "600" }}>
+              No results for "{query}".
+            </h5>
+            <p style={{ fontSize: "1.8rem", marginTop: "1.4rem" }}>
+              Try checking your spelling or use more general terms
+            </p>
+          </div>
+        )} */}
+        {/* {dataLength !== 0 && ( */}
+        <>
+          {filterBar && <FilterTopBar totalProducts={totalProducts} />}
+          <div className={style.shopMainInner}>
+            <ProductList data={data} />
+            <PaginationButtons
+              dataLength={dataLength}
+              totalProducts={totalProducts}
+            />
+          </div>
+        </>
+        {/* )} */}
       </main>
       <BottomBanner />;
     </>
