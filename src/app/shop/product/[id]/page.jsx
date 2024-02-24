@@ -60,11 +60,11 @@ export default async function Product({ params }) {
       "Product Care Instructions": "Wipe with Dry Cloth",
       "Included Components": "1 Fold-able Stool",
       "Furniture Finish": "Deco paint",
-      Size: "Medium",
+      " Size": "Medium",
       "Base Material": "Wood",
       Material: "Mango Wood",
       "Number of Items": "1",
-      Manufacturer: "UHUD CRAFTS, UHUD CRAFTS",
+      " Manufacturer": "UHUD CRAFTS, UHUD CRAFTS",
       "Item model number": "UC-12",
       ASIN: "B0927T6DS6",
       "Net Quantity": "1.00 count",
@@ -87,7 +87,7 @@ export default async function Product({ params }) {
       Colour: "White",
       Brand: "UHUD CRAFTS",
       "Table design": "End Table",
-      Style: "Modern",
+      " Style": "Modern",
       "Seating Capacity": "1.00",
       "Finish Type": "Glossy",
       "Base Type": "Leg",
@@ -173,28 +173,39 @@ export default async function Product({ params }) {
                   starsRating={product.product_star_rating}
                 />
               </div>
-              {product.product_price && (
-                <p
-                  className={style.productPrice}
-                  style={{ marginTop: "1.6rem" }}
-                >
-                  {product.product_price}
+              <div style={{ display: "flex", alignItems: "end" }}>
+                {product.product_price && (
+                  <p
+                    className={style.productPrice}
+                    style={{ marginTop: "1.6rem" }}
+                  >
+                    {product.product_price}
 
-                  {product.product_original_price && (
-                    <span
-                      style={{
-                        fontSize: "2rem",
-                        color: "var(--color-grey4)",
-                        fontWeight: "400",
-                        marginLeft: "1rem",
-                        textDecoration: "line-through",
-                      }}
-                    >
-                      {product.product_original_price}
-                    </span>
-                  )}
-                </p>
-              )}
+                    {product.product_original_price && (
+                      <span
+                        style={{
+                          fontSize: "2rem",
+                          color: "var(--color-grey4)",
+                          fontWeight: "400",
+                          marginLeft: "1rem",
+                          textDecoration: "line-through",
+                        }}
+                      >
+                        {product.product_original_price}
+                      </span>
+                    )}
+                  </p>
+                )}
+                {product.sales_volume && (
+                  <p
+                    className={style.productText}
+                    style={{ marginLeft: "2rem", color: "var(--color-grey1)" }}
+                  >
+                    {product.sales_volume}
+                  </p>
+                )}
+              </div>
+
               {product.product_description && (
                 <p className={style.productText}>
                   {product.product_description}
@@ -218,24 +229,31 @@ export default async function Product({ params }) {
               </div>
             </div>
             <div className={style.productAbout}>
-              <div style={{ marginRight: "1.6rem" }}>
+              <div
+                style={{
+                  marginRight: "1.6rem",
+                  color: "var(--color-grey1)",
+                  fontWeight: "500",
+                }}
+              >
                 <p>ASIN</p>
                 {Object.keys(product.product_information)
-                  .slice(0, 3)
+                  .slice(0, 5)
                   .map((el, i) => (
                     <p key={i}>{el}</p>
                   ))}
               </div>
               <div style={{ marginRight: "1.2rem" }}>
-                <p>:</p>
-                <p>:</p>
-                <p>:</p>
-                <p>:</p>
+                {Array(6)
+                  .fill("1")
+                  .map((el, i) => (
+                    <p key={i}>:</p>
+                  ))}
               </div>
               <div>
                 <p>{product.asin}</p>
                 {Object.values(product.product_information)
-                  .slice(0, 3)
+                  .slice(0, 5)
                   .map((el, i) => (
                     <p key={i}>{el}</p>
                   ))}
@@ -245,7 +263,14 @@ export default async function Product({ params }) {
         </div>
       </section>
       <section className={style.productDesc}>
-        <ProductPageDesc />
+        <ProductPageDesc
+          productDesc={{
+            product_information: product.product_information,
+            about_product: product.about_product,
+            product_photos: product.product_photos,
+            product_num_ratings: product.product_num_ratings,
+          }}
+        />
       </section>
     </main>
   );
