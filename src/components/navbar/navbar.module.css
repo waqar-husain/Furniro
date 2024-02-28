@@ -20,11 +20,11 @@
 .uiContainer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 240px;
 }
 
-.uiContainer > * {
-  margin-left: 4.5rem;
-}
 .cartIco {
   position: relative;
 }

@@ -21,15 +21,15 @@ export default function Section4() {
           <h2 className={style.headingMain}>#FuniroFurniture</h2>
         </div>
         <div className={style.sectionMain}>
-          <div className={style.img1}></div>
-          <div className={style.img2}></div>
-          <div className={style.img3}></div>
-          <div className={style.img4}></div>
-          <div className={style.img5}></div>
-          <div className={style.img6}></div>
-          <div className={style.img7}></div>
-          <div className={style.img8}></div>
-          <div className={style.img9}></div>
+          <div className={`${style.img1} ${style.img}`}></div>
+          <div className={`${style.img2} ${style.img}`}></div>
+          <div className={`${style.img3} ${style.img}`}></div>
+          <div className={`${style.img4} ${style.img}`}></div>
+          <div className={`${style.img5} ${style.img}`}></div>
+          <div className={`${style.img6} ${style.img}`}></div>
+          <div className={`${style.img7} ${style.img}`}></div>
+          <div className={`${style.img8} ${style.img}`}></div>
+          <div className={`${style.img9} ${style.img}`}></div>
         </div>
       </div>
     </section>

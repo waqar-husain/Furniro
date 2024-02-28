@@ -3,11 +3,17 @@ import SearchedItem from "./searchedItem";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import loader from "@/src/components/icon/loader.svg";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function ResultCont({ dataResult, closeSearchBar }) {
-  console.log(dataResult.isLoading);
   return (
-    <div
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      initial="hidden"
+      animate="visible"
       style={{
         display: "flex",
         marginTop: "2rem",
@@ -63,15 +69,30 @@ export default function ResultCont({ dataResult, closeSearchBar }) {
 
         {/* ////////////////////////search Result product ///////////////////////////////////*/}
 
-        {!dataResult.isLoading &&
-          dataResult.data.products.map((el, i) => (
-            <SearchedItem
-              key={i}
-              data={el}
-              closeSearchBar={() => closeSearchBar()}
-            />
-          ))}
+        <AnimatePresence>
+          {!dataResult.isLoading && (
+            <motion.ul
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                rowGap: "1rem",
+                listStyle: "none",
+              }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.05 } },
+              }}
+            >
+              {dataResult.data.products.map((el, i) => (
+                <SearchedItem
+                  key={i}
+                  data={el}
+                  closeSearchBar={() => closeSearchBar()}
+                />
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 }

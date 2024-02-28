@@ -1,14 +1,19 @@
+import PageHeader from "@/src/components/pageHeader";
+import { getAuth } from "firebase/auth";
 import { redirect } from "next/navigation";
 import React from "react";
+
 const accountHandler = async () => {
-  const isUserLoggedIn = false;
+  const isUserLoggedIn = true;
 
   if (!isUserLoggedIn) redirect("/");
-  try {
-  } catch (error) {}
 };
 
 export default async function Account() {
   await accountHandler();
-  return <div>Account</div>;
+  return (
+    <>
+      <PageHeader heading="Account" />
+    </>
+  );
 }

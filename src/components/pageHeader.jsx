@@ -10,7 +10,7 @@ export default function PageHeader(props) {
     <header className={style.bgHeader}>
       <div className={style.innerContainer}>
         <div className={style.headerMain}>
-          {props.logo && <Image src={logo} alt="Logo" />}
+          <Image src={logo} alt="Logo" />
           <h1 className={style.heading}>{props.heading}</h1>
           <p className={style.pages}>
             <Link className={style.headerLink} href="/">

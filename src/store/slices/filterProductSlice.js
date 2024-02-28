@@ -10,16 +10,8 @@ export const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
-    addDataArr(state, action) {
-      state.data = action.payload;
-    },
-
     showItems(state, action) {
       state.itemToShow = action.payload.type;
-    },
-
-    setFilter(state, action) {
-      state.sortBy = action.payload.filter;
     },
   },
 });

@@ -20,8 +20,13 @@ export default function InputComp(props) {
 
   const inputHandler = (e) => {
     e.preventDefault();
-    setInput(e.target.value);
-    props.getVal({ value: e.target.value, isValid: valueIsValid });
+    setInput(e.target.value.trim());
+    props.getVal({
+      value: input,
+      isValid: props?.checkValidity
+        ? props.checkValidity(e.target.value)
+        : true,
+    });
   };
   const inputBlurHandler = (e) => {
     e.preventDefault();
@@ -44,7 +49,8 @@ export default function InputComp(props) {
           className={style.input}
           style={{
             border: `1px solid ${hasError ? "red" : "var(--color-grey5)"}`,
-            height: props.message ? "14rem" : "7rem",
+            height: props.message ? "14rem" : "6rem",
+            ...props.inputStyle,
           }}
           autoComplete="off"
           type={
@@ -71,7 +77,7 @@ export default function InputComp(props) {
               border: "none",
               position: "absolute",
               right: "1rem",
-              top: "35%",
+              top: "31%",
               cursor: "pointer",
             }}
             onClick={() => setToggleEye((prev) => !prev)}

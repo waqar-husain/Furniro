@@ -18,7 +18,7 @@ export default async function SearchPage({
   console.log(data);
   return (
     <>
-      <PageHeader heading="Shop" to="shop" logo="true" />
+      <PageHeader heading="Shop" to="shop" />
       <main className={style.shopMain}>
         {/* {dataLength === 0 && (
           <div style={{ marginTop: "8.5rem" }}>

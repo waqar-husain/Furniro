@@ -9,7 +9,7 @@ import WishlistItems from "../../components/wishlistItems";
 export default function Wishlist() {
   return (
     <>
-      <PageHeader heading="Wishlist" logo={true} />
+      <PageHeader heading="Wishlist" />
       <main>
         <section className={style.cartSec}>
           <WishlistItems />

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import style from "./searchBar.module.css";
 
@@ -88,7 +89,12 @@ const SearchBarOpened = (props) => {
         if (e.target === e.currentTarget) props.closeSearchBar();
       }}
     >
-      <div className={style.searchbarTop}>
+      <motion.div
+        className={style.searchbarTop}
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.1, ease: "backOut" }}
+      >
         <NavContainer>
           <Link
             href="/"
@@ -102,6 +108,7 @@ const SearchBarOpened = (props) => {
               flex: "75% 0 1",
               display: "flex",
               justifyContent: "space-between",
+              alignSelf: "flex-start",
               alignItems: "center",
             }}
           >
@@ -152,9 +159,6 @@ const SearchBarOpened = (props) => {
                     closeSearchBar={() => props.closeSearchBar()}
                   />
                 )}
-                {/* )} */}
-
-                {/* ///////////////////////////////////////////// */}
               </form>
             </div>
             <button
@@ -166,7 +170,7 @@ const SearchBarOpened = (props) => {
             </button>
           </div>
         </NavContainer>
-      </div>
+      </motion.div>
     </div>
   );
 };

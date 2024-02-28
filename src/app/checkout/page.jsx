@@ -7,7 +7,7 @@ import CheckOutForm from "@/src/components/checkOutForm";
 export default function Checkout() {
   return (
     <>
-      <PageHeader heading="Checkout" logo="true" />
+      <PageHeader heading="Checkout" />
       <main>
         <section
           style={{

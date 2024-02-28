@@ -12,7 +12,7 @@ import ContactForm from "../../components/contactForm";
 export default function Contact() {
   return (
     <>
-      <PageHeader heading="Contact" to="contact" logo="true" />
+      <PageHeader heading="Contact" to="contact" />
       <main>
         <section
           style={{

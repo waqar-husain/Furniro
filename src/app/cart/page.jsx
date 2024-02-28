@@ -7,7 +7,7 @@ import MainCart from "../../components/cart/mainCart";
 export default function Cart() {
   return (
     <>
-      <PageHeader heading="Cart" logo={true} />
+      <PageHeader heading="Cart" />
       <main
         style={{
           display: "flex",

@@ -62,6 +62,13 @@
   grid-gap: 16px;
   margin-bottom: 5rem;
 }
+.img {
+  transition: all 0.2s;
+}
+.img:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.6);
+}
 
 .img1 {
   background-image: url("../../public/Rectangle 36.jpg");

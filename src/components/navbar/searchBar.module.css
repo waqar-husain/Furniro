@@ -24,6 +24,7 @@
   flex: 65% 0 1;
   position: relative;
   flex-direction: column;
+  align-self: flex-start;
 }
 
 .searchInput {

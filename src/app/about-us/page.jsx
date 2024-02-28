@@ -10,7 +10,7 @@ import BottomBanner from "../../components/bottomBanner";
 export default function About() {
   return (
     <>
-      <PageHeader logo="true" heading="About Us" />
+      <PageHeader heading="About Us" />
       <main>
         <section
           style={{

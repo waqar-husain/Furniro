@@ -1,20 +1,30 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Logo from "../icon/Frame 168.svg";
 import Link from "next/link";
 import style from "./navbar.module.css";
 import SearchBar from "./searchBar";
-import user from "../icon/userNotLogin.svg";
+import userNot from "../icon/userNotLogin.svg";
 import Wishlist from "../icon/wishlist";
 import CartIcon from "../icon/cart";
 import NavLink from "../navLink";
 import NavContainer from "./navContainer";
 import { useSelector } from "react-redux";
+import user from "../icon/user.svg";
+import loader2 from "../icon/loader2.svg";
 
 export default function Navbar() {
   const { length: cartLength } = useSelector((state) => state.cart.cartList);
-  const tempUserLoggedIn = false;
+
+  const { user: isUser } = useSelector((state) => state.user);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isUser === null) return;
+
+    setIsLoading(false);
+  }, [isUser]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -36,11 +46,22 @@ export default function Navbar() {
         </div>
         <div className={style.uiContainer}>
           <abbr title="Account" style={{ height: "25px" }}>
-            <Link //isUserLoggedIn
-              href={tempUserLoggedIn ? "/account" : "/account/login?mode=login"}
-            >
-              <Image src={user} height="25" width="25" alt="User" />
-            </Link>
+            {!isLoading ? (
+              <Link //isUserLoggedIn
+                href={isUser ? "/account" : "/account/login?mode=login"}
+              >
+                {
+                  <Image
+                    src={isUser ? user : userNot}
+                    height="25"
+                    width="29"
+                    alt="User"
+                  />
+                }
+              </Link>
+            ) : (
+              <Image src={loader2} alt="loader" />
+            )}
           </abbr>
           <abbr title="Search">
             <SearchBar />
