@@ -15,13 +15,20 @@ export default function Error({ error }) {
           style={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
             flexDirection: "column",
             textAlign: "center",
             color: "var(--color-grey1)",
           }}
         >
           <h1> {error.message}</h1>
-          <div style={{ width: "40rem", height: "40rem", marginTop: "1rem" }}>
+          <div
+            style={{
+              width: "40rem",
+              height: "40rem",
+              marginTop: "1rem",
+            }}
+          >
             <Image
               src={errorImg}
               alt="error"
