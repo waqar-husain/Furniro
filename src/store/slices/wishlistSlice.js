@@ -20,6 +20,9 @@ export const wishlistSlice = createSlice({
         (el) => el.asin !== action.payload.asin
       );
     },
+    setWishlist(state, action) {
+      state.wishlist = [...action.payload.wishlist];
+    },
   },
 });
 

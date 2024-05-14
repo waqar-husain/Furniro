@@ -3,12 +3,13 @@
   border: none;
   color: #ffffff;
   font-weight: 600;
-  transition: all 0.6s;
+  transition: all 0.2s;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
 }
 .buttonPrimary:hover {
   background-color: rgb(135, 102, 27);
   cursor: pointer;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .buttonSecondary {
@@ -17,10 +18,16 @@
   color: var(--color-primary);
   font-weight: 600;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
-  transition: all 0.6s;
+  transition: all 0.2s;
 }
 .buttonSecondary:hover {
   background-color: var(--color-primary);
   color: #fff;
   cursor: pointer;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.disable:hover {
+  background-color: var(--color-primary) !important;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
 }

@@ -58,6 +58,17 @@ export const cartSlice = createSlice({
       state.subTotal = state.subTotal - action.payload.productTotal;
       state.totalPrice = state.subTotal;
     },
+    emptyCart(state) {
+      state.cartList = [];
+      state.subTotal = 0;
+      state.totalPrice = 0;
+    },
+
+    setCart(state, action) {
+      state.cartList = [...action.payload.cartList];
+      state.subTotal = +action.payload.subTotal;
+      state.totalPrice = +action.payload.totalPrice;
+    },
   },
 });
 

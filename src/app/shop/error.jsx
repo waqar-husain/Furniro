@@ -1,11 +1,10 @@
 "use client";
-import PageHeader from "@/src/components/pageHeader";
+import PageHeader from "@/src/components/partials/pageHeader/pageHeader";
 import Image from "next/image";
 import React from "react";
-import errorImg from "@/src/public/error.jpg";
+import errorImg from "@/public/error.jpg";
 
 export default function Error({ error }) {
-  console.log(error);
   return (
     <div>
       <PageHeader heading="Shop" to="shop" logo="true" />

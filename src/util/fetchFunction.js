@@ -3,7 +3,7 @@ const timeout = (s) => {
     const controller = AbortController();
     setTimeout(() => {
       controller.abort();
-      reject(new Error("Request timeout!"));
+      reject();
     }, s * 1000);
   });
 };
@@ -25,7 +25,6 @@ export default async function fetchReq(url, pOption) {
     const res = await Promise.race([fetchReq, timeout(10)]);
 
     const data = await res.json();
-    console.log(data);
 
     const error = new Error(res.statusText);
     error.stausCode = res.status;
@@ -34,6 +33,6 @@ export default async function fetchReq(url, pOption) {
 
     return data;
   } catch (err) {
-    throw err;
+    console.log(err);
   }
 }

@@ -1,0 +1,41 @@
+.slider-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.slider {
+  position: relative;
+  /* width: 89.5rem; */
+  width: 100%;
+  height: 58.5rem;
+  overflow: hidden;
+}
+
+.slider-item {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2.4rem;
+  list-style: none;
+  transition: all 0.2s;
+}
+
+.slideToBtn {
+  display: flex;
+  position: absolute;
+  bottom: 2.9rem;
+  left: 43.2rem;
+  gap: 1.2rem;
+}
+
+@media screen and (max-width: 400px) {
+  .slideToBtn {
+    display: none;
+  }
+}

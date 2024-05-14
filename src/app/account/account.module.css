@@ -1,0 +1,18 @@
+.formLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem;
+}
+
+@media screen and (max-width: 600px) {
+  .formLayout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btnIcon {
+    display: none;
+  }
+}

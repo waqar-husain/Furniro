@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./checkout.module.css";
 
-import PageHeader from "@/src/components/pageHeader";
-import CheckOutForm from "@/src/components/checkOutForm";
+import PageHeader from "@/src/components/partials/pageHeader/pageHeader";
+import CheckOutForm from "@/src/components/checkout/checkOutForm";
 
 export default function Checkout() {
   return (

@@ -2,29 +2,39 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, useSearchParams } from "next/navigation";
+import { notFound, redirect, useSearchParams } from "next/navigation";
 
 import style from "./login.module.css";
 
-import PageHeader from "@/src/components/pageHeader";
-import InputComp from "@/src/components/inputComp";
+import PageHeader from "@/src/components/partials/pageHeader/pageHeader";
+import InputComp from "@/src/components/partials/input/inputComp";
 import ButtonPrimary from "@/src/components/buttons/buttonPrimary";
 import { signIn, signUp } from "@/src/util/user/isAuth";
 
 import loader from "@/src/components/icon/loader.svg";
 import { useSelector } from "react-redux";
+import { useRouter } from "nextjs-progressloader";
 
-export default function UserLogin() {
+export default function UserLogin({ searchParams }) {
+  const { user: isUser } = useSelector((state) => state.user);
+  const isUserLoggedIn = Boolean(isUser);
+  if (isUserLoggedIn) redirect("/account");
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
   const [userNameVal, setUserName] = useState({ value: "", isValid: false });
   const [emailVal, setEmail] = useState({ value: "", isValid: false });
   const [passwordVal, setPassword] = useState({ value: "", isValid: false });
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
   const params = useSearchParams();
-  const { user: isUser } = useSelector((state) => state.user);
+  const router = useRouter();
 
-  const isUserLoggedIn = Boolean(isUser);
-  if (isUserLoggedIn) redirect("/account");
+  const val1 = params.get("mode") === "login";
+  const val2 = params.get("mode") === "signup";
+  if (val1 || val2) {
+  } else {
+    notFound();
+  }
 
   const isLogin = params.get("mode") === "login";
 
@@ -57,17 +67,19 @@ export default function UserLogin() {
           email: emailVal.value,
           password: passwordVal.value,
         });
+        router.push("home");
       } else {
         await signUp({
           email: emailVal.value,
           password: passwordVal.value,
           username: userNameVal.value,
         });
+        router.push("home");
       }
     } catch (error) {
       const errorMessage =
-        error.code.slice(5).charAt(0).toUpperCase() +
-        error.code.slice(6).replaceAll("-", " ");
+        error.code?.slice(5).charAt(0).toUpperCase() +
+        error.code?.slice(6).replaceAll("-", " ");
       setHasError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -136,6 +148,7 @@ export default function UserLogin() {
             >
               {!isLogin && (
                 <InputComp
+                  inputStyle={{ paddingLeft: "2rem", fontSize: "1.8rem" }}
                   id="username"
                   label="Username"
                   isRequired={true}
@@ -147,7 +160,9 @@ export default function UserLogin() {
                 />
               )}
               <InputComp
+                inputStyle={{ paddingLeft: "2rem", fontSize: "1.8rem" }}
                 id="emailAddress"
+                placeholderText="abc@def.com"
                 label="Email"
                 isRequired={true}
                 type="email"
@@ -163,13 +178,17 @@ export default function UserLogin() {
                 label="Password"
                 type="password"
                 isRequired={true}
-                inputStyle={{ paddingRight: "5rem" }}
+                inputStyle={{
+                  paddingRight: "5rem",
+                  paddingLeft: "2rem",
+                  fontSize: "1.8rem",
+                }}
                 checkValidity={(val) => {
                   return val.trim() !== "" && /^[a-zA-Z]{6,12}$/g.test(val);
                 }}
                 getVal={getPasswordVal}
                 isLogin={isLogin}
-                invalidText="Password should be less than 12 character!"
+                invalidText="Password should be atleast 12 character!"
               />
               {isLogin && (
                 <Link
@@ -209,7 +228,11 @@ export default function UserLogin() {
                     position: "absolute",
                   }}
                 >
-                  <Image src={loader} width="120" height="120" alt="image" />
+                  <Image
+                    src={loader}
+                    style={{ width: "12rem", height: "12rem" }}
+                    alt="image"
+                  />
                 </div>
               )}
             </form>

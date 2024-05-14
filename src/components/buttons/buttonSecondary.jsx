@@ -13,6 +13,7 @@ export default function ButtonSecondary(props) {
   };
   return (
     <button
+      id={props.id ? props.id : ""}
       className={style.button}
       style={props?.styleObj}
       onClick={(props.url || props.func) && clickHandler}

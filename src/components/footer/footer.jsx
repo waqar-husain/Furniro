@@ -10,7 +10,11 @@ export default function FooterComp() {
       <div className={style.footerInnerContainer}>
         <div className={style.innerMain}>
           <div className={style.innerMainAbout}>
-            <Image src={logo} alt="Logo" />
+            <Image
+              src={logo}
+              alt="Logo"
+              style={{ width: "7.7rem", height: "2.1rem" }}
+            />
             <div className={style.innerMainAddress}>
               400 University Drive Suite 200 Coral {"\n"}Gables,{"\n"}FL33134
             </div>
@@ -40,7 +44,7 @@ export default function FooterComp() {
               </li>
             </ul>
           </div>
-          <div className={style.innerMainHelp}>
+          <div className={style.innerMainLink}>
             <h4 className={style.footerHead}>Help</h4>
             <ul className={style.innerMainUl}>
               <li>

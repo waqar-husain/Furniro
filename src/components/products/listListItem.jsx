@@ -3,12 +3,10 @@ import React from "react";
 import style from "./listListItem.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import LikeNewButton from "../buttons/likeNewButton";
-import CartButton from "../buttons/cartButton";
-import StarContainer from "../starContainer";
+import StarContainer from "../partials/starContainer/starContainer";
 
-import notFound from "@/src/public/notFound.png";
-import { CartModel, WishlistModel } from "@/src/util/model";
+import notFound from "@/public/notFound.png";
+import { formatNum } from "@/src/util/numerFormat";
 
 export default function ListItem({
   product,
@@ -17,7 +15,6 @@ export default function ListItem({
   inCart,
   inWishlist,
 }) {
-  console.log(product);
   return (
     <Link
       href="/shop/product/pid=09889"
@@ -36,7 +33,7 @@ export default function ListItem({
           className={style.listItemImg}
           loading="lazy"
           style={{
-            objectFit: "contain",
+            objectFit: "cover",
             mixBlendMode: "multiply",
           }}
         />
@@ -53,7 +50,9 @@ export default function ListItem({
         )}
 
         <p className={style.itemPrice}>
-          {product?.product_price || "Currnetly not available!"}
+          {product?.product_price
+            ? formatNum(product.product_price)
+            : "Currnetly not available!"}
           {product.product_original_price && (
             <span
               style={{
@@ -64,16 +63,13 @@ export default function ListItem({
                 textDecoration: "line-through",
               }}
             >
-              {product.product_original_price}
+              {formatNum(product.product_original_price)}
             </span>
           )}
         </p>
 
         {product.delivery && !utilButton && (
-          <p className={style.itemDesc}>
-            {product?.delivery ||
-              "FREE delivery Sun, Feb 4 on $35 of items shipped by AmazonOr fastest delivery Wed, Jan 31"}
-          </p>
+          <p className={style.itemDesc}>{product?.delivery}</p>
         )}
       </div>
     </Link>

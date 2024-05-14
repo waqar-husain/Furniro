@@ -9,16 +9,21 @@ import { motion } from "framer-motion";
 import style from "./searchBar.module.css";
 
 import Logo from "../icon/Frame 168.svg";
-import NavContainer from "./navContainer";
+import NavContainer from "./NavContainer";
 
-import crossIco from "../icon/cross.svg";
-import SearchIco from "../icon/search.jsx";
+import CrossIco from "../icon/Cross.jsx";
+import SearchIco from "../icon/Search.jsx";
 
-import ResultCont from "./resultCont";
+import ResultCont from "./ResultCont";
 import fetchReq from "@/src/util/fetchFunction";
 import { useRouter, ContainerLink } from "nextjs-progressloader";
+import Modalbg from "../partials/modal/ModalBg";
 
 export const links = [
+  {
+    href: "/",
+    nickname: "home",
+  },
   {
     href: "/shop",
     nickname: "search",
@@ -26,6 +31,18 @@ export const links = [
   {
     href: "/shop/best-sellers",
     nickname: "categories",
+  },
+  {
+    href: "/cart",
+    nickname: "cart",
+  },
+  {
+    href: "/wishlist",
+    nickname: "wishlist",
+  },
+  {
+    href: "/account/login",
+    nickname: "login",
   },
 ];
 
@@ -44,38 +61,18 @@ const SearchBarOpened = (props) => {
     try {
       setIsLoading(true);
       timer = setTimeout(async () => {
-        // const { data } = await fetchReq(
-        //   `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}search?query=${query}&page=1&country=IN&category_id=furniture'`
-        // );
-
-        // setData({
-        //   products: data.products.slice(0, 4),
-        //   totalProducts: data.total_products,
-        // });
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
-        const options = {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDlhYzNjZjE2MTgyMWUwZDcwZmI0MmEwNGFjOTA2MSIsInN1YiI6IjY0ODBkMDI5ZTM3NWMwMDBmZjQ2YTg1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrwZiUwscCFf_t4PxsPHBpJrrl4x5C4FUKFj_agZnQU`,
-          },
-        };
-        const data = await fetchReq(
-          `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
-          options
+        const { data } = await fetchReq(
+          `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}search?query=${query}&page=1&country=IN&category_id=furniture'`
         );
-        console.log(data);
-        setIsLoading(false);
 
         setData({
-          products: data.results.slice(0, 4),
-          totalProducts: data.total_results,
+          products: data.products.slice(0, 4),
+          totalProducts: data.total_products,
         });
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        setIsLoading(false);
       }, 500);
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
     }
     return () => {
       clearTimeout(timer);
@@ -83,11 +80,8 @@ const SearchBarOpened = (props) => {
   }, [query]);
 
   return (
-    <div
-      className={style.searchBackdrop}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) props.closeSearchBar();
-      }}
+    <Modalbg
+      closeModal={(e) => e.target === e.currentTarget && props.closeSearchBar()}
     >
       <motion.div
         className={style.searchbarTop}
@@ -97,13 +91,22 @@ const SearchBarOpened = (props) => {
       >
         <NavContainer>
           <Link
+            className={style.logo}
             href="/"
             style={{ alignSelf: "baseline" }}
             onClick={(e) => props.closeSearchBar()}
           >
-            <Image src={Logo} width="185" height="41" alt="Logo" priority />
+            <Image
+              src={Logo}
+              width="auto"
+              height="auto"
+              style={{ width: "18.5rem", height: "4rem" }}
+              alt="Logo"
+              priority
+            />
           </Link>
           <div
+            className={style.searchPanel}
             style={{
               flex: "75% 0 1",
               display: "flex",
@@ -126,7 +129,6 @@ const SearchBarOpened = (props) => {
                       { key: "page", value: "1" },
                     ],
                   });
-                  // router.push(`/shop?search=${query}&sort_by=RELEVANCE&page=1`);
                 }}
               >
                 <div style={{ position: "relative" }}>
@@ -166,12 +168,12 @@ const SearchBarOpened = (props) => {
               onClick={props.closeSearchBar}
               onKeyDown={props.keyDown}
             >
-              <Image src={crossIco} alt="cross" />
+              <CrossIco />
             </button>
           </div>
         </NavContainer>
       </motion.div>
-    </div>
+    </Modalbg>
   );
 };
 
@@ -204,7 +206,7 @@ export default function SearchBar() {
     <>
       <ContainerLink links={links} />
       <div
-        style={{ height: "25px", cursor: "pointer" }}
+        style={{ height: "2.5rem", cursor: "pointer" }}
         onClick={searchBarHandler}
       >
         <SearchIco />
@@ -214,7 +216,6 @@ export default function SearchBar() {
           <SearchBarOpened
             closeSearchBar={searchBarHandler}
             keyDown={(e) => {
-              console.log(e.key);
               if (e.key === "esc") setOpenSearchBar(false);
             }}
           />,

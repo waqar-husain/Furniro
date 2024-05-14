@@ -1,0 +1,6 @@
+.link {
+  font-weight: 500;
+}
+.link:hover {
+  text-decoration: underline !important ;
+}

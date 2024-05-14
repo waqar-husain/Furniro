@@ -1,5 +1,5 @@
 import React from "react";
-import SearchedItem from "./searchedItem";
+import SearchedItem from "./SearchedItem";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import loader from "@/src/components/icon/loader.svg";

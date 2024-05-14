@@ -1,11 +1,12 @@
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "@/src/config/firebase.js";
+import { db } from "@/src/config/firebase.js";
+import { setDoc, doc } from "firebase/firestore";
 
 export const isAuth = () => {
   const isAuth = localStorage.getItem("user");
@@ -23,6 +24,42 @@ export const signUp = async (userCred) => {
       auth,
       userCred.email,
       userCred.password
+    );
+
+    await setDoc(
+      doc(db, "users", res.user.uid, "userDetails", `user-${res.user.uid}`),
+      {
+        userDetails: {
+          firstName: userCred.username,
+          lastName: "",
+          companyName: "",
+          country: "",
+          province: "",
+          streetAddress: "",
+          city: "",
+          zipCode: "",
+          phone: "",
+          emailAddress: userCred.email,
+        },
+      }
+    );
+
+    await setDoc(
+      doc(db, "users", res.user.uid, "cart", `cart-${res.user.uid}`),
+      {
+        cart: {
+          cartList: [],
+          subTotal: 0,
+          totalPrice: 0,
+        },
+      }
+    );
+
+    await setDoc(
+      doc(db, "users", res.user.uid, "wishlist", `wishlist-${res.user.uid}`),
+      {
+        wishlist: [],
+      }
     );
 
     await updateProfile(res.user, { displayName: userCred.username });

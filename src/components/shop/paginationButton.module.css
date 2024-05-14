@@ -39,3 +39,26 @@
 .nextButton:hover {
   background-color: #e7ded2;
 }
+
+.overflowButton {
+  color: var(--color-grey1);
+}
+
+@media screen and (max-width: 600px) {
+  .paginationButton {
+    display: none;
+  }
+
+  .paginationContainer {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nextButton {
+    margin-left: auto;
+  }
+
+  .overflowButton {
+    display: none;
+  }
+}

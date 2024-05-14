@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import notFoundImage from "@/src/public/404Image.png";
+import notFoundImage from "@/public/404Image.png";
 import ButtonPrimary from "../components/buttons/buttonPrimary";
 
 export default function NotFound() {
@@ -16,6 +16,8 @@ export default function NotFound() {
         <div
           style={{
             paddingBottom: "10rem",
+            paddingLeft: "3rem",
+            paddingRight: "3rem",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -25,7 +27,8 @@ export default function NotFound() {
             src={notFoundImage}
             alt="not-found"
             style={{
-              width: "79.2rem",
+              maxWidth: "79.2rem",
+              width: "100%",
               height: "52rem",
             }}
           />

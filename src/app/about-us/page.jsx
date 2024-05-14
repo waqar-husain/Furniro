@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import aboutUsImg from "@/src/public/about.jpg";
+import aboutUsImg from "@/public/about 2.png";
 
-import PageHeader from "../../components/pageHeader";
-import BottomBanner from "../../components/bottomBanner";
+import PageHeader from "../../components/partials/pageHeader/pageHeader";
+import BottomBanner from "../../components/partials/bottomBanner/bottomBanner";
 
 export default function About() {
   return (
@@ -26,6 +26,7 @@ export default function About() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              padding: "0px 2rem",
             }}
           >
             <div
@@ -35,7 +36,23 @@ export default function About() {
                 alignItems: "center",
               }}
             >
-              <Image src={aboutUsImg} alt="aboutUs image" />
+              <div
+                style={{
+                  maxWidth: "57rem",
+                  width: "100%",
+                  maxHeight: "40.9rem",
+                }}
+              >
+                <Image
+                  src={aboutUsImg}
+                  alt="aboutUs image"
+                  style={{
+                    filter: "drop-shadow(0px 1px 3px rgba(0,0,0,0.3))",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </div>
               <div
                 style={{
                   display: "flex",
@@ -53,7 +70,7 @@ export default function About() {
                     lineHeight: "1.6",
                   }}
                 >
-                  Know About Our Ecommerce Buisness, History
+                  Know About Our Ecommerce Buisness
                 </h2>
                 <p style={{ color: "var(--color-grey3)" }}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.

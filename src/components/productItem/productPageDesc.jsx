@@ -50,7 +50,7 @@ export default function ProductPageDesc({ productDesc }) {
           }}
           style={{ color: `${review ? "#000" : "#9f9f9f"}`, cursor: "pointer" }}
         >
-          Review[{productDesc.product_num_ratings}]
+          Review[{productDesc.product_num_ratings ?? "0"}]
         </div>
       </div>
       <div
@@ -67,6 +67,7 @@ export default function ProductPageDesc({ productDesc }) {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              width: "100%",
             }}
           >
             <div style={{ maxWidth: "1000px", width: "100%" }}>
@@ -77,22 +78,28 @@ export default function ProductPageDesc({ productDesc }) {
                   display: "flex",
                   flexDirection: "column",
                   rowGap: "1rem",
+                  listStylePosition: "inside",
                 }}
               >
                 {productDesc.about_product.map((el, i) => (
-                  <li>{el.replaceAll("<br>", "")}</li>
+                  <li key={i}>{el.replaceAll("<br>", "")}</li>
                 ))}
               </ul>
             </div>
             {productDesc.product_photos.length > 1 && (
               <div
-                style={{ marginTop: "3.6rem", display: "flex", gap: "3rem" }}
+                style={{
+                  marginTop: "3.6rem",
+                  display: "flex",
+                  gap: "3rem",
+                  width: "100%",
+                }}
               >
                 {productDesc.product_photos.slice(-2).map((el, i) => (
                   <div
+                    key={i}
                     style={{
-                      maxHeight: "348px",
-                      maxWidth: "605px",
+                      maxHeight: "34.8rem",
                       width: "100%",
                       height: "100%",
                       overflow: "hidden",
@@ -103,10 +110,12 @@ export default function ProductPageDesc({ productDesc }) {
                     <Image
                       key={i}
                       src={el}
-                      width={605}
-                      height={348}
+                      width={1}
+                      height={1}
                       unoptimized
                       style={{
+                        width: "100%",
+                        height: "34.8rem",
                         objectFit: "contain",
                         mixBlendMode: "multiply",
                       }}

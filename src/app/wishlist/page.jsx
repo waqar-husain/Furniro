@@ -1,10 +1,9 @@
 import React from "react";
 import style from "./wishlist.module.css";
 
-import PageHeader from "../../components/pageHeader";
-import BottomBanner from "../../components/bottomBanner";
-import NoItem from "../../components/noItem";
-import WishlistItems from "../../components/wishlistItems";
+import PageHeader from "../../components/partials/pageHeader/pageHeader";
+import BottomBanner from "../../components/partials/bottomBanner/bottomBanner";
+import WishlistItems from "../../components/wishlist/wishlistItems";
 
 export default function Wishlist() {
   return (

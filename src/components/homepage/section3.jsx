@@ -1,8 +1,7 @@
 import React from "react";
 import style from "./section3.module.css";
 import Link from "next/link";
-import Slider from "../slider";
-import SliderSec from "../slider";
+import SliderSec from "../partials/slider/slider";
 
 export default function Section3() {
   return (

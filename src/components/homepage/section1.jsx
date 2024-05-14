@@ -6,9 +6,9 @@ import Image from "next/image";
 import style from "./section1.module.css";
 
 //Image
-import image1 from "../../public/image 106.jpg";
-import image2 from "../../public/image 100.jpg";
-import image3 from "../../public/image 101.jpg";
+import image1 from "@/public/image 106.jpg";
+import image2 from "@/public/image 100.jpg";
+import image3 from "@/public/image 101.jpg";
 
 export default function Section1() {
   return (
@@ -21,7 +21,10 @@ export default function Section1() {
           </p>
         </div>
         <div className={style.sectionMain}>
-          <Link href="/shop?search=dining&page=1" className={style.linkMain}>
+          <Link
+            href="/shop?search=dining&&sort_by=RELEVANCE&&page=1"
+            className={style.linkMain}
+          >
             <div className={style.linkBox}>
               <div className={style.linkBoxImage}>
                 <Image
@@ -30,12 +33,16 @@ export default function Section1() {
                   className={style.linkImage}
                   placeholder="blur"
                   loading="lazy"
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <h4 className={style.linkBoxHeading}>Dining</h4>
             </div>
           </Link>
-          <Link href="/shop?search=living&page=1" className={style.linkMain}>
+          <Link
+            href="/shop?search=living&&sort_by=RELEVANCE&&page=1"
+            className={style.linkMain}
+          >
             <div className={style.linkBox}>
               <div className={style.linkBoxImage}>
                 <Image
@@ -44,12 +51,16 @@ export default function Section1() {
                   className={style.linkImage}
                   placeholder="blur"
                   loading="lazy"
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <h4 className={style.linkBoxHeading}>Living</h4>
             </div>
           </Link>
-          <Link href="/shop?search=bedroom&page=1" className={style.linkMain}>
+          <Link
+            href="/shop?search=bedroom&&sort_by=RELEVANCE&&page=1"
+            className={style.linkMain}
+          >
             <div className={style.linkBox}>
               <div className={style.linkBoxImage}>
                 <Image
@@ -58,6 +69,7 @@ export default function Section1() {
                   className={style.linkImage}
                   placeholder="blur"
                   loading="lazy"
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <h4 className={style.linkBoxHeading}>Bedroom</h4>

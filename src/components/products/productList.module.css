@@ -9,8 +9,19 @@
   gap: 3.2rem 3.2rem;
   flex: 0 1 auto; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28.5rem, 1fr));
+  grid-template-columns: repeat(4, minmax(28.5rem, 1fr));
   grid-gap: 3.2rem 3.2rem;
+}
+
+@media screen and (max-width: 780px) {
+  .listGridContainer {
+    grid-template-columns: repeat(3, minmax(24.5rem, 1fr));
+  }
+}
+@media screen and (max-width: 580px) {
+  .listGridContainer {
+    grid-template-columns: repeat(2, minmax(24.5rem, 1fr));
+  }
 }
 
 .listContainer {

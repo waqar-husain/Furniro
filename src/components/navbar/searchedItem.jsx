@@ -4,8 +4,9 @@ import React from "react";
 
 import style from "./searchBar.module.css";
 
-import notFound from "@/src/public/notFound.png";
+import notFound from "@/public/notFound.png";
 import { motion } from "framer-motion";
+import { formatNum } from "@/src/util/numerFormat";
 
 export default function SearchedItem({ data, closeSearchBar }) {
   return (
@@ -75,7 +76,9 @@ export default function SearchedItem({ data, closeSearchBar }) {
                 color: "var(--color-grey1)",
               }}
             >
-              {data.product_price || "Not available!"}
+              {data.product_price
+                ? formatNum(data.product_price)
+                : "Not available!"}
               {data.product_original_price && (
                 <span
                   style={{
@@ -85,7 +88,7 @@ export default function SearchedItem({ data, closeSearchBar }) {
                     textDecoration: "line-through",
                   }}
                 >
-                  {data.product_original_price}
+                  {formatNum(data.product_original_price)}
                 </span>
               )}
             </p>

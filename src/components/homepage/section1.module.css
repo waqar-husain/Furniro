@@ -39,9 +39,17 @@
   gap: 0rem min(2rem);
 }
 
+@media screen and (max-width: 733px) {
+  .sectionMain {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
+
 .linkMain {
   text-decoration: none;
   transition: all 0.8s;
+  margin: auto;
 }
 .linkMain:hover .linkImage {
   filter: contrast(1.1);

@@ -22,7 +22,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 240px;
+  max-width: 24rem;
+  color: black;
 }
 
 .cartIco {
@@ -44,4 +45,39 @@
   color: #fff;
   padding: 0.2rem;
   cursor: pointer;
+}
+
+.menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .linkContainer {
+    max-width: 35rem;
+  }
+
+  .uiContainer {
+    max-width: 16rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .linkContainer {
+    display: none;
+  }
+
+  .wishlistBtn {
+    display: none;
+  }
+
+  .menuContainer {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .menu {
+    height: 23px;
+    display: initial;
+  }
 }

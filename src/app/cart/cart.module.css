@@ -43,7 +43,6 @@
 .productImageCont {
   border-radius: 1.2rem;
   max-width: 108px;
-  height: 105px;
   width: 100%;
   background-color: rgba(184, 142, 47, 0.3);
   display: flex;
@@ -59,7 +58,6 @@
   background-color: #f9f1e7;
   padding: 1.5rem 7.5rem 7.5rem 8.9rem;
   max-width: 400px;
-  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -90,4 +88,14 @@
 .priceTotal {
   color: var(--color-primary);
   font-size: 2rem;
+}
+
+@media screen and (max-width: 700px) {
+  .cartInner {
+    flex-direction: column;
+  }
+  .cartTotal {
+    width: 100%;
+    align-self: center;
+  }
 }

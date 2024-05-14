@@ -12,6 +12,13 @@
   width: 100%;
   height: 31.9rem;
 }
+
+@media screen and (max-width: 800px) {
+  .listItemMain {
+    height: 24.9rem;
+  }
+}
+
 .listItemMain:hover {
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.15);
 }

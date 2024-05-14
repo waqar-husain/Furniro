@@ -1,6 +1,7 @@
 .listItemMain {
   display: block;
   position: relative;
+  min-width: 24.5rem;
   width: 28.5rem;
   height: 44.6rem;
   overflow: hidden;
@@ -9,9 +10,18 @@
   justify-self: center;
   text-decoration: none;
 }
+
+.mainItem {
+  display: flex;
+  justify-content: center;
+  min-width: 24.5rem;
+}
+
 .listItem {
   display: inline-block;
   position: relative;
+  min-width: 24.5rem;
+
   width: 28.5rem;
   height: 44.6rem;
   border-radius: 3px;
@@ -95,6 +105,8 @@
 }
 
 .listItemImage {
+  min-width: 24.5rem;
+
   width: 28.5rem;
   height: 30.1rem;
   overflow: hidden;

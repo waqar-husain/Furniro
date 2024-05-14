@@ -4,11 +4,10 @@ import Head from "next/head";
 import "../config/firebase.js";
 
 //COMPONENTS
-import Navbar from "../components/navbar/navbar";
+import Navbar from "../components/navbar/Navbar";
 import FooterComp from "../components/footer/footer";
 import StoreProvider from "../store/storeProvider";
-import LoaderTop from "../components/loaderTop";
-import { useDispatch } from "react-redux";
+import LoaderTop from "../components/partials/loaderTop/loaderTop";
 import UserAuth from "../components/userAuth";
 
 const poppins = Poppins({
@@ -37,6 +36,7 @@ export default function RootLayout({ children }) {
           <UserAuth />
           <LoaderTop />
           <div id="searchbar"></div>
+          <div id="sidenav"></div>
           <Navbar />
           {children}
           <FooterComp />

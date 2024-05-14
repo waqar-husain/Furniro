@@ -3,8 +3,8 @@ import React from "react";
 export default function SearchIco(props) {
   return (
     <svg
-      width="25"
-      height="25"
+      width="2.5rem"
+      height="2.5rem"
       viewBox="0 0 25 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

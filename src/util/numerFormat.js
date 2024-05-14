@@ -1,7 +1,12 @@
 export const formatNum = (num) => {
-  const formatToINR = new Intl.NumberFormat("en-IN", {
+  const number =
+    typeof num === "string"
+      ? Number(num.replaceAll("₹", "").replaceAll(",", ""))
+      : num;
+
+  const formatToUSD = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "INR",
+    currency: "USD",
   });
-  return formatToINR.format(num);
+  return formatToUSD.format(number * 0.012);
 };

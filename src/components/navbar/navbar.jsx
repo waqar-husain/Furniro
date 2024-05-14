@@ -4,15 +4,16 @@ import Image from "next/image";
 import Logo from "../icon/Frame 168.svg";
 import Link from "next/link";
 import style from "./navbar.module.css";
-import SearchBar from "./searchBar";
-import userNot from "../icon/userNotLogin.svg";
-import Wishlist from "../icon/wishlist";
-import CartIcon from "../icon/cart";
-import NavLink from "../navLink";
-import NavContainer from "./navContainer";
+import SearchBar from "./SearchBar";
+import UserNot from "../icon/UserNotLogin.jsx";
+import Wishlist from "../icon/Wishlist";
+import CartIcon from "../icon/Cart";
+import NavLink from "./NavLink";
+import NavContainer from "./NavContainer";
 import { useSelector } from "react-redux";
-import user from "../icon/user.svg";
-import loader2 from "../icon/loader2.svg";
+import User from "../icon/User.jsx";
+import Loader2 from "../icon/Loader2.jsx";
+import SideNav from "./SideNav";
 
 export default function Navbar() {
   const { length: cartLength } = useSelector((state) => state.cart.cartList);
@@ -36,44 +37,54 @@ export default function Navbar() {
   return (
     <nav className={style.nav}>
       <NavContainer>
-        <Link href="/">
-          <Image src={Logo} width="185" height="41" alt="Logo" priority />
-        </Link>
+        <div className={style.menuContainer}>
+          <div className={style.menu}>
+            <SideNav />
+          </div>
+          <Link href="/">
+            <Image
+              src={Logo}
+              width="auto"
+              height="auto"
+              style={{
+                width: "18.5rem",
+                height: "4.1rem",
+              }}
+              alt="Logo"
+              priority
+            />
+          </Link>
+        </div>
         <div className={style.linkContainer}>
           {navLinks.map((el) => (
             <NavLink key={el.href} link={el} />
           ))}
         </div>
         <div className={style.uiContainer}>
-          <abbr title="Account" style={{ height: "25px" }}>
+          <abbr title="Account" style={{ height: "2.5rem" }}>
             {!isLoading ? (
+              // ! this should be above
               <Link //isUserLoggedIn
                 href={isUser ? "/account" : "/account/login?mode=login"}
+                style={{ color: "black" }}
               >
-                {
-                  <Image
-                    src={isUser ? user : userNot}
-                    height="25"
-                    width="29"
-                    alt="User"
-                  />
-                }
+                {isUser ? <User /> : <UserNot />}
               </Link>
             ) : (
-              <Image src={loader2} alt="loader" />
+              <Loader2 />
             )}
           </abbr>
           <abbr title="Search">
             <SearchBar />
           </abbr>
-          <abbr title="Wishlist">
-            <Link href="/wishlist">
+          <abbr title="Wishlist" className={style.wishlistBtn}>
+            <Link href="/wishlist" style={{ color: "black" }}>
               <Wishlist />
             </Link>
           </abbr>
           <abbr
             title="Cart"
-            style={{ height: "25px", marginTop: "-0.3rem" }}
+            style={{ height: "2.5rem", marginTop: "-0.3rem" }}
             className={`${cartLength === 0 ? "" : style.cartIco}`}
             data-item={cartLength}
           >

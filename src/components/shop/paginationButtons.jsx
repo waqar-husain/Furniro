@@ -104,7 +104,7 @@ export default function PaginationButtons(props) {
                 </Link>
               ))}
 
-              <div style={{ color: "var(--color-grey1)" }}>
+              <div className={style.overflowButton}>
                 &#x2022;&#x2022;&#x2022;
               </div>
 
@@ -139,7 +139,7 @@ export default function PaginationButtons(props) {
                 {1}
               </Link>
 
-              <div style={{ color: "var(--color-grey1)" }}>
+              <div className={style.overflowButton}>
                 &#x2022;&#x2022;&#x2022;
               </div>
 
@@ -159,7 +159,7 @@ export default function PaginationButtons(props) {
                 </Link>
               ))}
 
-              <div style={{ color: "var(--color-grey1)" }}>
+              <div className={style.overflowButton}>
                 &#x2022;&#x2022;&#x2022;
               </div>
 
@@ -193,9 +193,11 @@ export default function PaginationButtons(props) {
               >
                 {1}
               </Link>
-              <div style={{ color: "var(--color-grey1)" }}>
+
+              <div className={style.overflowButton}>
                 &#x2022;&#x2022;&#x2022;
               </div>
+
               {[button - 2, button - 1, button].map((el, i) => (
                 <Link
                   key={i}
@@ -210,7 +212,7 @@ export default function PaginationButtons(props) {
                 >
                   {el}
                 </Link>
-              ))}{" "}
+              ))}
             </>
           )}
 
@@ -221,11 +223,6 @@ export default function PaginationButtons(props) {
               href={url(+page < button ? pageNo + 1 : button)}
               onClick={nextButtonHandler}
               className={style.nextButton}
-              style={
-                {
-                  // visibility: pageNo < String(button) ? "visible" : "hidden",
-                }
-              }
             >
               Next
             </Link>

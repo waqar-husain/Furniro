@@ -10,159 +10,164 @@ import LikeNewButton from "../buttons/likeNewButton";
 import { useDispatch } from "react-redux";
 import { cartAction } from "@/src/store/slices/cartSlice";
 
-import notFound from "@/src/public/notFound.png";
+import notFound from "@/public/notFound.png";
 import { CartModel, WishlistModel } from "@/src/util/model";
 import { useRouter } from "nextjs-progressloader";
+import { formatNum } from "@/src/util/numerFormat";
 
 export default function ListGridItem({ product, inWishlist, inCart }) {
   const router = useRouter();
   const dispatch = useDispatch();
   return (
-    <div style={{ position: "relative" }} className={style.mainItem}>
-      <div className={style.gridButton}>
-        {product.product_price ? (
-          <ButtonPrimary
-            style="primary"
-            title={inCart ? "Go To Cart" : `Add to cart`}
-            func={() => {
-              if (!inCart) {
-                router.refresh();
-                dispatch(
-                  cartAction.incrementCart({
-                    ...new CartModel(
-                      product.asin,
-                      product.product_title,
-                      product.product_photo,
-                      1,
-                      +product.product_price.slice(1).replace(",", ""),
-                      +product.product_price.slice(1).replace(",", "")
-                    ),
-                  })
-                );
-              }
-            }}
-            url={inCart ? "/cart" : ""}
-            styleData={{
-              fontSize: "1.6rem",
-              lineHeight: "1.6",
-              padding: "12px  55px",
-              backgroundColor: "white",
-              color: "var(--color-primary)",
-              whiteSpace: "nowrap",
-            }}
-          />
-        ) : (
-          <p
-            style={{
-              color: "#fff",
-              fontWeight: "600",
-              fontSize: "2rem",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Currently not available
-          </p>
-        )}
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ position: "relative" }} className={style.mainItem}>
+        <div className={style.gridButton}>
+          {product.product_price ? (
+            <ButtonPrimary
+              style="primary"
+              title={inCart ? "Go To Cart" : `Add to cart`}
+              func={() => {
+                if (!inCart) {
+                  router.refresh();
+                  dispatch(
+                    cartAction.incrementCart({
+                      ...new CartModel(
+                        product.asin,
+                        product.product_title,
+                        product.product_photo,
+                        1,
+                        +product.product_price.slice(1).replace(",", ""),
+                        +product.product_price.slice(1).replace(",", "")
+                      ),
+                    })
+                  );
+                }
+              }}
+              url={inCart ? "cart" : ""}
+              styleData={{
+                fontSize: "1.6rem",
+                lineHeight: "1.6",
+                padding: "1.2rem  5.5rem",
+                backgroundColor: "white",
+                color: "var(--color-primary)",
+                whiteSpace: "nowrap",
+              }}
+            />
+          ) : (
+            <p
+              style={{
+                color: "#fff",
+                fontWeight: "600",
+                fontSize: "2rem",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Currently not available
+            </p>
+          )}
 
-        <div className={style.onHoverBottom}>
-          <ShareButton />
-          <LikeNewButton
-            title="Like"
-            liked={inWishlist}
-            item={{
-              ...new WishlistModel(
-                product.asin,
-                product.product_title,
-                product.product_photo,
-                product.product_price,
-                product.product_star_rating,
-                product.product_num_ratings
-              ),
-            }}
-          />
-        </div>
-      </div>
-      <Link
-        href={`/shop/product/pid=${product.asin || "54645"}`}
-        className={style.listItemMain}
-      >
-        <div className={style.listItem}>
-          <div className={style.listItemImage}>
-            <Image
-              unoptimized
-              src={product.product_photo || notFound}
-              alt="Product Image"
-              className={style.listItemImg}
-              width={3840}
-              height={2160}
-              loading="lazy"
-              style={{ objectFit: "cover" }}
+          <div className={style.onHoverBottom}>
+            <ShareButton />
+            <LikeNewButton
+              title="Like"
+              liked={inWishlist}
+              item={{
+                ...new WishlistModel(
+                  product.asin,
+                  product.product_title,
+                  product.product_photo,
+                  product.product_price,
+                  product.product_star_rating,
+                  product.product_num_ratings
+                ),
+              }}
             />
           </div>
-          <div className={style.aboutListItem}>
-            <h3 className={style.listItemName} style={{ lineHeight: "1.5" }}>
-              {product?.product_title || "Not available!"}
-            </h3>
-            {product.product_num_ratings && (
-              <div
-                style={{
-                  display: "flex",
-                  marginTop: "0.8rem",
-                  alignItems: "center",
-                  color: "var(--color-grey3)",
-                }}
-              >
+        </div>
+        <Link
+          href={`/shop/product/pid=${product.asin || "54645"}`}
+          className={style.listItemMain}
+        >
+          <div className={style.listItem}>
+            <div className={style.listItemImage}>
+              <Image
+                unoptimized
+                src={product.product_photo || notFound}
+                alt="Product Image"
+                className={style.listItemImg}
+                width={3840}
+                height={2160}
+                loading="lazy"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className={style.aboutListItem}>
+              <h3 className={style.listItemName} style={{ lineHeight: "1.5" }}>
+                {product?.product_title || "Not available!"}
+              </h3>
+              {product.product_num_ratings && (
                 <div
                   style={{
                     display: "flex",
-                    color: "#fff",
-                    backgroundColor: "var(--color-primary)",
-                    padding: "0.2rem",
-                    borderRadius: "4px",
-                    lineHeight: "1",
-                    fontSize: "1.5rem",
-                    paddingLeft: "0.4rem",
-                    paddingRight: "0.4rem",
-                  }}
-                >
-                  <p
-                    className="rate"
-                    style={{ marginRight: "0.6rem", marginTop: "0.2rem" }}
-                  >
-                    {product.product_star_rating || "4.5"}
-                  </p>
-                  <Image
-                    src={starWhite}
-                    style={{ width: "1.4rem", height: "auto" }}
-                    alt="star"
-                  />
-                </div>
-                <span style={{ marginLeft: "1rem", lineHeight: "1" }}>
-                  ({product.product_num_ratings})
-                </span>
-              </div>
-            )}
-
-            <p className={style.listItemPrice}>
-              {product?.product_price || "Not available!"}
-              {product.product_original_price && (
-                <span
-                  style={{
-                    fontSize: "1.6rem",
+                    marginTop: "0.8rem",
+                    alignItems: "center",
                     color: "var(--color-grey3)",
-                    fontWeight: "500",
-                    marginLeft: "1rem",
-                    textDecoration: "line-through",
                   }}
                 >
-                  {product.product_original_price}
-                </span>
+                  <div
+                    style={{
+                      display: "flex",
+                      color: "#fff",
+                      backgroundColor: "var(--color-primary)",
+                      padding: "0.2rem",
+                      borderRadius: "4px",
+                      lineHeight: "1",
+                      fontSize: "1.5rem",
+                      paddingLeft: "0.4rem",
+                      paddingRight: "0.4rem",
+                    }}
+                  >
+                    <p
+                      className="rate"
+                      style={{ marginRight: "0.6rem", marginTop: "0.2rem" }}
+                    >
+                      {product.product_star_rating || "4.5"}
+                    </p>
+                    <Image
+                      src={starWhite}
+                      style={{ width: "1.4rem", height: "auto" }}
+                      alt="star"
+                    />
+                  </div>
+                  <span style={{ marginLeft: "1rem", lineHeight: "1" }}>
+                    ({product.product_num_ratings})
+                  </span>
+                </div>
               )}
-            </p>
+
+              <p className={style.listItemPrice}>
+                {product.product_price
+                  ? formatNum(product.product_price)
+                  : "Not available!"}
+                {product.product_original_price && (
+                  <span
+                    style={{
+                      fontSize: "1.6rem",
+                      color: "var(--color-grey3)",
+                      fontWeight: "500",
+                      marginLeft: "1rem",
+                      textDecoration: "line-through",
+                    }}
+                  >
+                    {formatNum(product.product_original_price)}
+                  </span>
+                )}
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={style.onHover}></div>
-      </Link>
+          <div className={style.onHover}></div>
+        </Link>
+      </div>
     </div>
   );
 }

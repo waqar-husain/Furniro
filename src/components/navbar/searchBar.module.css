@@ -89,3 +89,17 @@
 .searchedItem:hover {
   background-color: rgba(210, 210, 210, 1) !important;
 }
+
+@media screen and (max-width: 540px) {
+  .logo {
+    display: none;
+  }
+
+  .searchPanel {
+    flex: 0 0 100% !important;
+  }
+
+  .searchCont {
+    flex: 0 0 85%;
+  }
+}

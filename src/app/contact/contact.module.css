@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px) {
+  .contactMain {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .contactTop {
+    width: 100% !important;
+  }
+
+  .contactForm {
+    width: 100% !important;
+  }
+}

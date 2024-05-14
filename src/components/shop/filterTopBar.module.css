@@ -24,11 +24,20 @@
   display: flex;
   align-items: center;
 }
+.barLeftButtonContainer {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .barLeftButtonContainer {
+    display: none;
+  }
+}
 
 .barLeftText {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-
   border-left: 2px solid var(--color-grey5);
   padding-left: 3.4rem;
 }
@@ -43,6 +52,11 @@
 .show {
   display: flex;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .show {
+    display: none;
+  }
 }
 
 .showText {

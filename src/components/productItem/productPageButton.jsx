@@ -10,8 +10,6 @@ import { CartModel, WishlistModel } from "@/src/util/model";
 
 export default function ProductPageButtons({ data }) {
   const [changeBtn, setChangeBtn] = useState(false);
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
   const cartItemsId = useSelector((state) => state.cart.cartList).map(
@@ -19,7 +17,7 @@ export default function ProductPageButtons({ data }) {
   );
 
   const wishlistItem = useSelector((state) => state.wishlist.wishlist)
-    .map((el) => el.id)
+    .map((el) => el.asin)
     .includes(data.asin); //id will get from props
 
   useEffect(() => {
@@ -28,8 +26,6 @@ export default function ProductPageButtons({ data }) {
       setChangeBtn(true);
     }
   }, []);
-
-  console.log(data);
 
   const productAddToCartHandler = (e) => {
     e.preventDefault();
@@ -45,8 +41,8 @@ export default function ProductPageButtons({ data }) {
           data.product_title,
           data.product_photo,
           1,
-          +data.product_price.slice(1).replace(",", ""),
-          +data.product_price.slice(1).replace(",", "")
+          +data.product_price.replace("₹", "").replace(",", ""),
+          +data.product_price.replace("₹", "").replace(",", "")
         ),
       })
     );
@@ -64,102 +60,6 @@ export default function ProductPageButtons({ data }) {
       }}
       onSubmit={productAddToCartHandler}
     >
-      {/* <div>
-      // {data && //SHOW SIZE BOX} 
-
-        <p>Size</p>
-        <div
-          style={{
-            marginTop: "1.2rem",
-            position: "relative",
-            display: "flex",
-            gap: "1.6rem",
-            fontSize: "1.3rem",
-            color: "#000",
-          }}
-        >
-        // radio button created on the basis of data recive with Value 
-          {["S", "M", "L"].map((e, i) => {
-            return (
-              <label key={i} style={{ display: "flex" }}>
-                <input
-                  className={style.input}
-                  defaultChecked={
-                    size === ""
-                      ? i === 0
-                        ? true
-                        : false
-                      : size === e
-                      ? true
-                      : false
-                  }
-                  type="radio"
-                  value={e}
-                  name="size"
-                  onChange={(e) => {
-                    setSize(e.target.value);
-                  }}
-                />
-                <div className={style.checkmark}>
-                  <p>{e}</p>
-                </div>
-              </label>
-            );
-          })}
-        </div>
-      </div> */}
-      {/* 
-      <div
-        className={style.productColor}
-        style={{ marginTop: "1.8rem", height: "6.3rem" }}
-      >
-        // data && SHOW COLOR BOX 
-        <p>Color</p>
-        <div
-          style={{
-            marginTop: "1.2rem",
-            position: "relative",
-            display: "flex",
-            gap: "1.6rem",
-            fontSize: "1.3rem",
-            color: "#000",
-          }}
-        >
-          {["#816DFA", "#000", "#B88E2F"].map((e, i) => {
-            return (
-              <label key={i} style={{ display: "flex" }}>
-                <input
-                  className={style.inputColor}
-                  defaultChecked={
-                    color === ""
-                      ? i === 0
-                        ? true
-                        : false
-                      : color === e
-                      ? true
-                      : false
-                  }
-                  type="radio"
-                  value={e}
-                  name="color"
-                  onChange={(e) => {
-                    setColor(e.target.value);
-                  }}
-                />
-                <div className={style.outerCir}>
-                  <div
-                    style={{
-                      backgroundColor: `${e}`,
-                    }}
-                    className={style.colorSelect}
-                  ></div>
-                </div>
-              </label>
-            );
-          })}
-        </div>
-      </div> */}
-
       <div
         style={{
           display: "flex",

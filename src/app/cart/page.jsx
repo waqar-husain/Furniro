@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./cart.module.css";
-import BottomBanner from "../../components/bottomBanner";
-import PageHeader from "../../components/pageHeader";
+import BottomBanner from "../../components/partials/bottomBanner/bottomBanner";
+import PageHeader from "../../components/partials/pageHeader/pageHeader";
 import MainCart from "../../components/cart/mainCart";
 
 export default function Cart() {

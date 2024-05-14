@@ -125,3 +125,15 @@
 .productDetail {
   display: flex;
 }
+
+@media screen and (max-width: 700px) {
+  .innerMain {
+    flex-direction: column;
+  }
+  .innerMainImages {
+    width: 100%;
+  }
+  .innerMainData {
+    width: 100% !important;
+  }
+}

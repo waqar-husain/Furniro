@@ -1,13 +1,15 @@
 import React from "react";
 
+import style from "./contact.module.css";
+
 import loc from "@/src/components/icon/loc.svg";
 import phone from "@/src/components/icon/phone.svg";
 import clock from "@/src/components/icon/clock.svg";
 
-import PageHeader from "../../components/pageHeader";
-import BottomBanner from "../../components/bottomBanner";
+import PageHeader from "../../components/partials/pageHeader/pageHeader";
+import BottomBanner from "../../components/partials/bottomBanner/bottomBanner";
 import Image from "next/image";
-import ContactForm from "../../components/contactForm";
+import ContactForm from "../../components/contact/contactForm";
 
 export default function Contact() {
   return (
@@ -57,6 +59,7 @@ export default function Contact() {
               </p>
             </div>
             <div
+              className={style.contactMain}
               style={{
                 padding: "12rem 5.2rem 6rem 5.2rem",
                 display: "flex",
@@ -64,6 +67,7 @@ export default function Contact() {
               }}
             >
               <div
+                className={style.contactTop}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -73,7 +77,11 @@ export default function Contact() {
               >
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <span style={{ marginRight: "2rem" }}>
-                    <Image src={loc} alt="location" />
+                    <Image
+                      src={loc}
+                      alt="location"
+                      style={{ width: "2.2rem", height: "2.8rem" }}
+                    />
                   </span>
                   <div>
                     <h3
@@ -96,7 +104,11 @@ export default function Contact() {
                   }}
                 >
                   <span style={{ marginRight: "2rem" }}>
-                    <Image src={phone} alt="phone" />
+                    <Image
+                      src={phone}
+                      alt="phone"
+                      style={{ width: "3rem", height: "3rem" }}
+                    />
                   </span>
                   <div>
                     <h3
@@ -119,7 +131,11 @@ export default function Contact() {
                   }}
                 >
                   <span style={{ marginRight: "2rem" }}>
-                    <Image src={clock} alt="clock" />
+                    <Image
+                      src={clock}
+                      alt="clock"
+                      style={{ width: "2.3rem", height: "2.3rem" }}
+                    />
                   </span>
                   <div>
                     <h3

@@ -4,8 +4,8 @@ export default function CartIcon(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="30"
+      width={props.size ? props.size : "3rem"}
+      height={props.size ? props.size : "3rem"}
       viewBox="0 0 512 512"
     >
       <circle
@@ -13,7 +13,7 @@ export default function CartIcon(props) {
         cy="416"
         r="16"
         fill="none"
-        stroke={props.nav ? "black" : "#3a3a3a"}
+        stroke={props.nav ? "black" : "currentColor"}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={props.nav ? "30" : "42"}
@@ -23,22 +23,22 @@ export default function CartIcon(props) {
         cy="416"
         r="16"
         fill="none"
-        stroke={props.nav ? "black" : "#3a3a3a"}
+        stroke={props.nav ? "black" : "currentColor"}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={props.nav ? "30" : "42"}
       />
       <path
         fill="none"
-        stroke={props.nav ? "black" : "#3a3a3a"}
+        stroke={props.nav ? "black" : "currentColor"}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={props.nav ? "30" : "42"}
         d="M48 80h64l48 272h256"
       />
       <path
-        fill={props.fill}
-        stroke={props.nav ? "black" : "#3a3a3a"}
+        fill="none"
+        stroke={props.nav ? "black" : "currentColor"}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={props.nav ? "30" : "42"}

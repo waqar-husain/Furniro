@@ -6,11 +6,10 @@ import Image from "next/image";
 
 import style from "@/src/app/cart/cart.module.css";
 
-import deleteIco from "../icon/delete.svg";
+import DeleteIco from "../icon/Delete.jsx";
 import InputNumberProduct from "../productItem/inputNumberProduct";
 import { useDispatch } from "react-redux";
 import { cartAction } from "@/src/store/slices/cartSlice";
-import furniture from "@/src/public/furniture.jpg";
 import { formatNum } from "@/src/util/numerFormat";
 
 export default function CartItem({ item }) {
@@ -71,7 +70,7 @@ export default function CartItem({ item }) {
               fontWeight: "500",
             }}
           >
-            {item.productName}
+            {item.productName.slice(0, 28)}
           </span>{" "}
           {/*DATA THROUGH REDUX */}
         </Link>
@@ -134,7 +133,7 @@ export default function CartItem({ item }) {
         >
           {" "}
           <abbr title="Remove item">
-            <Image alt="delete" src={deleteIco} />
+            <DeleteIco />
           </abbr>
         </button>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "./cartButton.module.css";
-import CartIcon from "../icon/cart";
+import CartIcon from "../icon/Cart";
 import { useDispatch } from "react-redux";
 import { cartAction } from "@/src/store/slices/cartSlice";
 
@@ -19,7 +19,6 @@ export default function CartButton(props) {
     if (!clicked) {
       dispatch(cartAction.incrementCart(props.item));
     } else {
-      console.log("hiITem");
       dispatch(cartAction.decrementCart(props.item));
     }
   };
