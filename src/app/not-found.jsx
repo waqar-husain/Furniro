@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import notFoundImage from "@/public/404Image.png";
+import notFoundImage from "@/public/404image.png";
 import ButtonPrimary from "../components/buttons/buttonPrimary";
 
 export default function NotFound() {
