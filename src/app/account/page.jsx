@@ -14,8 +14,8 @@ import ButtonPrimary from "@/src/components/buttons/buttonPrimary";
 import InputComp from "@/src/components/partials/input/inputComp";
 
 import userIco from "@/src/components/icon/user2.svg";
-import CartIcon from "@/src/components/icon/Cart";
-import Heart from "@/src/components/icon/Heart";
+import CartIcon from "@/src/components/icon/Cart.jsx";
+import Heart from "@/src/components/icon/Heart.jsx";
 import signOutIco from "@/src/components/icon/logout.svg";
 
 import { doc, getDoc, updateDoc } from "firebase/firestore";

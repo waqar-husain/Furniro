@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "./likeButton.module.css";
-import Heart from "../icon/Heart";
+import Heart from "../icon/Heart.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { wishlistAction } from "@/src/store/slices/wishlistSlice";
 import { useRouter } from "nextjs-progressloader";

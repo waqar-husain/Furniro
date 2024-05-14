@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import noItem from "@/public/noItem.jpg";
+import noItem from "@/public/noitem.jpg";
 
 export default function NoItem(props) {
   return (

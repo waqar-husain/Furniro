@@ -1,19 +1,16 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 
 import style from "./filterTopBar.module.css";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 import ChangeViewButton from "./changeViewButton";
-import BigRound from "../icon/BigRound";
+import BigRound from "../icon/BigRound.jsx";
 import List from "../icon/List";
 import SortItem from "./sortItem";
-import { shopAction } from "@/src/store/slices/filterProductSlice";
-import { type } from "os";
 
 export default function FilterTopBar(props) {
-  const dispatch = useDispatch();
   const totalNoOfResults =
     props.totalProducts &&
     Number(props.totalProducts.toString().replaceAll(",", ""));
