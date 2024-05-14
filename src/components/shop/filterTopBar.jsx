@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 import ChangeViewButton from "./changeViewButton";
 import BigRound from "../icon/BigRound.jsx";
-import List from "../icon/List";
+import List from "../icon/List.jsx";
 import SortItem from "./sortItem";
 
 export default function FilterTopBar(props) {
