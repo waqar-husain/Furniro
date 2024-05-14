@@ -10,10 +10,14 @@ import arrowRightSvg from "@/src/components/icon/arrowRight.svg";
 import ChevronRight from "../../icon/ChevronRight";
 import Link from "next/link";
 
+import img1 from "@/public/Rectangle 24.png";
+import img2 from "@/public/Rectangle 25.png";
+import img3 from "@/public/Rectangle 26.png";
+
 export default function SliderSec() {
   const carouselArray = [
     {
-      bgImg: "/Rectangle 24.jpg",
+      bgImg: img1,
       desc: {
         title: "Bed Room",
         tag: "Inner Peace",
@@ -21,7 +25,7 @@ export default function SliderSec() {
       },
     },
     {
-      bgImg: "/Rectangle 25.png",
+      bgImg: img2,
       desc: {
         title: "Kitchen",
         tag: "Kitchen Area",
@@ -29,7 +33,7 @@ export default function SliderSec() {
       },
     },
     {
-      bgImg: "/Rectangle 26.png",
+      bgImg: img3,
       desc: {
         title: "Living Room",
         tag: "Livin'it",
@@ -37,7 +41,7 @@ export default function SliderSec() {
       },
     },
     {
-      bgImg: "/Rectangle 24.jpg",
+      bgImg: img1,
       desc: {
         title: "Bed Room",
         tag: "Inner Peace",
@@ -45,7 +49,7 @@ export default function SliderSec() {
       },
     },
     {
-      bgImg: "/Rectangle 25.png",
+      bgImg: img2,
       desc: {
         title: "Kitchen",
         tag: "Kitchen Area",
@@ -73,74 +77,95 @@ export default function SliderSec() {
               style={{
                 width: `${396 * (i - curImg) === 0 ? "40.4rem" : "37.2rem"}`,
                 height: `${396 * (i - curImg) === 0 ? "58.2rem" : "48.6rem"}`,
-                backgroundImage: `url("${el.bgImg.slice(1)}")`,
                 transform: `translateX(${
                   396 * (i - curImg) === 396 ? 42.8 : 41.3 * (i - curImg)
                 }rem)`,
               }}
             >
-              {396 * (i - curImg) === 0 && (
-                <div
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "end",
+                }}
+              >
+                <Image
+                  src={el.bgImg}
+                  priority
+                  alt={`${el.bgImg + i}`}
                   style={{
-                    display: "flex",
-                    alignItems: "flex-end",
+                    position: "absolute",
+                    width: "100%",
+                    height: "auto",
+                    zIndex: "-19",
                   }}
-                >
+                />
+                {396 * (i - curImg) === 0 && (
                   <div
                     style={{
-                      backgroundColor: "rgba(255,255,255,0.75)",
-                      padding: "3.2rem 1.7rem  3.2rem 3.2rem",
-                    }}
-                  >
-                    <span
-                      style={{
-                        display: "flex",
-                        gap: "0.8rem",
-                        alignItems: "center",
-                        color: "#616161",
-                      }}
-                    >
-                      <p>0{i + 1}</p>
-                      <div>
-                        <span
-                          style={{
-                            height: "1px",
-                            backgroundColor: "#616161",
-                            width: "2.7rem",
-                            display: "block",
-                          }}
-                        ></span>
-                      </div>
-                      <p>{el.desc.title}</p>
-                    </span>
-                    <h1
-                      style={{
-                        marginTop: "0.8rem",
-                        fontSize: "2.8rem",
-                        fontWeight: "600",
-                        color: "#3a3a3a",
-                      }}
-                    >
-                      {el.desc.tag}
-                    </h1>
-                  </div>
-                  <Link
-                    href={el.desc.link}
-                    style={{
-                      backgroundColor: "var(--color-primary)",
-                      padding: "1.2rem",
+                      margin: "2.4rem",
                       display: "flex",
+                      alignItems: "flex-end",
                     }}
                   >
-                    <Image
-                      src={arrowRightSvg}
-                      alt="arrowRight"
-                      height="2.4rem"
-                      width="2.4rem"
-                    />
-                  </Link>
-                </div>
-              )}
+                    <div
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.75)",
+                        padding: "3.2rem 1.7rem  3.2rem 3.2rem",
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "flex",
+                          gap: "0.8rem",
+                          alignItems: "center",
+                          color: "#616161",
+                        }}
+                      >
+                        <p>0{i + 1}</p>
+                        <div>
+                          <span
+                            style={{
+                              height: "1px",
+                              backgroundColor: "#616161",
+                              width: "2.7rem",
+                              display: "block",
+                            }}
+                          ></span>
+                        </div>
+                        <p>{el.desc.title}</p>
+                      </span>
+                      <h1
+                        style={{
+                          marginTop: "0.8rem",
+                          fontSize: "2.8rem",
+                          fontWeight: "600",
+                          color: "#3a3a3a",
+                        }}
+                      >
+                        {el.desc.tag}
+                      </h1>
+                    </div>
+                    <Link
+                      href={el.desc.link}
+                      style={{
+                        backgroundColor: "var(--color-primary)",
+                        padding: "1.2rem",
+                        display: "flex",
+                      }}
+                    >
+                      <Image
+                        src={arrowRightSvg}
+                        alt="arrowRight"
+                        height="2.4rem"
+                        width="2.4rem"
+                      />
+                    </Link>
+                  </div>
+                )}
+              </div>
             </li>
           ))}
         </ul>

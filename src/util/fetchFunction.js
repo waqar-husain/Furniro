@@ -33,6 +33,6 @@ export default async function fetchReq(url, pOption) {
 
     return data;
   } catch (err) {
-    console.log(err);
+    throw err;
   }
 }

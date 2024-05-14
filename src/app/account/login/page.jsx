@@ -18,7 +18,6 @@ import { useRouter } from "nextjs-progressloader";
 export default function UserLogin({ searchParams }) {
   const { user: isUser } = useSelector((state) => state.user);
   const isUserLoggedIn = Boolean(isUser);
-  if (isUserLoggedIn) redirect("/account");
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
   const [userNameVal, setUserName] = useState({ value: "", isValid: false });
@@ -52,6 +51,16 @@ export default function UserLogin({ searchParams }) {
     setHasError(null);
     setIsLoading(false);
   }, [isLogin]);
+
+  useEffect(() => {
+    if (isUserLoggedIn) redirect("/account");
+  }, []);
+
+  useEffect(() => {
+    if (isUser) {
+      router.push("home");
+    }
+  }, [isUser]);
 
   const formIsValid = isLogin
     ? emailVal.isValid && passwordVal.isValid

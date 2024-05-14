@@ -12,12 +12,14 @@ import fetchReq from "@/src/util/fetchFunction";
 import notFoundImg from "@/public/notFound.png";
 import { formatNum } from "@/src/util/numerFormat";
 import ChevronRight from "@/src/components/icon/ChevronRight";
+import { data } from "autoprefixer";
 
 export default async function Product({ params }) {
   const id = params.id.replace("pid%3D", "");
   const { data: product } = await fetchReq(
     `${process.env.NEXT_PUBLIC_RAPIDAPI_URL}product-details?asin=${id}&country=IN`
   );
+
   if (!params.id.startsWith("pid%3D")) notFound();
 
   return (
