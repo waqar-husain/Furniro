@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -237,247 +237,249 @@ export default function Account() {
 
   return (
     <>
-      <PageHeader heading="Account" />
-      <main>
-        <section
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <div
+      <Suspense>
+        <PageHeader heading="Account" />
+        <main>
+          <section
             style={{
-              margin: "12rem 0rem 12rem 0rem",
-              maxWidth: "800px",
-              padding: "0px 2rem  ",
-              width: "100%",
               display: "flex",
-              flexDirection: "column",
               justifyContent: "center",
             }}
           >
-            <div>
-              <div
-                style={{
-                  marginLeft: "1.4rem",
-                  fontSize: "2.4rem",
-                  fontWeight: "500",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  src={userIco}
-                  alt="user icon 2"
-                  style={{ width: "3.2rem", height: "3.2rem" }}
-                />
-                <p style={{ marginLeft: "1rem" }}>Account</p>
-              </div>
-              <form
-                onSubmit={formSubmitHandler}
-                style={{
-                  marginTop: "1.4rem",
-                  border: "1px solid #dfdfdf",
-                  borderRadius: "2rem",
-                }}
-              >
-                <div className={style.formLayout}>
-                  <div
-                    style={{
-                      display: "flex",
-                      gridColumn: "span 2",
-                      columnGap: "3rem",
-                    }}
-                  >
-                    <InputComp
-                      defaultVal={userDetail.firstVal.value}
-                      id="yourName"
-                      label="First Name"
-                      isRequired={true}
-                      checkValidity={(val) => {
-                        return val !== "" && /([a-z])\w+/gi.test(val);
-                      }}
-                      getVal={getFirstNameVal}
-                      disabled={disable}
-                    />
-                    <InputComp
-                      defaultVal={userDetail.lastVal.value}
-                      id="lastName"
-                      label="Last Name"
-                      getVal={getLastNameVal}
-                      disabled={disable}
-                    />
-                  </div>
-                  <InputComp
-                    defaultVal={userDetail.emailVal.value}
-                    id="EmailAddress"
-                    label="Email address"
-                    isRequired={true}
-                    type="email"
-                    checkValidity={(val) => {
-                      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(val);
-                    }}
-                    invalidText="Provide a valid email address!"
-                    getVal={getEmailVal}
-                    disabled={disable}
-                  />
-                  <InputComp
-                    defaultVal={userDetail.phoneVal.value}
-                    id="Phone"
-                    label="Phone"
-                    isRequired={true}
-                    checkValidity={(val) => {
-                      return val.trim() !== "" && /([0-9])\w+/g.test(val);
-                    }}
-                    getVal={getPhoneVal}
-                    disabled={disable}
-                  />
-                  <InputComp
-                    defaultVal={userDetail.companyVal.value}
-                    id="companyName"
-                    label="Company Name(Optional)"
-                    getVal={getCompanyNameVal}
-                    disabled={disable}
-                  />
-
-                  <div
-                    style={{
-                      gridRow: `${
-                        userDetail.countryVal.provinceAvailable ||
-                        userDetail.countryVal.value === ""
-                          ? "span 2"
-                          : ""
-                      }`,
-                    }}
-                  >
-                    <SelectCountry
-                      defaultCountry={userDetail.countryVal.value}
-                      defaultProvince={userDetail.province}
-                      getCountry={getCountryVal}
-                      getProvince={getProvinceVal}
-                      disabled={disable}
-                    />
-                  </div>
-                  <InputComp
-                    defaultVal={userDetail.streetVal.value}
-                    id="street"
-                    label="Street address"
-                    isRequired={true}
-                    checkValidity={(val) => {
-                      return val.trim() !== "";
-                    }}
-                    getVal={getStreetVal}
-                    disabled={disable}
-                  />
-                  <InputComp
-                    defaultVal={userDetail.townVal.value}
-                    label="Town / City"
-                    id="town"
-                    isRequired={true}
-                    checkValidity={(val) => {
-                      return val.trim() !== "";
-                    }}
-                    getVal={getTownVal}
-                    disabled={disable}
-                  />
-                  <InputComp
-                    defaultVal={userDetail.zipVal.value}
-                    id="zipCode"
-                    label="ZIP Code"
-                    isRequired={true}
-                    checkValidity={(val) => {
-                      return val.trim() !== "" && /([0-9])\w+/g.test(val);
-                    }}
-                    getVal={getZipVal}
-                    disabled={disable}
-                  />
-                  <div
-                    style={{
-                      display: "inline-flex",
-                      alignSelf: "end",
-                      justifySelf: "end",
-                      gridColumn: "2",
-                      gap: "2rem",
-                    }}
-                  >
-                    <ButtonPrimary
-                      typeOf="button"
-                      disabled={!disable}
-                      title="Edit Account"
-                      func={disbaleInputHandler}
-                      styleData={{
-                        padding: "1.5rem 2.5rem",
-                        opacity: `${!disable ? "0.2" : "1"}`,
-                        cursor: `${!disable ? "not-allowed" : ""}`,
-                        transition: "opacity 0.1s",
-                        fontSize: "1.4rem",
-                        fontWeight: "500",
-                      }}
-                      style="primary"
-                    />
-
-                    <ButtonPrimary
-                      typeOf={formIsValid ? "submit" : "button"}
-                      disabled={disable}
-                      title="Save Changes"
-                      style="primary"
-                      styleData={{
-                        fontSize: "1.4rem",
-                        padding: "1.5rem 2.5rem",
-                        opacity: `${disable ? "0.2" : "1"}`,
-                        cursor: `${disable ? "not-allowed" : ""}`,
-                        transition: "opacity 0.1s",
-                        fontWeight: "500",
-                      }}
-                    />
-                  </div>
-                </div>
-              </form>
-            </div>
             <div
               style={{
+                margin: "12rem 0rem 12rem 0rem",
+                maxWidth: "800px",
+                padding: "0px 2rem  ",
+                width: "100%",
                 display: "flex",
-                justifyContent: "space-between",
-                marginTop: "5rem",
+                flexDirection: "column",
+                justifyContent: "center",
               }}
             >
-              <ButtonPrimary
-                title={wishlistButtonText}
-                style="primary"
-                url="wishlist"
-                styleData={{
-                  padding: "1.5rem 4rem",
-                  fontSize: "2rem",
-                  fontWeight: "500",
+              <div>
+                <div
+                  style={{
+                    marginLeft: "1.4rem",
+                    fontSize: "2.4rem",
+                    fontWeight: "500",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    src={userIco}
+                    alt="user icon 2"
+                    style={{ width: "3.2rem", height: "3.2rem" }}
+                  />
+                  <p style={{ marginLeft: "1rem" }}>Account</p>
+                </div>
+                <form
+                  onSubmit={formSubmitHandler}
+                  style={{
+                    marginTop: "1.4rem",
+                    border: "1px solid #dfdfdf",
+                    borderRadius: "2rem",
+                  }}
+                >
+                  <div className={style.formLayout}>
+                    <div
+                      style={{
+                        display: "flex",
+                        gridColumn: "span 2",
+                        columnGap: "3rem",
+                      }}
+                    >
+                      <InputComp
+                        defaultVal={userDetail.firstVal.value}
+                        id="yourName"
+                        label="First Name"
+                        isRequired={true}
+                        checkValidity={(val) => {
+                          return val !== "" && /([a-z])\w+/gi.test(val);
+                        }}
+                        getVal={getFirstNameVal}
+                        disabled={disable}
+                      />
+                      <InputComp
+                        defaultVal={userDetail.lastVal.value}
+                        id="lastName"
+                        label="Last Name"
+                        getVal={getLastNameVal}
+                        disabled={disable}
+                      />
+                    </div>
+                    <InputComp
+                      defaultVal={userDetail.emailVal.value}
+                      id="EmailAddress"
+                      label="Email address"
+                      isRequired={true}
+                      type="email"
+                      checkValidity={(val) => {
+                        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(val);
+                      }}
+                      invalidText="Provide a valid email address!"
+                      getVal={getEmailVal}
+                      disabled={disable}
+                    />
+                    <InputComp
+                      defaultVal={userDetail.phoneVal.value}
+                      id="Phone"
+                      label="Phone"
+                      isRequired={true}
+                      checkValidity={(val) => {
+                        return val.trim() !== "" && /([0-9])\w+/g.test(val);
+                      }}
+                      getVal={getPhoneVal}
+                      disabled={disable}
+                    />
+                    <InputComp
+                      defaultVal={userDetail.companyVal.value}
+                      id="companyName"
+                      label="Company Name(Optional)"
+                      getVal={getCompanyNameVal}
+                      disabled={disable}
+                    />
+
+                    <div
+                      style={{
+                        gridRow: `${
+                          userDetail.countryVal.provinceAvailable ||
+                          userDetail.countryVal.value === ""
+                            ? "span 2"
+                            : ""
+                        }`,
+                      }}
+                    >
+                      <SelectCountry
+                        defaultCountry={userDetail.countryVal.value}
+                        defaultProvince={userDetail.province}
+                        getCountry={getCountryVal}
+                        getProvince={getProvinceVal}
+                        disabled={disable}
+                      />
+                    </div>
+                    <InputComp
+                      defaultVal={userDetail.streetVal.value}
+                      id="street"
+                      label="Street address"
+                      isRequired={true}
+                      checkValidity={(val) => {
+                        return val.trim() !== "";
+                      }}
+                      getVal={getStreetVal}
+                      disabled={disable}
+                    />
+                    <InputComp
+                      defaultVal={userDetail.townVal.value}
+                      label="Town / City"
+                      id="town"
+                      isRequired={true}
+                      checkValidity={(val) => {
+                        return val.trim() !== "";
+                      }}
+                      getVal={getTownVal}
+                      disabled={disable}
+                    />
+                    <InputComp
+                      defaultVal={userDetail.zipVal.value}
+                      id="zipCode"
+                      label="ZIP Code"
+                      isRequired={true}
+                      checkValidity={(val) => {
+                        return val.trim() !== "" && /([0-9])\w+/g.test(val);
+                      }}
+                      getVal={getZipVal}
+                      disabled={disable}
+                    />
+                    <div
+                      style={{
+                        display: "inline-flex",
+                        alignSelf: "end",
+                        justifySelf: "end",
+                        gridColumn: "2",
+                        gap: "2rem",
+                      }}
+                    >
+                      <ButtonPrimary
+                        typeOf="button"
+                        disabled={!disable}
+                        title="Edit Account"
+                        func={disbaleInputHandler}
+                        styleData={{
+                          padding: "1.5rem 2.5rem",
+                          opacity: `${!disable ? "0.2" : "1"}`,
+                          cursor: `${!disable ? "not-allowed" : ""}`,
+                          transition: "opacity 0.1s",
+                          fontSize: "1.4rem",
+                          fontWeight: "500",
+                        }}
+                        style="primary"
+                      />
+
+                      <ButtonPrimary
+                        typeOf={formIsValid ? "submit" : "button"}
+                        disabled={disable}
+                        title="Save Changes"
+                        style="primary"
+                        styleData={{
+                          fontSize: "1.4rem",
+                          padding: "1.5rem 2.5rem",
+                          opacity: `${disable ? "0.2" : "1"}`,
+                          cursor: `${disable ? "not-allowed" : ""}`,
+                          transition: "opacity 0.1s",
+                          fontWeight: "500",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "5rem",
                 }}
-              />
-              <ButtonPrimary
-                title={cartButtonText}
-                style="primary"
-                url="cart"
-                styleData={{
-                  padding: "1.5rem 4rem",
-                  fontSize: "2rem",
-                  fontWeight: "500",
-                }}
-              />
-              <ButtonPrimary
-                title={signOutButtonText}
-                url="home"
-                func={signOutFunc}
-                styleData={{
-                  padding: "1.5rem 4rem",
-                  backgroundColor: "#fff",
-                  border: "2px solid #F93D5C",
-                  color: "#F93D5C",
-                  fontSize: "2rem",
-                  fontWeight: "500",
-                }}
-              />
+              >
+                <ButtonPrimary
+                  title={wishlistButtonText}
+                  style="primary"
+                  url="wishlist"
+                  styleData={{
+                    padding: "1.5rem 4rem",
+                    fontSize: "2rem",
+                    fontWeight: "500",
+                  }}
+                />
+                <ButtonPrimary
+                  title={cartButtonText}
+                  style="primary"
+                  url="cart"
+                  styleData={{
+                    padding: "1.5rem 4rem",
+                    fontSize: "2rem",
+                    fontWeight: "500",
+                  }}
+                />
+                <ButtonPrimary
+                  title={signOutButtonText}
+                  url="home"
+                  func={signOutFunc}
+                  styleData={{
+                    padding: "1.5rem 4rem",
+                    backgroundColor: "#fff",
+                    border: "2px solid #F93D5C",
+                    color: "#F93D5C",
+                    fontSize: "2rem",
+                    fontWeight: "500",
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </Suspense>
     </>
   );
 }

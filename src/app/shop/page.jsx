@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import SearchPage from "./searchPage";
 import PageHeader from "@/src/components/partials/pageHeader/pageHeader";
@@ -35,16 +35,18 @@ export default async function Shop({ searchParams }) {
 
   return (
     <>
-      {searched && searched !== "" && (
-        <SearchPage
-          filterBar={true}
-          data={res.data.products.slice(2)}
-          dataLength={res.data.products.length}
-          totalProducts={res.data.total_products}
-          query={searched}
-        />
-      )}
-      {searchParamNotAvailable && <MainShop />}
+      <Suspense>
+        {searched && searched !== "" && (
+          <SearchPage
+            filterBar={true}
+            data={res.data.products.slice(2)}
+            dataLength={res.data.products.length}
+            totalProducts={res.data.total_products}
+            query={searched}
+          />
+        )}
+        {searchParamNotAvailable && <MainShop />}
+      </Suspense>
     </>
   );
 }

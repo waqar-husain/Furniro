@@ -7,6 +7,9 @@ const nextConfig = {
       "images-na.ssl-images-amazon.com",
     ],
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 module.exports = nextConfig;

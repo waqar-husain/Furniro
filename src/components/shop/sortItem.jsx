@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 
 import style from "./sortItem.module.css";
 import { useSearchParams } from "next/navigation";
@@ -25,24 +25,33 @@ export default function SortItem() {
   };
   return (
     <>
-      <span
-        style={{ marginLeft: "2.9rem", display: "flex", alignItems: "center" }}
-      >
-        <label htmlFor="sort" style={{ fontSize: "2rem", marginRight: "3rem" }}>
-          Sort by
-        </label>
-        <select
-          name="Default"
-          id="sort"
-          className={style.selectList}
-          onChange={changeHandler}
+      <Suspense>
+        <span
+          style={{
+            marginLeft: "2.9rem",
+            display: "flex",
+            alignItems: "center",
+          }}
         >
-          <option value="RELEVANCE">Relevance</option>
-          <option value="LOWEST_PRICE">Price: Low to High</option>
-          <option value="HIGHEST_PRICE">Price: High to Low</option>
-          <option value="BEST_SELLERS">Best Sellers</option>
-        </select>
-      </span>
+          <label
+            htmlFor="sort"
+            style={{ fontSize: "2rem", marginRight: "3rem" }}
+          >
+            Sort by
+          </label>
+          <select
+            name="Default"
+            id="sort"
+            className={style.selectList}
+            onChange={changeHandler}
+          >
+            <option value="RELEVANCE">Relevance</option>
+            <option value="LOWEST_PRICE">Price: Low to High</option>
+            <option value="HIGHEST_PRICE">Price: High to Low</option>
+            <option value="BEST_SELLERS">Best Sellers</option>
+          </select>
+        </span>
+      </Suspense>
     </>
   );
 }

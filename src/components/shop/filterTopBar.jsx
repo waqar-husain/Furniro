@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 
 import style from "./filterTopBar.module.css";
 
@@ -19,33 +19,35 @@ export default function FilterTopBar(props) {
   const layoutActive = useSelector((state) => state.shop.itemToShow);
 
   return (
-    <div className={style.topBar}>
-      <div className={style.innerTopBar}>
-        <div className={style.barLeft}>
-          <div className={style.barLeftButtonContainer}>
-            <ChangeViewButton type={true} buttonHeight="2.8rem">
-              <BigRound active={layoutActive} />
-            </ChangeViewButton>
-            <ChangeViewButton type={false} buttonHeight="2.4rem">
-              <List active={layoutActive} />
-            </ChangeViewButton>
+    <Suspense>
+      <div className={style.topBar}>
+        <div className={style.innerTopBar}>
+          <div className={style.barLeft}>
+            <div className={style.barLeftButtonContainer}>
+              <ChangeViewButton type={true} buttonHeight="2.8rem">
+                <BigRound active={layoutActive} />
+              </ChangeViewButton>
+              <ChangeViewButton type={false} buttonHeight="2.4rem">
+                <List active={layoutActive} />
+              </ChangeViewButton>
+            </div>
+            <span className={style.barLeftText}>
+              Showing {noOfItem * noOfPage - noOfItem + 1}-
+              {noOfItem * noOfPage > totalNoOfResults
+                ? totalNoOfResults
+                : noOfItem * noOfPage}{" "}
+              of {props.totalProducts} results
+            </span>
           </div>
-          <span className={style.barLeftText}>
-            Showing {noOfItem * noOfPage - noOfItem + 1}-
-            {noOfItem * noOfPage > totalNoOfResults
-              ? totalNoOfResults
-              : noOfItem * noOfPage}{" "}
-            of {props.totalProducts} results
-          </span>
-        </div>
-        <div className={style.barRight}>
-          <span className={style.show}>
-            <p className={style.showText}>Show</p>
-            <p className={style.showItem}>{noOfItem}</p>
-          </span>
-          <SortItem />
+          <div className={style.barRight}>
+            <span className={style.show}>
+              <p className={style.showText}>Show</p>
+              <p className={style.showItem}>{noOfItem}</p>
+            </span>
+            <SortItem />
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 }

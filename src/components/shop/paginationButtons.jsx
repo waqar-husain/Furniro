@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import style from "./paginationButton.module.css";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
@@ -48,187 +48,189 @@ export default function PaginationButtons(props) {
 
   return (
     <>
-      {button === 1 ? (
-        ""
-      ) : (
-        /* ///////////////////////////////PREVIOUS BUTTON////////////////////////////////////// */
-        <div className={style.paginationContainer}>
-          {page > "1" && (
-            <Link
-              href={url(pageNo <= 1 ? "1" : pageNo - 1)}
-              onClick={prevButtonHandler}
-              className={style.prevButton}
-              // style={{ visibility: pageNo <= 1 ? "hidden" : "visible" }}
-            >
-              Prev
-            </Link>
-          )}
-          {/* ///////////////////////////////////BUTTON IS LESS THAN 4////////////////////////////////////// */}
-          {button < 4 && (
-            <>
-              {buttonArr.map((el, i) => (
+      <Suspense>
+        {button === 1 ? (
+          ""
+        ) : (
+          /* ///////////////////////////////PREVIOUS BUTTON////////////////////////////////////// */
+          <div className={style.paginationContainer}>
+            {page > "1" && (
+              <Link
+                href={url(pageNo <= 1 ? "1" : pageNo - 1)}
+                onClick={prevButtonHandler}
+                className={style.prevButton}
+                // style={{ visibility: pageNo <= 1 ? "hidden" : "visible" }}
+              >
+                Prev
+              </Link>
+            )}
+            {/* ///////////////////////////////////BUTTON IS LESS THAN 4////////////////////////////////////// */}
+            {button < 4 && (
+              <>
+                {buttonArr.map((el, i) => (
+                  <Link
+                    key={i}
+                    href={url(i + 1)}
+                    style={{
+                      backgroundColor:
+                        page === String(i + 1) ? "#B88E2F" : "#F9F1E7",
+                      color: page === String(i + 1) ? "white" : "black",
+                    }}
+                    onClick={numberButtonHandler}
+                    className={style.paginationButton}
+                  >
+                    {i + 1}
+                  </Link>
+                ))}
+              </>
+            )}
+
+            {/* /////////////////FIRST FOUR BUTTONS IF THE  BUTTON IS MORE THAN 4 /////////////////////////// */}
+
+            {+page < 4 && button > 4 && (
+              <>
+                {[1, 1, 1, 1].map((el, i) => (
+                  <Link
+                    key={i}
+                    href={url(i + 1)}
+                    style={{
+                      backgroundColor:
+                        page === String(i + 1) ? "#B88E2F" : "#F9F1E7",
+                      color: page === String(i + 1) ? "white" : "black",
+                    }}
+                    onClick={numberButtonHandler}
+                    className={style.paginationButton}
+                  >
+                    {i + 1}
+                  </Link>
+                ))}
+
+                <div className={style.overflowButton}>
+                  &#x2022;&#x2022;&#x2022;
+                </div>
+
                 <Link
-                  key={i}
-                  href={url(i + 1)}
+                  href={url(button)}
                   style={{
                     backgroundColor:
-                      page === String(i + 1) ? "#B88E2F" : "#F9F1E7",
-                    color: page === String(i + 1) ? "white" : "black",
+                      page === String(button) ? "#B88E2F" : "#F9F1E7",
+                    color: page === String(button) ? "white" : "black",
                   }}
                   onClick={numberButtonHandler}
                   className={style.paginationButton}
                 >
-                  {i + 1}
+                  {button}
                 </Link>
-              ))}
-            </>
-          )}
+              </>
+            )}
 
-          {/* /////////////////FIRST FOUR BUTTONS IF THE  BUTTON IS MORE THAN 4 /////////////////////////// */}
+            {/* /////////////////MIDDLE THREE BUTTON IF THE  BUTTON IS MORE THAN 4 ///////////////////////////// */}
 
-          {+page < 4 && button > 4 && (
-            <>
-              {[1, 1, 1, 1].map((el, i) => (
+            {+page > 3 && +page < button - 2 && (
+              <>
                 <Link
-                  key={i}
-                  href={url(i + 1)}
+                  href={url(1)}
                   style={{
-                    backgroundColor:
-                      page === String(i + 1) ? "#B88E2F" : "#F9F1E7",
-                    color: page === String(i + 1) ? "white" : "black",
+                    backgroundColor: page === String(1) ? "#B88E2F" : "#F9F1E7",
+                    color: page === String(1) ? "white" : "black",
                   }}
                   onClick={numberButtonHandler}
                   className={style.paginationButton}
                 >
-                  {i + 1}
+                  {1}
                 </Link>
-              ))}
 
-              <div className={style.overflowButton}>
-                &#x2022;&#x2022;&#x2022;
-              </div>
+                <div className={style.overflowButton}>
+                  &#x2022;&#x2022;&#x2022;
+                </div>
 
-              <Link
-                href={url(button)}
-                style={{
-                  backgroundColor:
-                    page === String(button) ? "#B88E2F" : "#F9F1E7",
-                  color: page === String(button) ? "white" : "black",
-                }}
-                onClick={numberButtonHandler}
-                className={style.paginationButton}
-              >
-                {button}
-              </Link>
-            </>
-          )}
+                {[+page - 1, +page, +page + 1].map((el, i) => (
+                  <Link
+                    key={i}
+                    href={url(el)}
+                    style={{
+                      backgroundColor:
+                        page === String(el) ? "#B88E2F" : "#F9F1E7",
+                      color: page === String(el) ? "white" : "black",
+                    }}
+                    onClick={numberButtonHandler}
+                    className={style.paginationButton}
+                  >
+                    {el}
+                  </Link>
+                ))}
 
-          {/* /////////////////MIDDLE THREE BUTTON IF THE  BUTTON IS MORE THAN 4 ///////////////////////////// */}
+                <div className={style.overflowButton}>
+                  &#x2022;&#x2022;&#x2022;
+                </div>
 
-          {+page > 3 && +page < button - 2 && (
-            <>
-              <Link
-                href={url(1)}
-                style={{
-                  backgroundColor: page === String(1) ? "#B88E2F" : "#F9F1E7",
-                  color: page === String(1) ? "white" : "black",
-                }}
-                onClick={numberButtonHandler}
-                className={style.paginationButton}
-              >
-                {1}
-              </Link>
-
-              <div className={style.overflowButton}>
-                &#x2022;&#x2022;&#x2022;
-              </div>
-
-              {[+page - 1, +page, +page + 1].map((el, i) => (
                 <Link
-                  key={i}
-                  href={url(el)}
+                  href={url(button)}
                   style={{
                     backgroundColor:
-                      page === String(el) ? "#B88E2F" : "#F9F1E7",
-                    color: page === String(el) ? "white" : "black",
+                      page === String(button) ? "#B88E2F" : "#F9F1E7",
+                    color: page === String(button) ? "white" : "black",
                   }}
                   onClick={numberButtonHandler}
                   className={style.paginationButton}
                 >
-                  {el}
+                  {button}
                 </Link>
-              ))}
+              </>
+            )}
 
-              <div className={style.overflowButton}>
-                &#x2022;&#x2022;&#x2022;
-              </div>
+            {/* ////////////////LAST THREE BUTTONS IF THE  BUTTON IS MORE THAN 4 ///////////////////////*/}
 
-              <Link
-                href={url(button)}
-                style={{
-                  backgroundColor:
-                    page === String(button) ? "#B88E2F" : "#F9F1E7",
-                  color: page === String(button) ? "white" : "black",
-                }}
-                onClick={numberButtonHandler}
-                className={style.paginationButton}
-              >
-                {button}
-              </Link>
-            </>
-          )}
-
-          {/* ////////////////LAST THREE BUTTONS IF THE  BUTTON IS MORE THAN 4 ///////////////////////*/}
-
-          {+page >= button - 2 && button > 4 && (
-            <>
-              <Link
-                href={url(1)}
-                style={{
-                  backgroundColor: page === String(1) ? "#B88E2F" : "#F9F1E7",
-                  color: page === String(1) ? "white" : "black",
-                }}
-                onClick={numberButtonHandler}
-                className={style.paginationButton}
-              >
-                {1}
-              </Link>
-
-              <div className={style.overflowButton}>
-                &#x2022;&#x2022;&#x2022;
-              </div>
-
-              {[button - 2, button - 1, button].map((el, i) => (
+            {+page >= button - 2 && button > 4 && (
+              <>
                 <Link
-                  key={i}
-                  href={url(el)}
+                  href={url(1)}
                   style={{
-                    backgroundColor:
-                      page === String(el) ? "#B88E2F" : "#F9F1E7",
-                    color: page === String(el) ? "white" : "black",
+                    backgroundColor: page === String(1) ? "#B88E2F" : "#F9F1E7",
+                    color: page === String(1) ? "white" : "black",
                   }}
                   onClick={numberButtonHandler}
                   className={style.paginationButton}
                 >
-                  {el}
+                  {1}
                 </Link>
-              ))}
-            </>
-          )}
 
-          {/* ////////////////////////////////NEXT BUTTON///////////////////////////////////////// */}
+                <div className={style.overflowButton}>
+                  &#x2022;&#x2022;&#x2022;
+                </div>
 
-          {+page < button && (
-            <Link
-              href={url(+page < button ? pageNo + 1 : button)}
-              onClick={nextButtonHandler}
-              className={style.nextButton}
-            >
-              Next
-            </Link>
-          )}
-        </div>
-      )}
+                {[button - 2, button - 1, button].map((el, i) => (
+                  <Link
+                    key={i}
+                    href={url(el)}
+                    style={{
+                      backgroundColor:
+                        page === String(el) ? "#B88E2F" : "#F9F1E7",
+                      color: page === String(el) ? "white" : "black",
+                    }}
+                    onClick={numberButtonHandler}
+                    className={style.paginationButton}
+                  >
+                    {el}
+                  </Link>
+                ))}
+              </>
+            )}
+
+            {/* ////////////////////////////////NEXT BUTTON///////////////////////////////////////// */}
+
+            {+page < button && (
+              <Link
+                href={url(+page < button ? pageNo + 1 : button)}
+                onClick={nextButtonHandler}
+                className={style.nextButton}
+              >
+                Next
+              </Link>
+            )}
+          </div>
+        )}
+      </Suspense>
     </>
   );
 }
